@@ -62,7 +62,7 @@ Split by responsibility, not layer: everything about stock lives in
 - Create: `tests/test_data.py`
 - Create: `requirements.txt`, `vercel.json`, `.vercelignore`
 
-- [ ] **Step 1: Write `requirements.txt`**
+- [x] **Step 1: Write `requirements.txt`**
 
 ```
 Flask==3.0.3
@@ -74,7 +74,7 @@ pytest==8.3.2
 `Pillow` is used only by `scripts/render_architecture.py`, which runs offline.
 Nothing in the request path imports it.
 
-- [ ] **Step 2: Write `.vercelignore`**
+- [x] **Step 2: Write `.vercelignore`**
 
 ```
 data/ground_truth/
@@ -91,7 +91,7 @@ scripts/
 Ground truth reaching the deployed bundle would invalidate every evaluation
 number. This file is the only thing preventing that.
 
-- [ ] **Step 3: Write the failing test**
+- [x] **Step 3: Write the failing test**
 
 ```python
 # tests/test_data.py
@@ -126,12 +126,12 @@ def test_catalog_shape():
     assert sum(1 for p in b["products"] if p["is_draught"]) == 5
 ```
 
-- [ ] **Step 4: Run it, verify it fails**
+- [x] **Step 4: Run it, verify it fails**
 
 Run: `pytest tests/test_data.py -v`
 Expected: FAIL, `ModuleNotFoundError: No module named 'app.data'`
 
-- [ ] **Step 5: Implement `app/data.py`**
+- [x] **Step 5: Implement `app/data.py`**
 
 ```python
 """Bundle loader. Module-scope cache: Vercel reuses warm instances, so the
@@ -166,12 +166,12 @@ def products_by_id():
     return {p["product_id"]: p for p in load()["products"]}
 ```
 
-- [ ] **Step 6: Run tests, verify they pass**
+- [x] **Step 6: Run tests, verify they pass**
 
 Run: `pytest tests/test_data.py -v`
 Expected: 5 passed
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
 git add app/data.py tests/test_data.py requirements.txt vercel.json .vercelignore

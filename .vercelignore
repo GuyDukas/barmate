@@ -1,0 +1,10 @@
+data/ground_truth/
+data/public/
+data/external/
+data/source/
+sim/
+eval/
+tests/
+docs/
+scripts/
+*.tar.gz
