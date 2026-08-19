@@ -29,8 +29,9 @@ TEAM = {
     "team_name": "BarMate",
     "students": [
         {"name": "Guy Dukas", "email": "guy.dukas@gmail.com", "id": "326692662"},
-        {"name": "Reut Ness", "email": "TBD", "id": "318738127"},
-        {"name": "Yuval Belelovsky", "email": "TBD", "id": "326156536"},
+        {"name": "Reut Ness", "email": "Reutness2799@gmail.com", "id": "318738127"},
+        {"name": "Yuval Belelovsky", "email": "Ybelelovsky@campus.technion.ac.il",
+         "id": "326156536"},
     ],
 }
 
