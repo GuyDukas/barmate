@@ -88,49 +88,31 @@ def check_pinecone():
     return None
 
 
-LLMOD_BASES = [
-    "https://api.llmod.ai/v1",
-    "https://llmod.ai/api/v1",
-    "https://api.llmod.ai",
-]
-
-
 def check_llmod():
-    key = os.environ.get("LLMOD_API_KEY")
-    if not key:
+    """Verifies the endpoint and models app/llm.py is hardcoded to use, so a
+    green check here means the agent will reach the same place."""
+    if not os.environ.get("LLMOD_API_KEY"):
         return report(BAD, "LLMod.ai", "LLMOD_API_KEY not set")
 
-    configured = os.environ.get("LLMOD_BASE_URL")
-    bases = [configured] if configured else LLMOD_BASES
+    sys.path.insert(0, str(ROOT))
+    from app import llm
 
-    for base in bases:
-        url = f"{base.rstrip('/')}/models"
-        try:
-            r = requests.get(url, headers={"Authorization": f"Bearer {key}"},
-                             timeout=TIMEOUT)
-        except Exception:
-            continue
-        if r.status_code < 400:
-            names = []
-            try:
-                body = r.json()
-                names = [m.get("id") for m in (body.get("data") or body) if isinstance(m, dict)]
-            except ValueError:
-                pass
-            report(OK, "LLMod.ai", f"{base} responded, {len(names)} models")
-            wanted = [n for n in names if n and "gpt-5.4-mini" in n or (n and "embedding" in n)]
-            if wanted:
-                print("       models we need: " + ", ".join(sorted(set(wanted))[:6]))
-            if not configured:
-                print(f"       add to .env:  LLMOD_BASE_URL={base}")
-            return None
-        if r.status_code in (401, 403):
-            return report(BAD, "LLMod.ai", f"{base} rejected the key: HTTP {r.status_code}")
+    try:
+        r = requests.get(f"{llm.BASE}/models", headers=llm._headers(), timeout=TIMEOUT)
+    except Exception as e:
+        return report(BAD, "LLMod.ai", f"{llm.BASE}: {type(e).__name__}: {e}")
+    if r.status_code in (401, 403):
+        return report(BAD, "LLMod.ai", f"key rejected: HTTP {r.status_code}")
+    if r.status_code >= 400:
+        return report(BAD, "LLMod.ai", f"HTTP {r.status_code}: {r.text[:120]}")
 
-    report(BAD, "LLMod.ai",
-           "no base URL responded. Tried: " + ", ".join(bases))
-    print("       Find the base URL on the LLMod.ai dashboard and set "
-          "LLMOD_BASE_URL in .env")
+    body = r.json()
+    names = {m.get("id") for m in (body.get("data") or body) if isinstance(m, dict)}
+    report(OK, "LLMod.ai", f"{llm.BASE} responded, {len(names)} models")
+
+    for label, wanted in (("text", llm.TEXT_MODEL), ("embeddings", llm.EMBED_MODEL)):
+        mark = "present" if wanted in names else "NOT OFFERED BY THIS KEY"
+        print(f"       {label:<11} {wanted}  {mark}")
     return None
 
 
