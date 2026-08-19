@@ -1,0 +1,8 @@
+# The build is deterministic on seed 20260614: same seed, same bytes. Letting
+# git rewrite line endings on checkout would break that guarantee for anyone
+# cloning on Windows, so text files stay LF everywhere.
+* text=auto eol=lf
+
+*.png binary
+*.gz binary
+*.xlsx binary
