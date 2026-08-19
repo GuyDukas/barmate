@@ -1,0 +1,23 @@
+authorised_by,date,detail,end_date,exceeds_threshold,incident_id,leave_units,logged_shift_report,logged_whatsapp,magnitude_pct,magnitude_servings,magnitude_units,ordered_units,product_id,rag_scenario,received_units,remaining_fraction,scenario,staff_id,type
+,2026-06-12,Bombay Sapphire cleared off the shelf for a private function and never written down anywhere. The books still carry the full case; the shelf is bare.,,,INC-041,0.3,False,False,,,,,P009,B,,,GT002,,unrecorded_removal
+,2026-06-13,Two Carlsberg 30L kegs pulled from the outside cold room after a coolant fault and not recorded. The outside line goes into a heavy football night on barely one keg.,,,INC-050,1.15,False,True,,,,,K003,B,,,GT004,,unrecorded_removal
+,2026-06-05,"Tomer pouring Absolut roughly 18 percent heavy across his shifts. POS counts match, physical depletion does not.",2026-06-13,,INC-042,,False,False,0.18,,,,P014,C,,,,S04,overpour
+,2026-06-11,Grey Goose bottle dropped at the inside bar. Mentioned in the shift group but never entered anywhere.,,,INC-043,,False,True,,,1.0,,P016,B,,,,S03,breakage
+,2026-06-12,Havana Club broken during a rush. Nobody reported it at all.,,,INC-044,,False,False,,,1.0,,P026,B,,,,S06,breakage
+S01,2026-06-12,"Jameson chasers sent to a table by Roei. Shift manager, within the standard comp allowance.",,False,INC-045,,True,True,,10,,,P019,A,,,,S01,comp
+,2026-06-13,Fourteen Patron shots comped by a junior bartender. Over the ten-serving limit and without manager approval.,,True,INC-046,,False,True,,14,,,P031,B,,,,S06,comp
+,2026-06-12,"Weihenstephan keg foaming badly, swapped out with 42 percent left. That volume is an IBBL credit, not sales.",,,INC-047,,True,True,,,,,K005,C,,0.42,,,keg_rma
+,2026-06-10,"CBC invoice says ten cases of Coca-Cola, nine arrived.",,,INC-048,,False,True,,,,240,P043,B,216,,,,delivery_short
+,2026-06-13,Table left without settling. Six Johnnie Walker shots poured against an open ticket.,,,INC-049,,False,True,,6,,,P021,B,,,,,walkout
+,2025-09-19,Heineken case dropped in the cold room.,,,INC-001,,True,True,,,1.0,,P002,A,,,,S04,breakage
+,2025-10-08,House red undercounted during a rushed close.,,,INC-002,,False,False,,,-4.0,,P038,B,,,,,miscount
+S02,2025-10-30,"Hendrick's poured for a private booking, approved by Yael.",,True,INC-003,,True,True,,12,,,P011,A,,,,S02,comp
+,2025-11-14,Muriel running heavy on Jack Daniel's during her first weeks.,2025-11-27,,INC-004,,False,False,0.12,,,,P020,C,,,,S06,overpour
+,2025-12-05,Tuborg keg returned flat.,,,INC-005,,True,True,,,,,K002,C,,0.3,,,keg_rma
+,2025-12-26,Two Prosecco bottles broken on New Year prep.,,,INC-006,,False,True,,,2.0,,P041,B,,,,S05,breakage
+,2026-01-14,Red Bull delivery one flat short.,,,INC-007,,False,True,,,,144,P048,B,120,,,,delivery_short
+,2026-02-11,"Absolut overcounted, backups double counted.",,,INC-008,,False,False,,,3.0,,P014,D,,,,,miscount
+,2026-03-07,"Unpaid ticket, four Chivas.",,,INC-009,,True,True,,4,,,P022,B,,,,,walkout
+,2026-04-18,Campari knocked off the speed rack.,,,INC-010,,True,True,,,1.0,,P034,A,,,,S03,breakage
+,2026-05-01,Bacardi running heavy through the Mojito season.,2026-05-09,,INC-011,,False,False,0.14,,,,P025,C,,,,S05,overpour
+,2026-05-20,"Tonic undercounted, a case left in the corridor.",,,INC-012,,False,False,,,-5.0,,P046,B,,,,,miscount

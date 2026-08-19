@@ -1,0 +1,8 @@
+staff_id,name_he,name_en,role,authority,station,experience
+S01,רועי,Roei,shift_manager,high,both,senior
+S02,יעל,Yael,shift_manager,high,both,senior
+S03,שיר,Shir,bartender,standard,inside,senior
+S04,תומר,Tomer,bartender,standard,outside,mid
+S05,מאיה,Maya,bartender,standard,outside,mid
+S06,מוריאל,Muriel,bartender,standard,inside,junior
+S07,עידו,Ido,barback,support,both,junior

@@ -1,0 +1,62 @@
+product_id,name,name_he,category,unit,volume_ml,unit_cost,unit_price,station,supplier_id,case_size,is_draught,safety_stock
+P001,Carlsberg,קרלסברג,beer,bottle,330,5.0,24,both,SUP02,24,0,4
+P002,Heineken,הייניקן,beer,bottle,330,5.5,25,both,SUP02,24,0,4
+P003,Corona,קורונה,beer,bottle,330,6.0,27,both,SUP02,24,0,4
+P004,Guinness,גינס,beer,bottle,330,7.0,29,both,SUP02,24,0,4
+P005,Goldstar,גולדסטאר,beer,bottle,330,4.5,23,both,SUP02,24,0,4
+P006,Maccabee,מכבי,beer,bottle,330,4.5,23,both,SUP02,24,0,4
+P007,Stella Artois,סטלה ארטואה,beer,bottle,330,5.5,26,both,SUP02,24,0,4
+P008,Erdinger,ארדינגר,beer,bottle,330,7.0,29,both,SUP02,24,0,4
+P009,Bombay Sapphire,בומביי ספיר,gin,bottle,700,75.0,240,both,SUP01,12,0,2
+P010,Tanqueray,טנקרי,gin,bottle,700,82.0,260,both,SUP01,12,0,2
+P011,Hendrick's,הנדריקס,gin,bottle,700,125.0,350,both,SUP01,12,0,2
+P012,Beefeater,ביפיטר,gin,bottle,700,68.0,230,both,SUP01,12,0,2
+P013,Gordon's,גורדונס,gin,bottle,700,55.0,200,both,SUP01,12,0,2
+P014,Absolut,אבסולוט,vodka,bottle,700,65.0,220,both,SUP01,12,0,2
+P015,Finlandia,פינלנדיה,vodka,bottle,700,60.0,210,both,SUP01,12,0,2
+P016,Grey Goose,גריי גוס,vodka,bottle,700,130.0,390,both,SUP01,12,0,2
+P017,Belvedere,בלוודר,vodka,bottle,700,125.0,380,both,SUP01,12,0,2
+P018,Stolichnaya,סטולי,vodka,bottle,700,60.0,210,both,SUP01,12,0,2
+P019,Jameson,ג'יימסון,whiskey,bottle,700,80.0,250,both,SUP01,12,0,3
+P020,Jack Daniel's,ג'ק דניאלס,whiskey,bottle,700,85.0,270,both,SUP01,12,0,2
+P021,Johnnie Walker Black,ג'וני ווקר בלאק,whiskey,bottle,700,105.0,320,both,SUP01,12,0,2
+P022,Chivas Regal,שיבס ריגל,whiskey,bottle,700,100.0,310,both,SUP01,12,0,2
+P023,Maker's Mark,מייקרס מארק,whiskey,bottle,700,110.0,330,both,SUP01,12,0,2
+P024,Glenfiddich 12,גלנפידיך 12,whiskey,bottle,700,145.0,420,inside,SUP01,12,0,2
+P025,Bacardi Carta Blanca,בקרדי,rum,bottle,700,60.0,210,both,SUP01,12,0,2
+P026,Havana Club 3,הוואנה קלאב,rum,bottle,700,70.0,230,both,SUP01,12,0,2
+P027,Captain Morgan,קפטן מורגן,rum,bottle,700,65.0,220,both,SUP01,12,0,2
+P028,Diplomatico Reserva,דיפלומטיקו,rum,bottle,700,145.0,390,both,SUP01,12,0,2
+P029,Jose Cuervo,חוסה קוארבו,tequila,bottle,700,72.0,240,both,SUP01,12,0,2
+P030,Olmeca Blanco,אולמקה,tequila,bottle,700,70.0,235,both,SUP01,12,0,2
+P031,Patron Silver,פטרון סילבר,tequila,bottle,700,160.0,450,inside,SUP01,12,0,2
+P032,Don Julio Blanco,דון חוליו,tequila,bottle,700,180.0,480,both,SUP01,12,0,2
+P033,Aperol,אפרול,aperitif,bottle,700,62.0,210,outside,SUP01,12,0,2
+P034,Campari,קמפרי,aperitif,bottle,700,70.0,220,both,SUP01,12,0,2
+P035,Cointreau,קוואנטרו,liqueur,bottle,700,95.0,290,both,SUP01,12,0,1
+P036,Kahlua,קלואה,liqueur,bottle,700,75.0,250,both,SUP01,12,0,1
+P037,Martini Rosso,מרטיני רוסו,vermouth,bottle,700,45.0,170,inside,SUP01,12,0,1
+P038,House Red Wine,יין אדום הבית,wine,bottle,750,38.0,140,both,SUP01,12,0,3
+P039,House White Wine,יין לבן הבית,wine,bottle,750,38.0,140,both,SUP01,12,0,3
+P040,Rose Wine,יין רוזה,wine,bottle,750,40.0,145,both,SUP01,12,0,3
+P041,Prosecco,פרוסקו,wine,bottle,750,45.0,160,both,SUP01,12,0,3
+P042,Chardonnay,שרדונה,wine,bottle,750,55.0,180,both,SUP01,12,0,3
+P043,Coca-Cola,קוקה קולה,soft_drink,bottle,500,3.0,14,both,SUP03,24,0,3
+P044,Coca-Cola Zero,קולה זירו,soft_drink,bottle,500,3.0,14,both,SUP03,24,0,3
+P045,Sprite,ספרייט,soft_drink,bottle,500,3.0,14,both,SUP03,24,0,3
+P046,Tonic Water,טוניק,soft_drink,bottle,500,3.0,14,both,SUP03,24,0,3
+P047,Soda Water,סודה,soft_drink,bottle,500,2.5,12,both,SUP03,24,0,3
+P048,Red Bull,רדבול,soft_drink,can,330,5.5,20,both,SUP03,24,0,3
+P049,Ginger Beer,ג'ינג'ר בير,soft_drink,bottle,500,4.0,16,both,SUP03,24,0,3
+P050,Orange Juice,מיץ תפוזים,juice,liter,1000,8.0,0,both,SUP03,6,0,2
+P051,Cranberry Juice,מיץ חמוציות,juice,liter,1000,9.0,0,both,SUP03,6,0,2
+P052,Lime Juice,מיץ ליים,juice,liter,1000,10.0,0,both,SUP03,6,0,2
+P053,Lemon Juice,מיץ לימון,juice,liter,1000,9.0,0,both,SUP03,6,0,2
+P054,Sugar Syrup,סירופ סוכר,cocktail_ingredient,liter,1000,6.0,0,both,SUP03,6,0,2
+P055,Fresh Mint,נענע,cocktail_ingredient,bunch,,4.0,0,both,SUP03,6,0,2
+P056,Coffee Beans,פולי קפה,cocktail_ingredient,kg,,90.0,0,inside,SUP03,6,0,2
+K001,Carlsberg 50L,קרלסברג 50 ליטר,draught_beer,keg,50000,700.0,32,inside,SUP02,1,1,2
+K002,Tuborg 50L,טובורג 50 ליטר,draught_beer,keg,50000,690.0,32,inside,SUP02,1,1,2
+K003,Carlsberg 30L,קרלסברג 30 ליטר,draught_beer,keg,30000,450.0,32,outside,SUP02,1,1,2
+K004,Malka 30L,מלכה 30 ליטר,draught_beer,keg,30000,480.0,32,outside,SUP02,1,1,2
+K005,Weihenstephan 30L,ווינשטפן 30 ליטר,draught_beer,keg,30000,560.0,32,outside,SUP02,1,1,2

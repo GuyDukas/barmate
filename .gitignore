@@ -1,0 +1,24 @@
+# Secrets. The LLMod.ai key is shared across the group and the budget is $13
+# for all of us, so a leaked key is a leaked budget.
+.env
+.env.*
+*.key
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+*.egg-info/
+
+# Vercel
+.vercel/
+
+# Archives. The repository is the source of truth, not a tarball of it.
+*.tar.gz
+*.zip
+
+# OS
+.DS_Store
+Thumbs.db

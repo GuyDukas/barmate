@@ -1,0 +1,4 @@
+supplier_id,name,delivery_days,min_order_rule,min_order_qty,categories,contact_note
+SUP01,Hakerem Distillers,"Mon,Thu",full_cases,12,"gin,vodka,whiskey,rum,tequila,aperitif,liqueur,vermouth,wine",contact details not modelled
+SUP02,IBBL (Israel Beer Breweries Ltd),"Tue,Fri",3_kegs_or_5_cases,3,"beer,draught_beer",contact details not modelled
+SUP03,CBC (Central Bottling Company),"Wed,Sun",min_cases,10,"soft_drink,juice,cocktail_ingredient",contact details not modelled
