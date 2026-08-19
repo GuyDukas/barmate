@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BarMate</title>
+<style>
+  :root {
+    --bg: #fbfbfc; --panel: #ffffff; --ink: #191b21; --muted: #6b7280;
+    --line: #e3e5ea; --accent: #2f6fd0; --accent-ink: #ffffff;
+    --tool: #eaf5ee; --tool-edge: #b6ddc3; --err: #b4232b; --err-bg: #fdf2f2;
+    --code: #f5f6f8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14161a; --panel: #1b1e24; --ink: #e8eaee; --muted: #9aa2b1;
+      --line: #2b2f37; --accent: #5b93e6; --accent-ink: #0e1116;
+      --tool: #1b2a20; --tool-edge: #2f4a38; --err: #ff8a8a; --err-bg: #2a1a1c;
+      --code: #14171c;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 15px/1.55 -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 32px 20px 80px; }
+  header { margin-bottom: 24px; }
+  h1 { font-size: 26px; margin: 0 0 4px; letter-spacing: -0.01em; }
+  .tag { color: var(--muted); font-size: 14px; }
+  .anchor {
+    display: inline-block; margin-top: 10px; padding: 4px 10px;
+    background: var(--panel); border: 1px solid var(--line); border-radius: 999px;
+    font-size: 12.5px; color: var(--muted);
+  }
+  .card {
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: 12px; padding: 18px; margin-bottom: 18px;
+  }
+  textarea {
+    width: 100%; min-height: 96px; resize: vertical; padding: 12px 14px;
+    border: 1px solid var(--line); border-radius: 9px; background: var(--bg);
+    color: var(--ink); font: inherit;
+  }
+  textarea:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+  .row { display: flex; gap: 12px; align-items: center; margin-top: 12px; flex-wrap: wrap; }
+  button {
+    background: var(--accent); color: var(--accent-ink); border: 0;
+    padding: 10px 18px; border-radius: 9px; font: inherit; font-weight: 600;
+    cursor: pointer;
+  }
+  button:disabled { opacity: .55; cursor: default; }
+  .ghost {
+    background: transparent; color: var(--muted); border: 1px solid var(--line);
+    font-weight: 400;
+  }
+  .examples { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+  .examples button {
+    background: transparent; color: var(--muted); border: 1px solid var(--line);
+    font-size: 13px; font-weight: 400; padding: 6px 11px; border-radius: 999px;
+    text-align: left;
+  }
+  .examples button:hover { color: var(--ink); border-color: var(--accent); }
+  h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .07em;
+       color: var(--muted); margin: 0 0 10px; font-weight: 600; }
+  .answer { white-space: pre-wrap; }
+  .err { background: var(--err-bg); border-color: var(--err); color: var(--err); }
+  details.step {
+    border: 1px solid var(--line); border-radius: 9px; margin-bottom: 8px;
+    background: var(--bg); overflow: hidden;
+  }
+  details.step > summary {
+    cursor: pointer; padding: 10px 14px; font-weight: 600; font-size: 14px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .badge {
+    background: var(--tool); border: 1px solid var(--tool-edge); color: var(--ink);
+    font-size: 11.5px; font-weight: 600; padding: 2px 8px; border-radius: 999px;
+  }
+  .n { color: var(--muted); font-weight: 400; font-size: 12.5px; }
+  .step-body { padding: 0 14px 14px; }
+  .lbl { font-size: 11.5px; text-transform: uppercase; letter-spacing: .06em;
+         color: var(--muted); margin: 10px 0 4px; font-weight: 600; }
+  pre {
+    background: var(--code); border: 1px solid var(--line); border-radius: 7px;
+    padding: 11px 13px; overflow-x: auto; margin: 0;
+    font: 12.5px/1.5 ui-monospace, "Cascadia Code", Consolas, monospace;
+    white-space: pre-wrap; word-break: break-word;
+  }
+  .spin {
+    width: 15px; height: 15px; border: 2px solid var(--line);
+    border-top-color: var(--accent); border-radius: 50%;
+    animation: r .7s linear infinite; display: inline-block; vertical-align: -3px;
+  }
+  @keyframes r { to { transform: rotate(360deg); } }
+  footer { color: var(--muted); font-size: 13px; margin-top: 28px; }
+  footer a { color: var(--muted); }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>BarMate</h1>
+    <div class="tag">An autonomous bar operations agent. Ask about stock, losses, staffing or what to order.</div>
+    <div class="anchor">Frozen at Sunday 2026-06-14, 18:00 &middot; one hour before doors</div>
+  </header>
+
+  <div class="card">
+    <label for="prompt" class="lbl" style="margin-top:0">Your question</label>
+    <textarea id="prompt" placeholder="How much Bombay Sapphire do we have and should I trust that number?"></textarea>
+    <div class="row">
+      <button id="run">Run Agent</button>
+      <button id="clear" class="ghost">Clear</button>
+      <span id="status" class="tag"></span>
+    </div>
+    <div class="examples" id="examples"></div>
+  </div>
+
+  <div class="card err" id="errorCard" hidden>
+    <h2 style="color:inherit">Error</h2>
+    <div id="errorText"></div>
+  </div>
+
+  <div class="card" id="answerCard" hidden>
+    <h2>Response</h2>
+    <div class="answer" id="answer"></div>
+  </div>
+
+  <div class="card" id="stepsCard" hidden>
+    <h2>Steps <span class="n" id="stepCount"></span></h2>
+    <div id="steps"></div>
+  </div>
+
+  <footer>
+    <a href="/api/team_info">team_info</a> &middot;
+    <a href="/api/agent_info">agent_info</a> &middot;
+    <a href="/api/model_architecture">model_architecture</a> &middot;
+    <a href="/api/health">health</a>
+  </footer>
+</div>
+
+<script>
+const EXAMPLES = [
+  "How much Bombay Sapphire do we have and should I trust that number?",
+  "Did we lose any stock this week?",
+  "How busy is tonight and do I need another bartender?",
+  "What should I order from the beer supplier before Tuesday?",
+  "Why is the house red down more than the till says?",
+  "What is on TV this weekend?"
+];
+
+const $ = id => document.getElementById(id);
+const promptEl = $("prompt");
+
+EXAMPLES.forEach(text => {
+  const b = document.createElement("button");
+  b.type = "button";
+  b.textContent = text;
+  b.onclick = () => { promptEl.value = text; promptEl.focus(); };
+  $("examples").appendChild(b);
+});
+
+function show(el, on) { el.hidden = !on; }
+
+function render(steps) {
+  const host = $("steps");
+  host.textContent = "";
+  steps.forEach((s, i) => {
+    const d = document.createElement("details");
+    d.className = "step";
+    if (i === 0) d.open = true;
+
+    const sum = document.createElement("summary");
+    const n = document.createElement("span");
+    n.className = "n"; n.textContent = (i + 1) + ".";
+    const badge = document.createElement("span");
+    badge.className = "badge"; badge.textContent = s.module || "module";
+    sum.appendChild(n); sum.appendChild(badge);
+    d.appendChild(sum);
+
+    const body = document.createElement("div");
+    body.className = "step-body";
+    const p = s.prompt || {};
+    const sys = p.system_prompt ?? p.System_prompt;
+    const usr = p.user_prompt ?? p.User_prompt;
+    if (sys) body.appendChild(block("System prompt", sys));
+    if (usr) body.appendChild(block("User prompt", usr));
+    body.appendChild(block("Response", s.response));
+    d.appendChild(body);
+    host.appendChild(d);
+  });
+}
+
+function block(label, value) {
+  const frag = document.createDocumentFragment();
+  const l = document.createElement("div");
+  l.className = "lbl"; l.textContent = label;
+  const pre = document.createElement("pre");
+  pre.textContent = typeof value === "string" ? value : JSON.stringify(value, null, 2);
+  frag.appendChild(l); frag.appendChild(pre);
+  return frag;
+}
+
+async function run() {
+  const prompt = promptEl.value.trim();
+  show($("errorCard"), false);
+  show($("answerCard"), false);
+  show($("stepsCard"), false);
+
+  if (!prompt) {
+    $("errorText").textContent = "Enter a question first.";
+    show($("errorCard"), true);
+    return;
+  }
+
+  $("run").disabled = true;
+  $("status").innerHTML = '<span class="spin"></span> thinking, this can take a minute';
+  const started = Date.now();
+
+  try {
+    const res = await fetch("/api/execute", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ prompt })
+    });
+    const data = await res.json();
+
+    if (data.status === "ok") {
+      $("answer").textContent = data.response ?? "";
+      show($("answerCard"), true);
+    } else {
+      $("errorText").textContent = data.error || "Unknown error.";
+      show($("errorCard"), true);
+    }
+
+    const steps = Array.isArray(data.steps) ? data.steps : [];
+    if (steps.length) {
+      $("stepCount").textContent = steps.length + (steps.length === 1 ? " LLM call" : " LLM calls");
+      render(steps);
+      show($("stepsCard"), true);
+    }
+    $("status").textContent = ((Date.now() - started) / 1000).toFixed(1) + "s";
+  } catch (e) {
+    $("errorText").textContent = "Request failed: " + e.message;
+    show($("errorCard"), true);
+    $("status").textContent = "";
+  } finally {
+    $("run").disabled = false;
+  }
+}
+
+$("run").onclick = run;
+$("clear").onclick = () => {
+  promptEl.value = "";
+  ["errorCard", "answerCard", "stepsCard"].forEach(id => show($(id), false));
+  $("status").textContent = "";
+  promptEl.focus();
+};
+promptEl.addEventListener("keydown", e => {
+  if ((e.metaKey || e.ctrlKey) && e.key === "Enter") run();
+});
+</script>
+</body>
+</html>

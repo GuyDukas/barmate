@@ -2,6 +2,7 @@ data/ground_truth/
 data/public/
 data/external/
 data/source/
+data/runtime/bundle.json
 sim/
 eval/
 tests/

@@ -1,0 +1,79 @@
+{
+  "description": "BarMate is an autonomous operations assistant for a bar. A manager asks a plain-language question and the agent decides for itself which of the venue's records to consult, reconciles them against each other, and answers with the disagreements made explicit.\n\nWhat it CAN do: report stock on the books and say how much that figure should be trusted; reconcile book stock against the last physical count and explain any gap; distinguish a loss somebody already reported from one nobody mentioned; forecast demand for a given night from televised fixtures, reservations, weather and the venue's own written policy; recommend reorder quantities against supplier delivery days and case sizes; read the closing reports and the shift group chat, including Hebrew and staff slang; and quote the operations manual for the rule behind any judgement.\n\nWhat it CANNOT do: it never places an order, messages a supplier, edits the ledger or takes any action in the world, it only reports and recommends. It has no access to anything outside the venue's own records and the fixture, weather and holiday tables. It will not give a stock figure for a product the venue does not carry, and it will not state a fixture as confirmed beyond the last date real broadcast data covers. When a question falls outside what the records can answer, it says so and explains what it would need instead of guessing.\n\nThe venue's own books are simulated. Every external signal is real: televised fixtures come from Sport5 and livegames.co.il with a source URL preserved per row, weather from Open-Meteo ERA5, holidays from Hebcal. Everything is frozen at Sunday 2026-06-14 at 18:00, one hour before doors, so 'tonight' always means that evening.",
+
+  "purpose": "Give a bar manager a single trustworthy answer to operational questions that otherwise require cross-checking the till, the stock count, the delivery invoices, the rota, the reservation book, tonight's fixtures and the operations manual by hand.",
+
+  "prompt_template": {
+    "template": "Ask in plain English or Hebrew. Naming a product, a date or a shift narrows the answer; leaving them out is fine and the agent will say what it assumed.\n\n<your question>\n\nExamples of the shape:\n- How much <product> do we have, and can I trust that number?\n- Did we lose any stock <period>?\n- How busy is <night> and do I need another bartender?\n- What should I order from <supplier> before <day>?\n- Why is <product> down more than the till says?",
+    "example": "How much Bombay Sapphire do we have and should I trust that number?"
+  },
+
+  "prompt_examples": [
+    {
+      "prompt": "How much Bombay Sapphire do we have and should I trust that number?",
+      "full_response": "The books say 6.95 units of Bombay Sapphire, and no, I would not trust it.\n\nThat figure is derived, not observed. It starts from the last physical count on 2026-06-10, adds what suppliers invoiced as delivered since then, and subtracts what the till has rung up. It is four days old and it assumes nothing has happened that nobody wrote down.\n\nI checked whether anything explains a discrepancy and found nothing. There is no mention of Bombay Sapphire in any closing report since the count, and nothing in the shift group chat either. That is the part worth your attention: an unexplained gap on a premium spirit with no corroborating note is the pattern that usually means stock left without being recorded.\n\nRecommendation: count the Bombay Sapphire physically before service tonight. If the shelf holds materially less than 6.95 units, the difference is unaccounted-for loss rather than a counting error, because the noise on a sealed-bottle count is well under half a unit.",
+      "steps": [
+        {
+          "module": "Reasoner",
+          "prompt": {
+            "system_prompt": "You are BarMate, an operations agent for a bar. Decide the next action. You may call a tool or give a final answer. You never perform arithmetic yourself: inventory, reconciliation and forecasting are tools and their numbers are authoritative. Everything is frozen at 2026-06-14T18:00. Return JSON only.",
+            "user_prompt": "How much Bombay Sapphire do we have and should I trust that number?"
+          },
+          "response": {
+            "thought": "The question has two halves: a quantity, and whether it is reliable. The quantity comes from reconciliation rather than a stock field. I need to resolve the product first so I do not answer about the wrong SKU.",
+            "action": "resolve_product",
+            "action_input": {"query": "Bombay Sapphire"}
+          }
+        },
+        {
+          "module": "Reasoner",
+          "prompt": {
+            "system_prompt": "You are BarMate, an operations agent for a bar. Decide the next action. You may call a tool or give a final answer. You never perform arithmetic yourself: inventory, reconciliation and forecasting are tools and their numbers are authoritative. Everything is frozen at 2026-06-14T18:00. Return JSON only.",
+            "user_prompt": "Observation from resolve_product: {\"found\": true, \"matches\": [{\"product_id\": \"P009\", \"name\": \"Bombay Sapphire\", \"category\": \"gin\", \"unit\": \"bottle\"}]}"
+          },
+          "response": {
+            "thought": "One unambiguous match. Reconcile P009 to get book stock, the age of the last count, and any gap.",
+            "action": "reconcile",
+            "action_input": {"product_id": "P009"}
+          }
+        },
+        {
+          "module": "Reasoner",
+          "prompt": {
+            "system_prompt": "You are BarMate, an operations agent for a bar. Decide the next action. You may call a tool or give a final answer. You never perform arithmetic yourself: inventory, reconciliation and forecasting are tools and their numbers are authoritative. Everything is frozen at 2026-06-14T18:00. Return JSON only.",
+            "user_prompt": "Observation from reconcile: {\"product_id\": \"P009\", \"book\": 6.95, \"last_count_date\": \"2026-06-10\", \"count_age_days\": 4, \"explained_by_reports\": false}"
+          },
+          "response": {
+            "thought": "Book stock is 6.95 on a count that is four days stale. Before I call this suspicious I must check whether a human already explained it, otherwise I would be reporting protocol as loss.",
+            "action": "get_shift_reports",
+            "action_input": {"product_id": "P009", "since": "2026-06-10"}
+          }
+        },
+        {
+          "module": "KnowledgeRetriever",
+          "prompt": {
+            "system_prompt": "Retrieve the operations documents relevant to the question. Return the ranked passages only.",
+            "user_prompt": "counting accuracy and tolerance for spirit bottles; when is a stock gap material"
+          },
+          "response": {
+            "matches": [
+              {"doc_id": "RAG-013", "score": 0.81, "title": "Reconciliation matrix"},
+              {"doc_id": "RAG-009", "score": 0.74, "title": "Stocktake procedure and tolerances"}
+            ]
+          }
+        },
+        {
+          "module": "Reflector",
+          "prompt": {
+            "system_prompt": "Review the draft answer against the question and the observations. Check that every number came from a tool, that nothing was asserted the tools did not support, and that a claim of loss was only made after checking the human sources. Return JSON with accept and reason.",
+            "user_prompt": "Question: How much Bombay Sapphire do we have and should I trust that number?\nDraft: [draft answer]\nObservations: reconcile returned book 6.95, count age 4 days; shift reports and chat returned no mention of P009."
+          },
+          "response": {
+            "accept": true,
+            "reason": "The quantity is quoted from the reconcile tool, the staleness is stated, and the absence of any human explanation was verified before the answer characterised the gap as unaccounted for. No arithmetic was performed by the model."
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1654,7 +1654,7 @@ git commit -m "feat: four endpoints and GUI"
 **Files:**
 - Create: `scripts/render_architecture.py`
 
-- [ ] **Step 1: Implement**
+- [x] **Step 1: Implement**
 
 Generate `static/architecture.png` showing: the request entering `Reasoner`;
 `Reasoner` looping through `ToolExecutor` over the ten tools; `KnowledgeRetriever`
@@ -1664,7 +1664,7 @@ in-memory bundle, not a database.
 
 The four module names must be spelled exactly as in `trace.VALID_MODULES`.
 
-- [ ] **Step 2: Verify**
+- [x] **Step 2: Verify**
 
 ```bash
 python scripts/render_architecture.py
@@ -1678,7 +1678,7 @@ print('modules on diagram:', VALID_MODULES)
 
 Confirm visually that every name in `VALID_MODULES` appears on the image.
 
-- [ ] **Step 3: Commit**
+- [x] **Step 3: Commit**
 
 ```bash
 git add scripts/render_architecture.py static/architecture.png

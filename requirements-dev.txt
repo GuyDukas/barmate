@@ -1,0 +1,6 @@
+# Local only. Vercel installs requirements.txt, which carries just what the
+# request path imports; Pillow and pytest would be dead weight in the function.
+-r requirements.txt
+pytest==8.3.2
+Pillow==11.3.0
+openpyxl==3.1.5
