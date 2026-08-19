@@ -10,6 +10,17 @@ def test_team_info_shape():
     d = client().get("/api/team_info").get_json()
     assert set(d) >= {"group_batch_order_number", "team_name", "students"}
     assert len(d["students"]) == 3
+    assert all({"name", "email"} <= set(s) for s in d["students"])
+
+
+def test_team_info_has_no_placeholders_left():
+    """The endpoint is graded on returning real student details. This fails
+    until the emails and the batch order number are filled in, so an
+    unfinished team_info cannot reach submission unnoticed."""
+    d = client().get("/api/team_info").get_json()
+    unfilled = [s["name"] for s in d["students"] if s["email"] == "TBD"]
+    assert not unfilled, f"email still TBD for: {', '.join(unfilled)}"
+    assert "TBD" not in d["group_batch_order_number"]
 
 
 def test_agent_info_includes_worked_examples():
