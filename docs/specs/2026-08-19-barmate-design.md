@@ -83,35 +83,50 @@ renaming it in three places.
 
 ## 4. Data layer
 
-Flat files loaded into memory at cold start. No database round trips.
+**Supabase is the primary database. Pinecone is the vector store.** Both as the
+brief specifies.
 
-The build emits `data/runtime/bundle.json.gz`, 251 KB, containing pre-grouped
-indices. Measured cold start is 42 ms. Every request after that is
-memory-speed, which protects both the 300-second ceiling and the $13 budget.
+The venue's ledger lives in Postgres on Supabase: products, suppliers, staff,
+sales, inventory counts, orders, reservations, rota, shift reports, the group
+chat, broadcasts, weather and holidays. The build pipeline in `sim/` remains the
+generator; `scripts/seed_supabase.py` loads what it produces into the database,
+and the running agent reads only from Supabase.
 
-**The bundle contains nothing dated after the anchor.** This is enforced at
-export time, not by a filter at read time. A visibility rule that depends on
-someone remembering to filter is a rule that eventually leaks.
+The 14 operations documents are embedded with
+`MB5R2CF-azure/text-embedding-3-small` and upserted into a Pinecone index at
+1536 dimensions, cosine metric. `search_knowledge` embeds the query and queries
+that index. Document text is stored alongside the vector as metadata, so a hit
+returns its passage without a second round trip.
+
+### Access pattern
+
+Both services are reached over their REST APIs using `requests`, not their
+Python SDKs. The SDKs pull in dependency trees that cost cold-start time in a
+serverless function for calls that are, in both cases, a single HTTP request.
+This keeps the request path light without changing which services are used.
+
+Tools query narrowly rather than pulling the ledger. `get_inventory` asks for
+one product's counts, `get_sales_history` for one product's sales in a window.
+This is what indexed columns are for, and it keeps each call well inside the
+300-second ceiling.
+
+### The anchor is enforced in the database
+
+**Nothing dated after the anchor is loaded for the tables the agent reads as
+history.** The seeding script enforces this, so the constraint holds at the data
+layer rather than depending on every query remembering to add a filter. A
+visibility rule enforced by convention is a rule that eventually leaks.
 
 Reservations and the rota are the deliberate exception: they extend ten days
 past the anchor, because a booking for next Friday is genuinely known today.
 Sales for that Friday are not.
 
-### Deviation from the brief
+### Local development
 
-The brief names Supabase as primary database and Pinecone as vector store. We
-use neither, and the write-up should say so plainly rather than hope nobody
-notices.
-
-The ledger is 2 MB and entirely static behind a frozen anchor. A database would
-add network latency and failure modes to serve data that never changes. The
-knowledge corpus is 14 documents; a vector index over 14 vectors is a dictionary
-with extra steps. Document embeddings are precomputed at build time and ranked
-in memory, which still exercises the embedding model on the query and still
-demonstrates retrieval, at one API call instead of a hosted index.
-
-This is a defensible engineering judgement, not a shortcut, and it should be
-argued rather than concealed.
+`data/runtime/bundle.json.gz` and `app/data.py` are retained as an offline
+fixture. Unit tests run against it so the suite needs no network and no
+credentials, and the seeding script reads from the same generated CSVs. The
+deployed agent does not use it.
 
 ## 5. Tool layer
 

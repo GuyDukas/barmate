@@ -127,8 +127,31 @@ expected and handled.
 ## Architecture and design
 
 `docs/specs/2026-08-19-barmate-design.md` covers the architecture, the tool
-layer, the evaluation design, and the reasoning behind not using a hosted
-database for a static 2 MB ledger and a 14-document corpus.
+layer and the evaluation design.
+
+## Services
+
+| Service | Role |
+|---|---|
+| Supabase | Primary database. The venue ledger the agent reads. |
+| Pinecone | Vector store for the 14 operations documents, 1536 dimensions, cosine. |
+| LLMod.ai | `gpt-5.4-mini` for reasoning, `text-embedding-3-small` for retrieval. |
+| Vercel | Deployment. |
+
+Both databases are reached over their REST APIs rather than their Python SDKs,
+to keep serverless cold start low.
+
+Required environment variables:
+
+```
+LLMOD_API_KEY
+SUPABASE_URL
+SUPABASE_SERVICE_KEY
+PINECONE_API_KEY
+PINECONE_INDEX_HOST
+```
+
+None of these are committed. `.env` is gitignored.
 
 ## Conventions
 
