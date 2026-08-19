@@ -65,14 +65,43 @@ def model_architecture():
 @app.get("/api/health")
 def health():
     """Which services are wired up. Not required by the brief, but the fastest
-    way to tell a missing environment variable from a broken deployment."""
+    way to tell a missing environment variable from a broken deployment.
+
+    ?deep=1 actually queries them. A variable being present says nothing about
+    whether the function can reach the service: a wrong region, a paused
+    project or a network rule all look identical from the environment alone.
+    """
     import os
-    return jsonify({
+    status = {
         "supabase": bool(os.environ.get("SUPABASE_URL")),
         "pinecone": bool(os.environ.get("PINECONE_INDEX_HOST")),
         "llmod": bool(os.environ.get("LLMOD_API_KEY")),
         "agent_available": _agent() is not None,
-    })
+    }
+    if not request.args.get("deep"):
+        return jsonify(status)
+
+    checks = {}
+    try:
+        from app import db
+        checks["supabase"] = f"{len(db.select('products', limit=1))} row read"
+    except Exception as e:
+        checks["supabase"] = f"{type(e).__name__}: {e}"
+
+    try:
+        from app import vectors
+        checks["pinecone"] = f"{vectors.count()} vectors"
+    except Exception as e:
+        checks["pinecone"] = f"{type(e).__name__}: {e}"
+
+    try:
+        from app import llm
+        checks["llmod"] = f"embedding dim {len(llm.embed('ping'))}"
+    except Exception as e:
+        checks["llmod"] = f"{type(e).__name__}: {e}"
+
+    status["deep"] = checks
+    return jsonify(status)
 
 
 def _agent():
