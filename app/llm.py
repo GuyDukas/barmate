@@ -68,12 +68,38 @@ def chat(system_prompt, user_prompt, json_mode=True):
     text = data["choices"][0]["message"]["content"]
     if not json_mode:
         return text
+    return _first_object(text)
+
+
+def _first_object(text):
+    """The first JSON object in the reply, whatever else came with it.
+
+    Even in JSON mode this model sometimes emits the same object twice back to
+    back, or wraps it in a fence, or adds a line of prose. json.loads rejects
+    all three, and a rejected reply costs the agent an entire iteration for a
+    tool call it had already got right.
+
+    Anything with no object in it at all still raises, because the loop
+    recovers by handing the failure back to the model and a silent empty dict
+    would look like a considered reply.
+    """
+    cleaned = text.strip()
+    if cleaned.startswith("```"):
+        cleaned = cleaned.removeprefix("```json").removeprefix("```").removesuffix("```")
+        cleaned = cleaned.strip()
     try:
-        return json.loads(text)
-    except json.JSONDecodeError:
-        cleaned = (text.strip().removeprefix("```json").removeprefix("```")
-                   .removesuffix("```"))
         return json.loads(cleaned)
+    except json.JSONDecodeError:
+        pass
+
+    decoder = json.JSONDecoder()
+    start = cleaned.find("{")
+    while start != -1:
+        try:
+            return decoder.raw_decode(cleaned, start)[0]
+        except json.JSONDecodeError:
+            start = cleaned.find("{", start + 1)
+    raise json.JSONDecodeError("no JSON object in reply", text, 0)
 
 
 def embed(text):

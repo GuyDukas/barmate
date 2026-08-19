@@ -1,10 +1,18 @@
-"""Catalogue lookup. Never guesses: an unrecognised name comes back as
-not found, with no substitution and no nearest neighbour.
+"""Catalogue lookup.
 
-This is the anti-fabrication guard. A manager asking about a bottle the venue
-does not carry needs to hear that it is not stocked, not a plausible number for
+A product name is never guessed at. An unrecognised one comes back as not
+found, with no substitution and no nearest neighbour, because this is the
+anti-fabrication guard: a manager asking about a bottle the venue does not
+carry needs to hear that it is not stocked, not a plausible number for
 something else.
+
+A category is different. It is a shelf label rather than a thing that can be
+counted, so a near miss is resolved and the correction reported. 'whisky' and
+'whiskey' are the same six bottles, and refusing to connect them had the agent
+telling a manager the venue stocks no whisky.
 """
+import difflib
+
 from app import db
 
 
@@ -43,7 +51,25 @@ def resolve_product(query):
 
 def resolve_category(category):
     c = _norm(category)
-    hits = [p for p in db.products() if _norm(p["category"]) == c]
-    return {"category": category, "found": bool(hits), "products": [
-        {"product_id": p["product_id"], "name": p["name"],
-         "safety_stock": p["safety_stock"]} for p in hits]}
+    products = db.products()
+    available = sorted({p["category"] for p in products})
+    hits = [p for p in products if _norm(p["category"]) == c]
+
+    # 'whisky' and 'whiskey' are the same shelf. Without this the agent asks
+    # for one, gets nothing, and reports that the venue has no whisky --
+    # turning a spelling difference into a false claim about the stock list.
+    suggestion = None
+    if not hits and c:
+        near = difflib.get_close_matches(c, available, n=1, cutoff=0.8)
+        if near:
+            suggestion = near[0]
+            hits = [p for p in products if p["category"] == suggestion]
+
+    return {
+        "category": category,
+        "found": bool(hits),
+        "did_you_mean": suggestion,
+        "available_categories": available,
+        "products": [{"product_id": p["product_id"], "name": p["name"],
+                      "safety_stock": p["safety_stock"]} for p in hits],
+    }
