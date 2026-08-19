@@ -15,6 +15,11 @@ import requests
 TIMEOUT = 30
 NAMESPACE = "knowledge"
 
+# One connection pool per warm instance. Without it every call pays its own
+# DNS lookup, TCP handshake and TLS negotiation, which was intermittently
+# costing twenty seconds a request.
+_session = requests.Session()
+
 
 def configured():
     return bool(os.environ.get("PINECONE_API_KEY")
@@ -39,7 +44,7 @@ def _headers():
 
 
 def _post(path, payload):
-    r = requests.post(f"https://{_host()}{path}", headers=_headers(),
+    r = _session.post(f"https://{_host()}{path}", headers=_headers(),
                       json=payload, timeout=TIMEOUT)
     r.raise_for_status()
     return r.json()

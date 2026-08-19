@@ -19,6 +19,11 @@ EMBED_MODEL = "MB5R2CF-azure/text-embedding-3-small"
 TIMEOUT = 90
 MAX_RETRIES = 3
 
+# One connection pool per warm instance. Without it every call pays its own
+# DNS lookup, TCP handshake and TLS negotiation, which was intermittently
+# costing twenty seconds a request.
+_session = requests.Session()
+
 usage = {"prompt_tokens": 0, "completion_tokens": 0, "calls": 0}
 
 
@@ -33,7 +38,7 @@ def _post(path, payload):
     last = None
     for attempt in range(MAX_RETRIES):
         try:
-            r = requests.post(f"{BASE}{path}", headers=_headers(),
+            r = _session.post(f"{BASE}{path}", headers=_headers(),
                               json=payload, timeout=TIMEOUT)
             if r.status_code >= 500:
                 last = RuntimeError(f"upstream {r.status_code}")
