@@ -2,6 +2,7 @@
 # for all of us, so a leaked key is a leaked budget.
 .env
 .env.*
+!.env.example
 *.key
 
 # Python
