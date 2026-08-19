@@ -123,6 +123,23 @@ units rather than 0.23. Detection still works, but a materiality threshold
 hardcoded near 0.5 would now sit inside the noise. Derive it from the count
 distribution rather than picking a constant.
 
+That is what `app/tools/inventory.py` does. Every closed window between two
+counts is replayed and the residual recorded, and the 90th percentile of a
+product's own residuals becomes its materiality threshold. The spread that
+justifies it is wide: 0.27 units on Tanqueray against 14.70 on Coca-Cola, so
+no single constant could serve both. Against the anchor discrepancies the
+envelope flags Coca-Cola, Bombay Sapphire, Carlsberg 30L, Havana Club, Grey
+Goose and Jameson with no false positives, and correctly declines to flag the
+four control kegs, Jose Cuervo and the happy-hour lines.
+
+The happy-hour lines fall out of this for free. Doubled depletion against
+single-rung revenue is a persistent shortfall, so those lines carry a wide
+envelope by measurement rather than by exception: House White tolerates 4.20
+units where a shelf gin tolerates 0.27. What the envelope does not do is
+excuse a gap that clears it. Carlsberg 30L is both a happy-hour line and the
+product two kegs were pulled from, and a rule that stopped at "happy hour
+explains it" would bury the keg that GT004 turns on.
+
 ## Planted incidents
 
 22 incidents, 10 in the fortnight before the anchor and 12 spread across the

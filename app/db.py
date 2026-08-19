@@ -19,6 +19,11 @@ from app import data
 
 TIMEOUT = 20
 
+# One connection pool per warm instance. A single reconciliation makes six or
+# more selects, and without a session each pays its own DNS lookup, TCP
+# handshake and TLS negotiation.
+_session = requests.Session()
+
 # Bundle keys that hold a flat list of rows, so the offline fixture can answer
 # the same queries the database does.
 _FLAT = {
@@ -85,7 +90,7 @@ def select(table, columns="*", order=None, limit=None, **filters):
         params["limit"] = limit
 
     url = f"{os.environ['SUPABASE_URL'].rstrip('/')}/rest/v1/{table}"
-    response = requests.get(
+    response = _session.get(
         url, headers=_headers(), params=urllib.parse.urlencode(params, safe=".,*()"),
         timeout=TIMEOUT,
     )
@@ -145,8 +150,22 @@ def _matches(cell, condition):
     return comparisons[operator](cell, other)
 
 
+_products = None
+_products_key = None
+
+
 def products():
-    return select("products")
+    """The catalogue is 61 static rows read by nearly every tool.
+
+    Cached against the current configuration, so switching between the
+    database and the offline fixture never serves an entry from the other.
+    """
+    global _products, _products_key
+    key = os.environ.get("SUPABASE_URL")
+    if _products is None or _products_key != key:
+        _products = select("products")
+        _products_key = key
+    return _products
 
 
 def products_by_id():
