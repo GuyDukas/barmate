@@ -30,7 +30,7 @@ from .validate import book_stock, truth_at
 ROOT = Path(__file__).resolve().parent.parent
 PUBLIC = ROOT / "data" / "public"
 GT = ROOT / "data" / "ground_truth"
-BROADCAST_XLSX = Path("/mnt/project/israeli_sports_broadcasts_only_week.xlsx")
+BROADCAST_XLSX = ROOT / "data" / "source" / "israeli_sports_broadcasts_only_week.xlsx"
 
 
 def write_csv(path, rows, fieldnames=None):

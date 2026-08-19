@@ -11,284 +11,284 @@ SR000009,2025-09-09,good,False,en,P013 | P001 | P007 | P008,Gordon's | Carlsberg
 SR000010,2025-09-10,good,False,he,P008 | P001 | P002,Erdinger | Carlsberg | Heineken,,P008=3.0 | P001=13.0 | P002=8.0,P008=21.2 | P001=82.4 | P002=54.6
 SR000011,2025-09-11,messy,False,en,P039 | P002 | P025 | P041 | P013,House White Wine | Heineken | Bacardi Carta Blanca | Prosecco | Gordon's,,P039=2.9 | P002=12.0 | P025=2.7 | P041=3.7 | P013=2.0,P039=22.7 | P002=42.6 | P025=11.8 | P041=19.5 | P013=9.3
 SR000012,2025-09-12,ambiguous,True,en,P001 | P002 | P003 | P042 | P039,Carlsberg | Heineken | Corona | Chardonnay | House White Wine,P001,P001=17.0 | P002=9.0 | P003=10.0 | P042=0.8 | P039=3.2,P001=52.4 | P002=33.6 | P003=29.2 | P042=14.4 | P039=19.6
-SR000013,2025-09-13,good,False,he,P001 | P039 | P002 | P014,Carlsberg | House White Wine | Heineken | Absolut,,P001=13.0 | P039=2.7 | P002=13.0 | P014=1.6,P001=63.4 | P039=16.9 | P002=44.6 | P014=16.0
-SR000014,2025-09-14,good,False,en,P004 | P025 | P001 | P013,Guinness | Bacardi Carta Blanca | Carlsberg | Gordon's,,P004=5.0 | P025=2.0 | P001=6.0 | P013=0.9,P004=25.6 | P025=16.1 | P001=57.4 | P013=16.1
-SR000015,2025-09-15,good,False,he,P002 | P003 | P013 | P007,Heineken | Corona | Gordon's | Stella Artois,,P002=4.0 | P003=5.0 | P013=1.2 | P007=3.0,P002=30.6 | P003=32.2 | P013=14.9 | P007=34.4
-SR000016,2025-09-16,messy,False,en,P001 | P041 | P039 | P008,Carlsberg | Prosecco | House White Wine | Erdinger,,P001=7.0 | P041=2.9 | P039=1.7 | P008=2.0,P001=44.4 | P041=27.4 | P039=22.3 | P008=28.2
-SR000017,2025-09-17,good,False,en,P004 | P007 | P038 | P003,Guinness | Stella Artois | House Red Wine | Corona,,P004=4.0 | P007=4.0 | P038=1.2 | P003=5.0,P004=40.6 | P007=50.4 | P038=24.1 | P003=19.2
-SR000018,2025-09-18,messy,False,en,P039 | P002 | P003 | P013,House White Wine | Heineken | Corona | Gordon's,,P039=3.4 | P002=11.0 | P003=10.0 | P013=1.9,P039=17.2 | P002=55.6 | P003=57.2 | P013=10.4
-SR000019,2025-09-19,good,False,en,P019 | P005 | P007 | P013 | P002,Jameson | Goldstar | Stella Artois | Gordon's | Heineken,,P019=1.2 | P005=14.0 | P007=9.0 | P013=2.8 | P002=16.0,P019=10.6 | P005=27.6 | P007=35.4 | P013=19.6 | P002=38.6
-SR000020,2025-09-20,good,False,he,P001 | P039 | P025 | P007 | P033,Carlsberg | House White Wine | Bacardi Carta Blanca | Stella Artois | Aperol,,P001=22.0 | P039=4.6 | P025=4.4 | P007=12.0 | P033=4.5,P001=50.4 | P039=20.1 | P025=12.0 | P007=47.4 | P033=13.7
-SR000021,2025-09-21,messy,False,he,P008 | P004 | P013 | P003,Erdinger | Guinness | Gordon's | Corona,,P008=1.0 | P004=4.0 | P013=1.1 | P003=6.0,P008=32.2 | P004=17.6 | P013=14.9 | P003=44.2
-SR000022,2025-09-22,good,False,he,P001 | P039 | P013,Carlsberg | House White Wine | Gordon's,,P001=8.0 | P039=1.0 | P013=1.0,P001=36.4 | P039=17.9 | P013=13.9
-SR000023,2025-09-23,good,False,en,P001 | P025 | P003,Carlsberg | Bacardi Carta Blanca | Corona,,P001=8.0 | P025=0.9 | P003=3.0,P001=28.4 | P025=20.8 | P003=36.2
-SR000024,2025-09-24,good,False,he,P040 | P003 | P007,Rose Wine | Corona | Stella Artois,,P040=1.0 | P003=7.0 | P007=7.0,P040=15.6 | P003=53.2 | P007=51.4
-SR000025,2025-09-25,good,False,he,P040 | P002 | K004,Rose Wine | Heineken | Malka 30L,,P040=1.4 | P002=16.0 | K004=0.9,P040=14.2 | P002=49.6 | K004=4.5
-SR000026,2025-09-26,messy,False,he,P003 | P005 | P031 | P033,Corona | Goldstar | Patron Silver | Aperol,,P003=13.0 | P005=13.0 | P031=1.5 | P033=2.5,P003=27.2 | P005=29.6 | P031=10.4 | P033=13.5
-SR000027,2025-09-27,messy,False,he,P040 | P031 | P003 | P038,Rose Wine | Patron Silver | Corona | House Red Wine,,P040=1.4 | P031=2.4 | P003=13.0 | P038=3.9,P040=11.6 | P031=8.0 | P003=62.2 | P038=20.3
-SR000028,2025-09-28,messy,False,en,P041 | P038 | P001 | P013 | P007,Prosecco | House Red Wine | Carlsberg | Gordon's | Stella Artois,,P041=3.0 | P038=1.2 | P001=7.0 | P013=1.2 | P007=4.0,P041=16.1 | P038=19.1 | P001=56.4 | P013=14.8 | P007=43.4
-SR000029,2025-09-29,good,False,he,P001 | P033 | P041 | P025 | P005,Carlsberg | Aperol | Prosecco | Bacardi Carta Blanca | Goldstar,,P001=5.0 | P033=1.5 | P041=2.1 | P025=1.0 | P005=4.0,P001=51.4 | P033=6.9 | P041=14.0 | P025=8.0 | P005=54.6
-SR000030,2025-09-30,messy,False,he,P033 | P039 | P002 | P007,Aperol | House White Wine | Heineken | Stella Artois,,P033=1.3 | P039=1.2 | P002=3.0 | P007=6.0,P033=17.7 | P039=24.9 | P002=38.6 | P007=32.4
-SR000031,2025-10-01,good,False,en,P003 | P038 | P007 | P005 | P001,Corona | House Red Wine | Stella Artois | Goldstar | Carlsberg,,P003=6.0 | P038=1.0 | P007=3.0 | P005=6.0 | P001=4.0,P003=43.2 | P038=15.4 | P007=29.4 | P005=44.6 | P001=67.4
-SR000032,2025-10-02,messy,False,en,P007 | P025 | P002 | P004 | P003,Stella Artois | Bacardi Carta Blanca | Heineken | Guinness | Corona,,P007=6.0 | P025=2.3 | P002=8.0 | P004=4.0 | P003=10.0,P007=23.4 | P025=3.3 | P002=45.6 | P004=30.6 | P003=33.2
-SR000033,2025-10-03,good,False,he,P025 | P011 | P001 | P003 | P002,Bacardi Carta Blanca | Hendrick's | Carlsberg | Corona | Heineken,,P025=4.0 | P011=1.0 | P001=15.0 | P003=15.0 | P002=17.0,P025=11.3 | P011=13.1 | P001=39.4 | P003=18.2 | P002=28.6
-SR000034,2025-10-04,good,False,he,P042 | P003 | P039 | K003,Chardonnay | Corona | House White Wine | Carlsberg 30L,,P042=0.8 | P003=14.0 | P039=3.2 | K003=1.0,P042=13.2 | P003=76.2 | P039=13.4 | K003=5.4
-SR000035,2025-10-05,messy,False,en,P041 | P005 | P003 | P001,Prosecco | Goldstar | Corona | Carlsberg,,P041=1.8 | P005=4.0 | P003=2.0 | P001=7.0,P041=19.9 | P005=49.6 | P003=74.2 | P001=63.4
-SR000036,2025-10-06,good,False,en,P002 | P033 | P003 | P038,Heineken | Aperol | Corona | House Red Wine,,P002=4.0 | P033=1.7 | P003=6.0 | P038=1.2,P002=52.6 | P033=6.4 | P003=68.2 | P038=16.5
-SR000037,2025-10-07,ambiguous,True,en,P003 | P038 | P041 | P001 | P025,Corona | House Red Wine | Prosecco | Carlsberg | Bacardi Carta Blanca,P025,P003=6.0 | P038=1.5 | P041=1.1 | P001=6.0 | P025=1.5,P003=62.2 | P038=15.0 | P041=28.3 | P001=48.4 | P025=17.3
-SR000038,2025-10-08,ambiguous,True,en,P008 | P003 | P005 | P001 | P004,Erdinger | Corona | Goldstar | Carlsberg | Guinness,P004,P008=1.0 | P003=7.0 | P005=6.0 | P001=8.0 | P004=3.0,P008=36.2 | P003=55.2 | P005=58.6 | P001=64.4 | P004=30.6
-SR000039,2025-10-09,messy,False,en,P007 | P014 | P020,Stella Artois | Absolut | Jack Daniel's,,P007=8.0 | P014=2.5 | P020=1.0,P007=33.4 | P014=16.0 | P020=9.2
-SR000040,2025-10-10,good,False,he,P041 | P039 | P013 | P001,Prosecco | House White Wine | Gordon's | Carlsberg,,P041=4.0 | P039=2.2 | P013=1.9 | P001=14.0,P041=29.1 | P039=25.9 | P013=9.1 | P001=34.4
-SR000041,2025-10-11,messy,False,en,P042 | P003 | K003,Chardonnay | Corona | Carlsberg 30L,,P042=0.8 | P003=8.0 | K003=1.0,P042=10.0 | P003=46.2 | K003=3.8
-SR000042,2025-10-12,good,False,he,P031 | P025 | P038 | P004,Patron Silver | Bacardi Carta Blanca | House Red Wine | Guinness,,P031=1.1 | P025=1.4 | P038=1.2 | P004=3.0,P031=14.6 | P025=18.6 | P038=17.0 | P004=12.6
-SR000043,2025-10-13,good,False,he,P038 | P007 | P004 | P003 | P001,House Red Wine | Stella Artois | Guinness | Corona | Carlsberg,,P038=1.5 | P007=5.0 | P004=2.0 | P003=4.0 | P001=5.0,P038=15.5 | P007=31.4 | P004=10.6 | P003=37.2 | P001=59.4
-SR000044,2025-10-14,good,False,en,P002 | P005 | P041 | P008 | P013,Heineken | Goldstar | Prosecco | Erdinger | Gordon's,,P002=10.0 | P005=4.0 | P041=1.3 | P008=1.0 | P013=1.0,P002=38.6 | P005=50.6 | P041=31.5 | P008=16.2 | P013=15.7
-SR000045,2025-10-15,messy,False,en,P002 | P039 | P025,Heineken | House White Wine | Bacardi Carta Blanca,,P002=10.0 | P039=2.9 | P025=2.5,P002=52.6 | P039=15.7 | P025=13.7
-SR000046,2025-10-16,messy,False,he,P002 | P039 | P040 | K003 | P006,Heineken | House White Wine | Rose Wine | Carlsberg 30L | Maccabee,,P002=9.0 | P039=2.4 | P040=1.2 | K003=0.9 | P006=5.0,P002=43.6 | P039=13.2 | P040=8.0 | K003=4.8 | P006=25.0
-SR000047,2025-10-17,ambiguous,True,en,P001 | P003 | P025 | P039 | P006,Carlsberg | Corona | Bacardi Carta Blanca | House White Wine | Maccabee,P025,P001=17.0 | P003=14.0 | P025=2.3 | P039=2.4 | P006=9.0,P001=32.4 | P003=25.2 | P025=21.6 | P039=22.8 | P006=16.0
-SR000048,2025-10-18,good,False,he,P039 | P011 | P019,House White Wine | Hendrick's | Jameson,,P039=4.4 | P011=0.9 | P019=0.9,P039=18.4 | P011=15.7 | P019=16.1
-SR000049,2025-10-19,ambiguous,True,en,P031 | P002 | P008 | P039,Patron Silver | Heineken | Erdinger | House White Wine,P039,P031=0.8 | P002=5.0 | P008=1.0 | P039=2.7,P031=7.0 | P002=59.6 | P008=24.2 | P039=15.7
-SR000050,2025-10-20,messy,False,en,P007 | P033 | P002,Stella Artois | Aperol | Heineken,,P007=5.0 | P033=1.3 | P002=4.0,P007=38.4 | P033=17.0 | P002=55.6
-SR000051,2025-10-21,good,False,he,P025 | P001 | P002 | P006,Bacardi Carta Blanca | Carlsberg | Heineken | Maccabee,,P025=1.4 | P001=6.0 | P002=7.0 | P006=4.0,P025=25.8 | P001=44.4 | P002=48.6 | P006=24.0
-SR000052,2025-10-22,ambiguous,True,he,P002 | P014 | P013,Heineken | Absolut | Gordon's,P014,P002=5.0 | P014=1.1 | P013=1.6,P002=67.6 | P014=10.7 | P013=15.0
-SR000053,2025-10-23,messy,False,he,P014 | P004 | P002 | P031,Absolut | Guinness | Heineken | Patron Silver,,P014=1.3 | P004=4.0 | P002=10.0 | P031=1.0,P014=9.4 | P004=23.6 | P002=57.6 | P031=15.8
-SR000054,2025-10-24,ambiguous,True,en,P002 | P041 | P038 | P040,Heineken | Prosecco | House Red Wine | Rose Wine,P038,P002=8.0 | P041=3.4 | P038=2.0 | P040=1.0,P002=49.6 | P041=12.5 | P038=18.6 | P040=11.4
-SR000055,2025-10-25,messy,False,en,P041 | P004 | P034 | P005,Prosecco | Guinness | Campari | Goldstar,,P041=4.8 | P004=7.0 | P034=1.0 | P005=9.0,P041=7.7 | P004=35.6 | P034=12.1 | P005=57.6
-SR000056,2025-10-26,good,False,en,P001 | P007 | P040,Carlsberg | Stella Artois | Rose Wine,,P001=9.0 | P007=3.0 | P040=0.8,P001=67.4 | P007=30.4 | P040=9.4
-SR000057,2025-10-27,good,False,he,P007 | P001 | P008 | P005,Stella Artois | Carlsberg | Erdinger | Goldstar,,P007=3.0 | P001=10.0 | P008=2.0 | P005=6.0,P007=27.4 | P001=57.4 | P008=31.2 | P005=49.6
-SR000058,2025-10-28,good,False,he,P006 | P005 | P002 | P001,Maccabee | Goldstar | Heineken | Carlsberg,,P006=1.0 | P005=4.0 | P002=3.0 | P001=8.0,P006=40.0 | P005=45.6 | P002=45.6 | P001=49.4
-SR000059,2025-10-29,good,False,en,P008 | P004 | K003 | P039 | P001,Erdinger | Guinness | Carlsberg 30L | House White Wine | Carlsberg,,P008=3.0 | P004=5.0 | K003=0.9 | P039=2.4 | P001=11.0,P008=26.2 | P004=23.6 | K003=5.8 | P039=18.3 | P001=62.4
-SR000060,2025-10-30,good,False,en,P004 | P038 | P003 | P007 | P005,Guinness | House Red Wine | Corona | Stella Artois | Goldstar,,P004=6.0 | P038=3.2 | P003=9.0 | P007=7.0 | P005=6.0,P004=17.6 | P038=17.6 | P003=50.2 | P007=33.4 | P005=54.6
-SR000061,2025-10-31,good,False,en,P007 | P003 | P025 | P001 | P033,Stella Artois | Corona | Bacardi Carta Blanca | Carlsberg | Aperol,,P007=8.0 | P003=7.0 | P025=2.8 | P001=13.0 | P033=2.2,P007=25.4 | P003=43.2 | P025=17.8 | P001=34.4 | P033=19.9
-SR000062,2025-11-01,messy,False,en,P005 | P002 | P001,Goldstar | Heineken | Carlsberg,,P005=9.0 | P002=8.0 | P001=11.0,P005=60.6 | P002=57.6 | P001=71.4
-SR000063,2025-11-02,messy,False,he,P004 | P033 | P005,Guinness | Aperol | Goldstar,,P004=3.0 | P033=1.4 | P005=2.0,P004=30.6 | P033=16.5 | P005=58.6
-SR000064,2025-11-03,good,False,en,P013 | P025 | P006 | P002,Gordon's | Bacardi Carta Blanca | Maccabee | Heineken,,P013=0.9 | P025=1.3 | P006=5.0 | P002=3.0,P013=10.0 | P025=12.5 | P006=36.0 | P002=47.6
-SR000065,2025-11-04,ambiguous,True,en,P004 | P003 | P005,Guinness | Corona | Goldstar,P003,P004=2.0 | P003=3.0 | P005=5.0,P004=27.6 | P003=53.2 | P005=51.6
-SR000066,2025-11-05,messy,False,he,P006 | P038 | P003 | P002 | P014,Maccabee | House Red Wine | Corona | Heineken | Absolut,,P006=5.0 | P038=2.0 | P003=5.0 | P002=7.0 | P014=1.1,P006=52.0 | P038=20.8 | P003=48.2 | P002=37.6 | P014=18.2
-SR000067,2025-11-06,good,False,en,P041 | P003 | P005,Prosecco | Corona | Goldstar,,P041=2.9 | P003=8.0 | P005=10.0,P041=23.4 | P003=40.2 | P005=58.6
-SR000068,2025-11-07,good,False,he,P039 | P019 | P002 | P005 | P025,House White Wine | Jameson | Heineken | Goldstar | Bacardi Carta Blanca,,P039=2.9 | P019=0.9 | P002=14.0 | P005=13.0 | P025=3.1,P039=23.5 | P019=16.6 | P002=40.6 | P005=45.6 | P025=17.7
-SR000069,2025-11-08,messy,False,en,P008 | P020 | P007 | P003,Erdinger | Jack Daniel's | Stella Artois | Corona,,P008=4.0 | P020=0.9 | P007=10.0 | P003=10.0,P008=24.2 | P020=5.1 | P007=30.4 | P003=44.2
-SR000070,2025-11-09,messy,False,he,P004 | P006 | P038 | P041,Guinness | Maccabee | House Red Wine | Prosecco,,P004=3.0 | P006=4.0 | P038=1.5 | P041=2.8,P004=55.6 | P006=30.0 | P038=12.1 | P041=23.0
-SR000071,2025-11-10,messy,False,he,P002 | P039 | P001 | P003,Heineken | House White Wine | Carlsberg | Corona,,P002=5.0 | P039=1.2 | P001=7.0 | P003=6.0,P002=40.6 | P039=16.6 | P001=37.4 | P003=31.2
-SR000072,2025-11-11,messy,False,en,P033 | P004 | P005 | P001,Aperol | Guinness | Goldstar | Carlsberg,,P033=1.1 | P004=2.0 | P005=2.0 | P001=6.0,P033=24.7 | P004=52.6 | P005=37.6 | P001=31.4
-SR000073,2025-11-12,messy,False,he,P003 | P002 | P014 | P040 | P001,Corona | Heineken | Absolut | Rose Wine | Carlsberg,,P003=6.0 | P002=9.0 | P014=1.2 | P040=0.8 | P001=10.0,P003=69.2 | P002=49.6 | P014=9.4 | P040=21.2 | P001=69.4
-SR000074,2025-11-13,good,False,en,P014 | P025 | P001 | P003 | P038,Absolut | Bacardi Carta Blanca | Carlsberg | Corona | House Red Wine,,P014=1.2 | P025=2.3 | P001=12.0 | P003=10.0 | P038=2.2,P014=8.2 | P025=17.5 | P001=57.4 | P003=59.2 | P038=18.2
-SR000075,2025-11-14,good,False,he,P035 | P041 | P006 | P039 | P001,Cointreau | Prosecco | Maccabee | House White Wine | Carlsberg,,P035=0.9 | P041=6.0 | P006=9.0 | P039=4.1 | P001=19.0,P035=14.6 | P041=20.2 | P006=30.0 | P039=19.4 | P001=38.4
-SR000076,2025-11-15,messy,False,he,P031 | P001 | P008 | P003 | P033,Patron Silver | Carlsberg | Erdinger | Corona | Aperol,,P031=1.4 | P001=13.0 | P008=4.0 | P003=10.0 | P033=2.6,P031=14.2 | P001=73.4 | P008=28.2 | P003=60.2 | P033=15.2
-SR000077,2025-11-16,ambiguous,True,he,P005 | P006 | P008 | P001,Goldstar | Maccabee | Erdinger | Carlsberg,P001,P005=8.0 | P006=3.0 | P008=2.0 | P001=6.0,P005=61.6 | P006=46.0 | P008=26.2 | P001=67.4
-SR000078,2025-11-17,messy,False,he,P033 | P014 | P013 | P006,Aperol | Absolut | Gordon's | Maccabee,,P033=1.9 | P014=0.9 | P013=1.0 | P006=2.0,P033=11.4 | P014=14.6 | P013=14.3 | P006=44.0
-SR000079,2025-11-18,good,False,en,P033 | P005 | P041 | P004 | P008,Aperol | Goldstar | Prosecco | Guinness | Erdinger,,P033=1.1 | P005=7.0 | P041=1.8 | P004=2.0 | P008=1.0,P033=22.3 | P005=47.6 | P041=32.4 | P004=25.6 | P008=23.2
-SR000080,2025-11-19,good,False,en,P004 | P033 | P001 | P005,Guinness | Aperol | Carlsberg | Goldstar,,P004=2.0 | P033=1.0 | P001=6.0 | P005=5.0,P004=47.6 | P033=21.3 | P001=75.4 | P005=66.6
-SR000081,2025-11-20,messy,False,he,P025 | P002 | P008 | P031,Bacardi Carta Blanca | Heineken | Erdinger | Patron Silver,,P025=2.0 | P002=8.0 | P008=4.0 | P031=1.4,P025=17.1 | P002=60.6 | P008=18.2 | P031=10.0
-SR000082,2025-11-21,good,False,en,P033 | P002 | P008 | P005,Aperol | Heineken | Erdinger | Goldstar,,P033=2.1 | P002=11.0 | P008=3.0 | P005=9.0,P033=16.5 | P002=49.6 | P008=15.2 | P005=47.6
-SR000083,2025-11-22,messy,False,en,P007 | P040 | P005,Stella Artois | Rose Wine | Goldstar,,P007=6.0 | P040=1.4 | P005=7.0,P007=51.4 | P040=11.6 | P005=64.6
-SR000084,2025-11-23,messy,False,en,P004 | P040 | P033 | P014,Guinness | Rose Wine | Aperol | Absolut,,P004=3.0 | P040=1.2 | P033=0.9 | P014=1.1,P004=29.6 | P040=10.4 | P033=13.0 | P014=7.6
-SR000085,2025-11-24,good,False,he,P013 | P007 | P025 | P002 | P008,Gordon's | Stella Artois | Bacardi Carta Blanca | Heineken | Erdinger,,P013=1.0 | P007=3.0 | P025=1.6 | P002=5.0 | P008=2.0,P013=17.8 | P007=45.4 | P025=8.9 | P002=53.6 | P008=31.2
-SR000086,2025-11-25,messy,False,he,P001 | P002 | P041 | P003,Carlsberg | Heineken | Prosecco | Corona,,P001=8.0 | P002=6.0 | P041=1.1 | P003=5.0,P001=45.4 | P002=47.6 | P041=27.1 | P003=37.2
-SR000087,2025-11-26,good,False,en,P025 | P013 | P002 | P007 | P014,Bacardi Carta Blanca | Gordon's | Heineken | Stella Artois | Absolut,,P025=1.6 | P013=1.4 | P002=6.0 | P007=4.0 | P014=1.4,P025=18.5 | P013=15.4 | P002=65.6 | P007=38.4 | P014=16.7
-SR000088,2025-11-27,good,False,he,P006 | P039 | P041 | P002,Maccabee | House White Wine | Prosecco | Heineken,,P006=6.0 | P039=2.4 | P041=3.8 | P002=9.0,P006=24.0 | P039=20.2 | P041=20.1 | P002=56.6
-SR000089,2025-11-28,good,False,en,P007 | P041 | P003,Stella Artois | Prosecco | Corona,,P007=4.0 | P041=3.1 | P003=7.0,P007=27.4 | P041=29.0 | P003=41.2
-SR000090,2025-11-29,messy,False,en,P033 | P001 | P039,Aperol | Carlsberg | House White Wine,,P033=1.9 | P001=10.0 | P039=2.9,P033=15.1 | P001=78.4 | P039=14.6
-SR000091,2025-11-30,good,False,en,P001 | P038 | P025,Carlsberg | House Red Wine | Bacardi Carta Blanca,,P001=9.0 | P038=1.0 | P025=2.0,P001=69.4 | P038=14.9 | P025=9.9
-SR000092,2025-12-01,good,False,he,P008 | P005 | P006 | P025,Erdinger | Goldstar | Maccabee | Bacardi Carta Blanca,,P008=2.0 | P005=4.0 | P006=2.0 | P025=1.2,P008=15.2 | P005=84.6 | P006=33.0 | P025=8.7
-SR000093,2025-12-02,ambiguous,True,en,P001 | P005 | P008 | P038 | P002,Carlsberg | Goldstar | Erdinger | House Red Wine | Heineken,P002,P001=6.0 | P005=6.0 | P008=1.0 | P038=2.2 | P002=7.0,P001=57.4 | P005=78.6 | P008=14.2 | P038=24.7 | P002=47.6
-SR000094,2025-12-03,good,False,en,P041 | P004 | P006 | P005,Prosecco | Guinness | Maccabee | Goldstar,,P041=1.8 | P004=2.0 | P006=4.0 | P005=7.0,P041=32.1 | P004=29.6 | P006=27.0 | P005=71.6
-SR000095,2025-12-04,ambiguous,True,he,P031 | P005 | P014 | P007,Patron Silver | Goldstar | Absolut | Stella Artois,P031,P031=1.2 | P005=8.0 | P014=1.2 | P007=7.0,P031=8.3 | P005=63.6 | P014=8.4 | P007=45.4
-SR000096,2025-12-05,messy,False,he,P007 | P039 | K003 | P004,Stella Artois | House White Wine | Carlsberg 30L | Guinness,,P007=9.0 | P039=3.4 | K003=1.0 | P004=5.0,P007=36.4 | P039=15.6 | K003=4.2 | P004=19.6
-SR000097,2025-12-06,messy,False,he,P003 | P007 | K003 | P039,Corona | Stella Artois | Carlsberg 30L | House White Wine,,P003=8.0 | P007=8.0 | K003=1.0 | P039=3.2,P003=62.2 | P007=52.4 | K003=6.2 | P039=12.4
-SR000098,2025-12-07,messy,False,he,P002 | P013 | P038 | P003,Heineken | Gordon's | House Red Wine | Corona,,P002=7.0 | P013=1.4 | P038=1.2 | P003=7.0,P002=51.6 | P013=12.3 | P038=13.7 | P003=55.2
-SR000099,2025-12-08,good,False,he,P002 | P039 | P007 | P001,Heineken | House White Wine | Stella Artois | Carlsberg,,P002=3.0 | P039=1.2 | P007=2.0 | P001=5.0,P002=48.6 | P039=10.0 | P007=47.4 | P001=58.4
-SR000100,2025-12-09,messy,False,en,P005 | P006 | P002,Goldstar | Maccabee | Heineken,,P005=4.0 | P006=3.0 | P002=8.0,P005=49.6 | P006=31.0 | P002=40.6
-SR000101,2025-12-10,messy,False,en,P001 | P002 | P039 | P013,Carlsberg | Heineken | House White Wine | Gordon's,,P001=13.0 | P002=5.0 | P039=1.7 | P013=1.2,P001=65.4 | P002=59.6 | P039=20.0 | P013=9.9
-SR000102,2025-12-11,messy,False,he,P025 | P014 | P007 | P002 | P003,Bacardi Carta Blanca | Absolut | Stella Artois | Heineken | Corona,,P025=1.9 | P014=1.3 | P007=4.0 | P002=8.0 | P003=8.0,P025=17.6 | P014=12.0 | P007=37.4 | P002=51.6 | P003=58.2
-SR000103,2025-12-12,good,False,he,P025 | P038 | P004,Bacardi Carta Blanca | House Red Wine | Guinness,,P025=2.2 | P038=2.7 | P004=4.0,P025=15.3 | P038=17.9 | P004=24.6
-SR000104,2025-12-13,good,False,he,P002 | P031 | P025 | P001,Heineken | Patron Silver | Bacardi Carta Blanca | Carlsberg,,P002=8.0 | P031=1.2 | P025=2.5 | P001=9.0,P002=61.6 | P031=11.2 | P025=12.8 | P001=63.4
-SR000105,2025-12-14,good,False,en,P005 | P007 | P014 | P001,Goldstar | Stella Artois | Absolut | Carlsberg,,P005=3.0 | P007=4.0 | P014=0.9 | P001=9.0,P005=62.6 | P007=22.4 | P014=8.4 | P001=54.4
-SR000106,2025-12-15,messy,False,en,P006 | P008 | P001 | P007,Maccabee | Erdinger | Carlsberg | Stella Artois,,P006=1.0 | P008=2.0 | P001=7.0 | P007=3.0,P006=32.0 | P008=32.2 | P001=47.4 | P007=43.4
-SR000107,2025-12-16,messy,False,en,P003 | P025 | P004 | P007 | P002,Corona | Bacardi Carta Blanca | Guinness | Stella Artois | Heineken,,P003=4.0 | P025=1.1 | P004=1.0 | P007=2.0 | P002=4.0,P003=59.2 | P025=21.8 | P004=43.6 | P007=41.4 | P002=44.6
-SR000108,2025-12-17,good,False,en,P006 | P003 | P033 | P002,Maccabee | Corona | Aperol | Heineken,,P006=3.0 | P003=6.0 | P033=1.4 | P002=7.0,P006=51.0 | P003=53.2 | P033=15.7 | P002=61.6
-SR000109,2025-12-18,good,False,en,P040 | P007 | P001 | P006 | P039,Rose Wine | Stella Artois | Carlsberg | Maccabee | House White Wine,,P040=1.2 | P007=6.0 | P001=8.0 | P006=5.0 | P039=2.0,P040=16.2 | P007=33.4 | P001=53.4 | P006=46.0 | P039=18.6
-SR000110,2025-12-19,messy,False,en,P007 | P001 | P031 | P008 | P006,Stella Artois | Carlsberg | Patron Silver | Erdinger | Maccabee,,P007=6.0 | P001=18.0 | P031=1.8 | P008=3.0 | P006=6.0,P007=27.4 | P001=35.4 | P031=17.5 | P008=23.2 | P006=40.0
-SR000111,2025-12-20,good,False,he,P001 | P002 | P025,Carlsberg | Heineken | Bacardi Carta Blanca,,P001=10.0 | P002=8.0 | P025=2.1,P001=73.4 | P002=57.6 | P025=14.1
-SR000112,2025-12-21,messy,False,en,P006 | P001 | P007 | P003,Maccabee | Carlsberg | Stella Artois | Corona,,P006=3.0 | P001=11.0 | P007=6.0 | P003=2.0,P006=30.0 | P001=62.4 | P007=40.4 | P003=54.2
-SR000113,2025-12-22,good,False,en,P014 | P005 | P003 | P004,Absolut | Goldstar | Corona | Guinness,,P014=1.2 | P005=3.0 | P003=2.0 | P004=3.0,P014=11.6 | P005=52.6 | P003=52.2 | P004=23.6
-SR000114,2025-12-23,good,False,en,P002 | P003 | P001,Heineken | Corona | Carlsberg,,P002=6.0 | P003=3.0 | P001=3.0,P002=39.6 | P003=49.2 | P001=53.4
-SR000115,2025-12-24,good,False,en,P006 | P039 | P002,Maccabee | House White Wine | Heineken,,P006=2.0 | P039=1.5 | P002=6.0,P006=48.0 | P039=19.1 | P002=57.6
-SR000116,2025-12-25,good,False,en,P041 | P006 | P004,Prosecco | Maccabee | Guinness,,P041=3.6 | P006=6.0 | P004=3.0,P041=25.8 | P006=42.0 | P004=39.6
-SR000117,2025-12-26,good,False,en,P002 | P001 | P005 | P039,Heineken | Carlsberg | Goldstar | House White Wine,,P002=11.0 | P001=19.0 | P005=14.0 | P039=3.7,P002=40.6 | P001=43.4 | P005=46.6 | P039=24.8
-SR000118,2025-12-27,good,False,he,P003 | P041 | K003,Corona | Prosecco | Carlsberg 30L,,P003=9.0 | P041=3.7 | K003=0.9,P003=66.2 | P041=13.9 | K003=6.2
-SR000119,2025-12-28,messy,False,en,P002 | P006 | P008 | P003 | P014,Heineken | Maccabee | Erdinger | Corona | Absolut,,P002=4.0 | P006=5.0 | P008=3.0 | P003=7.0 | P014=1.1,P002=49.6 | P006=48.0 | P008=48.2 | P003=59.2 | P014=16.8
-SR000120,2025-12-29,good,False,he,P005 | P025 | P001 | P004,Goldstar | Bacardi Carta Blanca | Carlsberg | Guinness,,P005=3.0 | P025=1.8 | P001=9.0 | P004=1.0,P005=54.6 | P025=8.0 | P001=62.4 | P004=25.6
-SR000121,2025-12-30,messy,False,he,P003 | P002 | P001 | P038,Corona | Heineken | Carlsberg | House Red Wine,,P003=3.0 | P002=6.0 | P001=6.0 | P038=1.0,P003=56.2 | P002=37.6 | P001=56.4 | P038=21.7
-SR000122,2025-12-31,messy,False,he,K003 | P007 | P004 | P031,Carlsberg 30L | Stella Artois | Guinness | Patron Silver,,K003=0.8 | P007=6.0 | P004=6.0 | P031=1.3,K003=5.8 | P007=39.4 | P004=41.6 | P031=17.6
-SR000123,2026-01-01,messy,False,he,P001 | P025 | P041 | P002,Carlsberg | Bacardi Carta Blanca | Prosecco | Heineken,,P001=12.0 | P025=1.6 | P041=3.7 | P002=10.0,P001=58.4 | P025=15.4 | P041=28.0 | P002=45.6
-SR000124,2026-01-02,good,False,he,P005 | P001 | P002 | P031,Goldstar | Carlsberg | Heineken | Patron Silver,,P005=11.0 | P001=11.0 | P002=14.0 | P031=1.5,P005=46.6 | P001=47.4 | P002=31.6 | P031=14.8
-SR000125,2026-01-03,good,False,en,P004 | P002 | P038 | P001,Guinness | Heineken | House Red Wine | Carlsberg,,P004=5.0 | P002=10.0 | P038=2.9 | P001=11.0,P004=27.6 | P002=69.6 | P038=12.4 | P001=60.4
-SR000126,2026-01-04,messy,False,en,P005 | P006 | P008 | P002 | P001,Goldstar | Maccabee | Erdinger | Heineken | Carlsberg,,P005=3.0 | P006=3.0 | P008=1.0 | P002=4.0 | P001=6.0,P005=62.6 | P006=44.0 | P008=34.2 | P002=65.6 | P001=54.4
-SR000127,2026-01-05,messy,False,en,P025 | P007 | P041 | P002 | P013,Bacardi Carta Blanca | Stella Artois | Prosecco | Heineken | Gordon's,,P025=1.1 | P007=4.0 | P041=1.7 | P002=7.0 | P013=1.1,P025=7.9 | P007=41.4 | P041=16.4 | P002=58.6 | P013=14.6
-SR000128,2026-01-06,good,False,he,P033 | P007 | P041 | P001 | P005,Aperol | Stella Artois | Prosecco | Carlsberg | Goldstar,,P033=1.1 | P007=3.0 | P041=1.7 | P001=5.0 | P005=4.0,P033=16.7 | P007=38.4 | P041=26.7 | P001=46.4 | P005=54.6
-SR000129,2026-01-07,good,False,en,P001 | P004 | P002 | P005,Carlsberg | Guinness | Heineken | Goldstar,,P001=7.0 | P004=3.0 | P002=5.0 | P005=4.0,P001=63.4 | P004=40.6 | P002=53.6 | P005=74.6
-SR000130,2026-01-08,messy,False,he,P003 | P001 | P002,Corona | Carlsberg | Heineken,,P003=9.0 | P001=11.0 | P002=6.0,P003=50.2 | P001=52.4 | P002=47.6
-SR000131,2026-01-09,good,False,en,P019 | P007 | P003 | P006,Jameson | Stella Artois | Corona | Maccabee,,P019=0.9 | P007=5.0 | P003=11.0 | P006=6.0,P019=7.0 | P007=48.4 | P003=39.2 | P006=30.0
-SR000132,2026-01-10,good,False,en,P005 | P033 | P006,Goldstar | Aperol | Maccabee,,P005=10.0 | P033=2.7 | P006=5.0,P005=48.6 | P033=20.0 | P006=49.0
-SR000133,2026-01-11,good,False,he,P031 | P005 | P004 | P003,Patron Silver | Goldstar | Guinness | Corona,,P031=0.8 | P005=6.0 | P004=2.0 | P003=5.0,P031=6.1 | P005=42.6 | P004=25.6 | P003=48.2
-SR000134,2026-01-12,good,False,en,P004 | P013 | P003,Guinness | Gordon's | Corona,,P004=2.0 | P013=0.8 | P003=7.0,P004=23.6 | P013=18.0 | P003=41.2
-SR000135,2026-01-13,good,False,en,P038 | P005 | P008,House Red Wine | Goldstar | Erdinger,,P038=1.2 | P005=1.0 | P008=1.0,P038=10.5 | P005=34.6 | P008=16.2
-SR000136,2026-01-14,messy,False,en,P040 | P008 | P003 | P039 | P025,Rose Wine | Erdinger | Corona | House White Wine | Bacardi Carta Blanca,,P040=1.0 | P008=1.0 | P003=5.0 | P039=2.0 | P025=1.5,P040=8.2 | P008=39.2 | P003=59.2 | P039=16.6 | P025=17.8
-SR000137,2026-01-15,messy,False,he,P025 | P033 | P004 | P003,Bacardi Carta Blanca | Aperol | Guinness | Corona,,P025=2.3 | P033=2.5 | P004=3.0 | P003=8.0,P025=15.5 | P033=13.0 | P004=41.6 | P003=51.2
-SR000138,2026-01-16,good,False,he,P005 | P041 | P008,Goldstar | Prosecco | Erdinger,,P005=13.0 | P041=3.8 | P008=4.0,P005=25.6 | P041=22.1 | P008=33.2
-SR000139,2026-01-17,good,False,en,P038 | P001 | P041 | P008,House Red Wine | Carlsberg | Prosecco | Erdinger,,P038=1.7 | P001=10.0 | P041=3.8 | P008=2.0,P038=14.9 | P001=68.4 | P041=18.3 | P008=31.2
-SR000140,2026-01-18,messy,False,en,P002 | P001 | P003 | P025,Heineken | Carlsberg | Corona | Bacardi Carta Blanca,,P002=3.0 | P001=9.0 | P003=2.0 | P025=1.0,P002=56.6 | P001=59.4 | P003=54.2 | P025=9.2
-SR000141,2026-01-19,messy,False,en,P005 | P002 | P006 | P001,Goldstar | Heineken | Maccabee | Carlsberg,,P005=4.0 | P002=3.0 | P006=4.0 | P001=7.0,P005=50.6 | P002=53.6 | P006=44.0 | P001=52.4
-SR000142,2026-01-20,good,False,en,P025 | P002 | P041,Bacardi Carta Blanca | Heineken | Prosecco,,P025=1.5 | P002=4.0 | P041=1.9,P025=19.0 | P002=49.6 | P041=23.9
-SR000143,2026-01-21,good,False,he,P041 | P001 | P002 | P005 | P025,Prosecco | Carlsberg | Heineken | Goldstar | Bacardi Carta Blanca,,P041=2.2 | P001=6.0 | P002=7.0 | P005=4.0 | P025=1.0,P041=21.7 | P001=66.4 | P002=66.6 | P005=63.6 | P025=18.0
-SR000144,2026-01-22,good,False,en,P007 | P002 | P040 | P033,Stella Artois | Heineken | Rose Wine | Aperol,,P007=8.0 | P002=10.0 | P040=1.2 | P033=2.7,P007=40.4 | P002=56.6 | P040=13.0 | P033=12.5
-SR000145,2026-01-23,messy,False,en,P004 | P001 | P003 | P041 | P013,Guinness | Carlsberg | Corona | Prosecco | Gordon's,,P004=6.0 | P001=8.0 | P003=9.0 | P041=4.0 | P013=1.4,P004=39.6 | P001=43.4 | P003=44.2 | P041=25.2 | P013=15.7
-SR000146,2026-01-24,messy,False,en,P041 | P002 | P038 | P003,Prosecco | Heineken | House Red Wine | Corona,,P041=3.9 | P002=11.0 | P038=2.7 | P003=10.0,P041=21.3 | P002=59.6 | P038=17.9 | P003=58.2
-SR000147,2026-01-25,ambiguous,True,en,P007 | P005 | P003 | P004,Stella Artois | Goldstar | Corona | Guinness,P003,P007=5.0 | P005=5.0 | P003=6.0 | P004=4.0,P007=45.4 | P005=46.6 | P003=52.2 | P004=31.6
-SR000148,2026-01-26,good,False,he,P014 | P006 | P001 | P040,Absolut | Maccabee | Carlsberg | Rose Wine,,P014=0.9 | P006=4.0 | P001=9.0 | P040=0.8,P014=10.0 | P006=41.0 | P001=71.4 | P040=9.4
-SR000149,2026-01-27,good,False,en,P006 | P003 | P004 | P001,Maccabee | Corona | Guinness | Carlsberg,,P006=3.0 | P003=5.0 | P004=2.0 | P001=4.0,P006=38.0 | P003=44.2 | P004=26.6 | P001=67.4
-SR000150,2026-01-28,good,False,he,P039 | P006 | P001 | P008,House White Wine | Maccabee | Carlsberg | Erdinger,,P039=1.5 | P006=5.0 | P001=11.0 | P008=3.0,P039=15.7 | P006=33.0 | P001=80.4 | P008=31.2
-SR000151,2026-01-29,good,False,he,P040 | P041 | P038,Rose Wine | Prosecco | House Red Wine,,P040=1.0 | P041=3.1 | P038=1.2,P040=6.8 | P041=19.9 | P038=24.1
-SR000152,2026-01-30,good,False,en,P006 | P003 | P039,Maccabee | Corona | House White Wine,,P006=5.0 | P003=7.0 | P039=2.4,P006=24.0 | P003=46.2 | P039=22.1
-SR000153,2026-01-31,messy,False,he,P001 | P020 | P035 | P041,Carlsberg | Jack Daniel's | Cointreau | Prosecco,,P001=18.0 | P020=1.0 | P035=1.0 | P041=5.3,P001=68.4 | P020=13.4 | P035=12.4 | P041=24.3
-SR000154,2026-02-01,messy,False,en,P003 | P025 | P008 | P006,Corona | Bacardi Carta Blanca | Erdinger | Maccabee,,P003=5.0 | P025=2.0 | P008=4.0 | P006=4.0,P003=53.2 | P025=18.7 | P008=17.2 | P006=36.0
-SR000155,2026-02-02,ambiguous,True,he,P003 | P006 | P004,Corona | Maccabee | Guinness,P004,P003=1.0 | P006=1.0 | P004=1.0,P003=52.2 | P006=35.0 | P004=30.6
-SR000156,2026-02-03,good,False,en,P041 | P001 | P007 | P004,Prosecco | Carlsberg | Stella Artois | Guinness,,P041=2.1 | P001=2.0 | P007=5.0 | P004=2.0,P041=19.0 | P001=61.4 | P007=24.4 | P004=28.6
-SR000157,2026-02-04,good,False,en,P007 | P005 | P002 | P008,Stella Artois | Goldstar | Heineken | Erdinger,,P007=4.0 | P005=10.0 | P002=10.0 | P008=2.0,P007=20.4 | P005=67.6 | P002=62.6 | P008=36.2
-SR000158,2026-02-05,good,False,he,P008 | P041 | P007,Erdinger | Prosecco | Stella Artois,,P008=3.0 | P041=3.3 | P007=4.0,P008=33.2 | P041=12.7 | P007=16.4
-SR000159,2026-02-06,good,False,en,P042 | P041 | P005 | P014,Chardonnay | Prosecco | Goldstar | Absolut,,P042=1.0 | P041=5.4 | P005=12.0 | P014=1.8,P042=14.4 | P041=31.2 | P005=49.6 | P014=20.4
-SR000160,2026-02-07,good,False,en,P003 | P038 | P007,Corona | House Red Wine | Stella Artois,,P003=16.0 | P038=3.4 | P007=8.0,P003=57.2 | P038=17.3 | P007=75.4
-SR000161,2026-02-08,good,False,he,P013 | P038 | P006 | P041,Gordon's | House Red Wine | Maccabee | Prosecco,,P013=0.8 | P038=2.0 | P006=3.0 | P041=2.4,P013=18.2 | P038=15.3 | P006=31.0 | P041=24.5
-SR000162,2026-02-09,messy,False,he,P039 | P003 | P002 | P033,House White Wine | Corona | Heineken | Aperol,,P039=1.2 | P003=1.0 | P002=1.0 | P033=0.9,P039=12.9 | P003=51.2 | P002=51.6 | P033=14.8
-SR000163,2026-02-10,ambiguous,True,he,P038 | P002 | P025 | P001,House Red Wine | Heineken | Bacardi Carta Blanca | Carlsberg,P038,P038=1.0 | P002=4.0 | P025=1.2 | P001=8.0,P038=26.1 | P002=47.6 | P025=15.2 | P001=45.4
-SR000164,2026-02-11,messy,False,he,P002 | P006 | P033 | P001,Heineken | Maccabee | Aperol | Carlsberg,,P002=5.0 | P006=4.0 | P033=1.4 | P001=7.0,P002=66.6 | P006=45.0 | P033=13.1 | P001=86.4
-SR000165,2026-02-12,good,False,he,P025 | P006 | P003 | P004,Bacardi Carta Blanca | Maccabee | Corona | Guinness,,P025=2.5 | P006=6.0 | P003=10.0 | P004=4.0,P025=12.5 | P006=39.0 | P003=55.2 | P004=22.6
-SR000166,2026-02-13,ambiguous,True,en,P004 | P040 | P025,Guinness | Rose Wine | Bacardi Carta Blanca,P040,P004=5.0 | P040=0.8 | P025=2.7,P004=17.6 | P040=19.6 | P025=21.7
-SR000167,2026-02-14,good,False,he,P005 | P033 | P039,Goldstar | Aperol | House White Wine,,P005=9.0 | P033=2.0 | P039=2.2,P005=66.6 | P033=17.8 | P039=14.4
-SR000168,2026-02-15,ambiguous,True,en,P008 | P002 | P003,Erdinger | Heineken | Corona,P002,P008=1.0 | P002=3.0 | P003=4.0,P008=34.2 | P002=55.6 | P003=58.2
-SR000169,2026-02-16,ambiguous,True,he,P038 | P033 | P002 | P014,House Red Wine | Aperol | Heineken | Absolut,P002,P038=1.5 | P033=1.5 | P002=4.0 | P014=0.9,P038=13.4 | P033=15.9 | P002=51.6 | P014=9.2
-SR000170,2026-02-17,good,False,en,P025 | P041 | P002,Bacardi Carta Blanca | Prosecco | Heineken,,P025=0.9 | P041=2.8 | P002=10.0,P025=16.0 | P041=27.7 | P002=41.6
-SR000171,2026-02-18,good,False,en,P006 | P038 | P039 | P014,Maccabee | House Red Wine | House White Wine | Absolut,,P006=3.0 | P038=1.0 | P039=1.0 | P014=1.1,P006=39.0 | P038=23.7 | P039=22.2 | P014=19.9
-SR000172,2026-02-19,ambiguous,True,he,P038 | P001 | P003 | P004,House Red Wine | Carlsberg | Corona | Guinness,P003,P038=2.2 | P001=9.0 | P003=9.0 | P004=4.0,P038=21.5 | P001=61.4 | P003=57.2 | P004=24.6
-SR000173,2026-02-20,good,False,en,P003 | P008 | P039 | P025 | P038,Corona | Erdinger | House White Wine | Bacardi Carta Blanca | House Red Wine,,P003=7.0 | P008=3.0 | P039=2.7 | P025=2.2 | P038=2.2,P003=50.2 | P008=19.2 | P039=16.6 | P025=22.4 | P038=19.3
-SR000174,2026-02-21,messy,False,he,P003 | P038 | P031 | P004 | P002,Corona | House Red Wine | Patron Silver | Guinness | Heineken,,P003=7.0 | P038=2.0 | P031=1.5 | P004=6.0 | P002=8.0,P003=67.2 | P038=17.4 | P031=12.8 | P004=39.6 | P002=49.6
-SR000175,2026-02-22,good,False,he,P004 | P002 | P006 | P013,Guinness | Heineken | Maccabee | Gordon's,,P004=2.0 | P002=5.0 | P006=3.0 | P013=0.9,P004=37.6 | P002=44.6 | P006=47.0 | P013=12.6
-SR000176,2026-02-23,messy,False,he,P041 | P002 | P003,Prosecco | Heineken | Corona,,P041=1.7 | P002=6.0 | P003=5.0,P041=22.9 | P002=38.6 | P003=57.2
-SR000177,2026-02-24,good,False,he,P041 | P025 | P007 | P002,Prosecco | Bacardi Carta Blanca | Stella Artois | Heineken,,P041=3.3 | P025=1.5 | P007=4.0 | P002=5.0,P041=31.5 | P025=16.7 | P007=24.4 | P002=33.6
-SR000178,2026-02-25,good,False,en,P001 | P004 | P041 | P003,Carlsberg | Guinness | Prosecco | Corona,,P001=7.0 | P004=2.0 | P041=2.0 | P003=6.0,P001=86.4 | P004=31.6 | P041=29.5 | P003=69.2
-SR000179,2026-02-26,good,False,en,P033 | P038 | P041,Aperol | House Red Wine | Prosecco,,P033=2.1 | P038=2.0 | P041=3.4,P033=10.4 | P038=22.0 | P041=26.1
-SR000180,2026-02-27,good,False,en,K003 | P007 | P005 | P003,Carlsberg 30L | Stella Artois | Goldstar | Corona,,K003=1.0 | P007=7.0 | P005=11.0 | P003=14.0,K003=4.6 | P007=33.4 | P005=51.6 | P003=50.2
-SR000181,2026-02-28,good,False,en,P003 | P013 | P005,Corona | Gordon's | Goldstar,,P003=9.0 | P013=1.8 | P005=9.0,P003=65.2 | P013=16.7 | P005=66.6
-SR000182,2026-03-01,ambiguous,True,en,P038 | P033 | P040 | P014 | P005,House Red Wine | Aperol | Rose Wine | Absolut | Goldstar,P038,P038=2.4 | P033=1.6 | P040=1.0 | P014=1.5 | P005=10.0,P038=13.5 | P033=15.7 | P040=7.4 | P014=6.6 | P005=56.6
-SR000183,2026-03-02,messy,False,he,P006 | P005 | P007 | P002 | P041,Maccabee | Goldstar | Stella Artois | Heineken | Prosecco,,P006=3.0 | P005=9.0 | P007=4.0 | P002=4.0 | P041=1.7,P006=33.0 | P005=47.6 | P007=43.4 | P002=35.6 | P041=13.3
-SR000184,2026-03-03,messy,False,en,P004 | P003 | P002 | P001,Guinness | Corona | Heineken | Carlsberg,,P004=3.0 | P003=5.0 | P002=6.0 | P001=7.0,P004=30.6 | P003=48.2 | P002=29.6 | P001=41.4
-SR000185,2026-03-04,good,False,en,P002 | P005 | P008,Heineken | Goldstar | Erdinger,,P002=8.0 | P005=6.0 | P008=2.0,P002=69.6 | P005=61.6 | P008=39.2
-SR000186,2026-03-05,good,False,he,P038 | P007 | P001 | P005 | P006,House Red Wine | Stella Artois | Carlsberg | Goldstar | Maccabee,,P038=2.2 | P007=7.0 | P001=7.0 | P005=10.0 | P006=6.0,P038=19.6 | P007=30.4 | P001=78.4 | P005=51.6 | P006=43.0
-SR000187,2026-03-06,good,False,he,P002 | P007 | P035 | P005 | P025,Heineken | Stella Artois | Cointreau | Goldstar | Bacardi Carta Blanca,,P002=12.0 | P007=8.0 | P035=0.8 | P005=8.0 | P025=2.7,P002=48.6 | P007=22.4 | P035=7.7 | P005=43.6 | P025=20.3
-SR000188,2026-03-07,good,False,en,P013 | P039 | P014 | P001,Gordon's | House White Wine | Absolut | Carlsberg,,P013=1.5 | P039=2.7 | P014=1.7 | P001=12.0,P013=19.0 | P039=21.4 | P014=10.8 | P001=73.4
-SR000189,2026-03-08,good,False,he,P038 | P007 | P025 | P005,House Red Wine | Stella Artois | Bacardi Carta Blanca | Goldstar,,P038=2.2 | P007=3.0 | P025=2.1 | P005=7.0,P038=12.8 | P007=39.4 | P025=15.3 | P005=50.6
-SR000190,2026-03-09,messy,False,he,P041 | P001 | P025 | P003,Prosecco | Carlsberg | Bacardi Carta Blanca | Corona,,P041=2.9 | P001=7.0 | P025=1.6 | P003=7.0,P041=15.0 | P001=57.4 | P025=13.7 | P003=52.2
-SR000191,2026-03-10,good,False,he,P001 | P038 | P004 | P007,Carlsberg | House Red Wine | Guinness | Stella Artois,,P001=8.0 | P038=1.2 | P004=2.0 | P007=1.0,P001=49.4 | P038=21.6 | P004=30.6 | P007=34.4
-SR000192,2026-03-11,messy,False,en,P003 | P013 | P041,Corona | Gordon's | Prosecco,,P003=7.0 | P013=0.9 | P041=3.2,P003=64.2 | P013=14.4 | P041=9.9
-SR000193,2026-03-12,good,False,en,P005 | P003 | P039 | P002,Goldstar | Corona | House White Wine | Heineken,,P005=12.0 | P003=8.0 | P039=2.9 | P002=10.0,P005=39.6 | P003=56.2 | P039=11.4 | P002=60.6
-SR000194,2026-03-13,good,False,en,P001 | P002 | P014,Carlsberg | Heineken | Absolut,,P001=22.0 | P002=17.0 | P014=2.5,P001=30.4 | P002=43.6 | P014=14.7
-SR000195,2026-03-14,messy,False,en,P025 | P003 | P002 | P004,Bacardi Carta Blanca | Corona | Heineken | Guinness,,P025=3.1 | P003=10.0 | P002=11.0 | P004=5.0,P025=13.3 | P003=58.2 | P002=56.6 | P004=37.6
-SR000196,2026-03-15,good,False,en,P003 | P007 | P006,Corona | Stella Artois | Maccabee,,P003=6.0 | P007=4.0 | P006=4.0,P003=52.2 | P007=51.4 | P006=42.0
-SR000197,2026-03-16,messy,False,en,P006 | P007 | P038 | P039 | P005,Maccabee | Stella Artois | House Red Wine | House White Wine | Goldstar,,P006=5.0 | P007=3.0 | P038=1.7 | P039=1.7 | P005=6.0,P006=37.0 | P007=48.4 | P038=9.7 | P039=14.1 | P005=51.6
-SR000198,2026-03-17,good,False,en,P001 | P002 | P003 | P007,Carlsberg | Heineken | Corona | Stella Artois,,P001=11.0 | P002=5.0 | P003=10.0 | P007=3.0,P001=41.4 | P002=35.6 | P003=38.2 | P007=45.4
-SR000199,2026-03-18,messy,False,he,P038 | P005 | P002 | P031 | P008,House Red Wine | Goldstar | Heineken | Patron Silver | Erdinger,,P038=1.7 | P005=5.0 | P002=4.0 | P031=0.8 | P008=2.0,P038=18.0 | P005=65.6 | P002=55.6 | P031=10.1 | P008=24.2
-SR000200,2026-03-19,good,False,en,P014 | P025 | P008 | P005 | P039,Absolut | Bacardi Carta Blanca | Erdinger | Goldstar | House White Wine,,P014=1.5 | P025=2.4 | P008=3.0 | P005=11.0 | P039=2.4,P014=8.3 | P025=16.4 | P008=21.2 | P005=54.6 | P039=8.5
-SR000201,2026-03-20,messy,False,he,K003 | P002 | P038 | P001,Carlsberg 30L | Heineken | House Red Wine | Carlsberg,,K003=1.2 | P002=16.0 | P038=3.9 | P001=19.0,K003=4.4 | P002=31.6 | P038=23.2 | P001=51.4
-SR000202,2026-03-21,messy,False,en,P001 | P007 | K003 | P008,Carlsberg | Stella Artois | Carlsberg 30L | Erdinger,,P001=14.0 | P007=6.0 | K003=1.2 | P008=5.0,P001=61.4 | P007=42.4 | K003=6.2 | P008=35.2
-SR000203,2026-03-22,messy,False,en,P033 | P041 | P025,Aperol | Prosecco | Bacardi Carta Blanca,,P033=1.5 | P041=2.3 | P025=1.4,P033=18.4 | P041=15.0 | P025=7.8
-SR000204,2026-03-23,good,False,en,P041 | P007 | P001 | P006,Prosecco | Stella Artois | Carlsberg | Maccabee,,P041=1.6 | P007=4.0 | P001=5.0 | P006=1.0,P041=13.4 | P007=35.4 | P001=52.4 | P006=27.0
-SR000205,2026-03-24,good,False,he,P041 | P039 | P013 | P008,Prosecco | House White Wine | Gordon's | Erdinger,,P041=2.2 | P039=1.2 | P013=0.9 | P008=2.0,P041=23.2 | P039=22.0 | P013=18.9 | P008=31.2
-SR000206,2026-03-25,good,False,he,P005 | P031 | P003,Goldstar | Patron Silver | Corona,,P005=9.0 | P031=1.3 | P003=8.0,P005=51.6 | P031=13.5 | P003=59.2
-SR000207,2026-03-26,messy,False,he,P005 | P033 | P002 | P003 | P038,Goldstar | Aperol | Heineken | Corona | House Red Wine,,P005=7.0 | P033=1.8 | P002=5.0 | P003=11.0 | P038=2.0,P005=44.6 | P033=12.5 | P002=47.6 | P003=48.2 | P038=13.2
-SR000208,2026-03-27,messy,False,he,P004 | P007 | P002 | P039,Guinness | Stella Artois | Heineken | House White Wine,,P004=5.0 | P007=6.0 | P002=11.0 | P039=2.7,P004=15.6 | P007=39.4 | P002=36.6 | P039=15.9
-SR000209,2026-03-28,messy,False,en,P031 | P008 | P001 | P035,Patron Silver | Erdinger | Carlsberg | Cointreau,,P031=2.1 | P008=5.0 | P001=17.0 | P035=1.0,P031=8.7 | P008=18.2 | P001=73.4 | P035=6.3
-SR000210,2026-03-29,good,False,he,P004 | P007 | P003,Guinness | Stella Artois | Corona,,P004=2.0 | P007=4.0 | P003=4.0,P004=32.6 | P007=51.4 | P003=51.2
-SR000211,2026-03-30,good,False,en,P005 | P041 | P003 | P001,Goldstar | Prosecco | Corona | Carlsberg,,P005=8.0 | P041=2.5 | P003=5.0 | P001=11.0,P005=36.6 | P041=15.5 | P003=46.2 | P001=56.4
-SR000212,2026-03-31,good,False,en,P006 | P002 | P038,Maccabee | Heineken | House Red Wine,,P006=3.0 | P002=3.0 | P038=1.0,P006=24.0 | P002=33.6 | P038=15.9
-SR000213,2026-04-01,good,False,en,P005 | P006 | P008 | P033,Goldstar | Maccabee | Erdinger | Aperol,,P005=6.0 | P006=2.0 | P008=2.0 | P033=1.9,P005=51.6 | P006=46.0 | P008=36.2 | P033=13.4
-SR000214,2026-04-02,messy,False,en,P002 | P008 | P031,Heineken | Erdinger | Patron Silver,,P002=12.0 | P008=4.0 | P031=1.5,P002=39.6 | P008=32.2 | P031=16.6
-SR000215,2026-04-03,messy,False,he,P034 | P033 | P041 | P025 | P002,Campari | Aperol | Prosecco | Bacardi Carta Blanca | Heineken,,P034=0.9 | P033=3.2 | P041=5.4 | P025=3.5 | P002=14.0,P034=13.7 | P033=20.2 | P041=14.8 | P025=20.5 | P002=25.6
-SR000216,2026-04-04,messy,False,en,P007 | K004 | P002 | P003 | P001,Stella Artois | Malka 30L | Heineken | Corona | Carlsberg,,P007=7.0 | K004=0.9 | P002=9.0 | P003=8.0 | P001=8.0,P007=37.4 | K004=4.7 | P002=64.6 | P003=57.2 | P001=23.4
-SR000217,2026-04-05,good,False,he,P002 | P005 | P007 | P006,Heineken | Goldstar | Stella Artois | Maccabee,,P002=9.0 | P005=7.0 | P007=3.0 | P006=6.0,P002=55.6 | P005=63.6 | P007=34.4 | P006=45.0
-SR000218,2026-04-06,messy,False,he,P002 | P005 | P033 | P004,Heineken | Goldstar | Aperol | Guinness,,P002=7.0 | P005=7.0 | P033=1.1 | P004=2.0,P002=48.6 | P005=56.6 | P033=15.6 | P004=29.6
-SR000219,2026-04-07,good,False,he,P039 | P007 | P041 | P014 | P005,House White Wine | Stella Artois | Prosecco | Absolut | Goldstar,,P039=2.2 | P007=3.0 | P041=2.2 | P014=1.1 | P005=8.0,P039=17.9 | P007=28.4 | P041=28.5 | P014=21.1 | P005=48.6
-SR000220,2026-04-08,good,False,en,P001 | P005 | P041 | P007,Carlsberg | Goldstar | Prosecco | Stella Artois,,P001=6.0 | P005=5.0 | P041=2.1 | P007=7.0,P001=73.4 | P005=67.6 | P041=26.5 | P007=45.4
-SR000221,2026-04-09,messy,False,he,P025 | P001 | P003 | P038,Bacardi Carta Blanca | Carlsberg | Corona | House Red Wine,,P025=2.6 | P001=14.0 | P003=9.0 | P038=2.0,P025=10.8 | P001=59.4 | P003=53.2 | P038=14.7
-SR000222,2026-04-10,messy,False,he,P002 | P034 | P013,Heineken | Campari | Gordon's,,P002=11.0 | P034=0.9 | P013=2.2,P002=39.6 | P034=10.0 | P013=18.1
-SR000223,2026-04-11,ambiguous,True,he,P035 | P002 | P008 | P003,Cointreau | Heineken | Erdinger | Corona,P003,P035=1.0 | P002=13.0 | P008=5.0 | P003=11.0,P035=10.7 | P002=50.6 | P008=31.2 | P003=57.2
-SR000224,2026-04-12,good,False,he,P008 | P001 | P003,Erdinger | Carlsberg | Corona,,P008=2.0 | P001=8.0 | P003=4.0,P008=29.2 | P001=42.4 | P003=53.2
-SR000225,2026-04-13,good,False,en,P039 | P002 | P025,House White Wine | Heineken | Bacardi Carta Blanca,,P039=1.2 | P002=5.0 | P025=1.1,P039=16.8 | P002=40.6 | P025=14.2
-SR000226,2026-04-14,messy,False,en,P002 | P007 | P005,Heineken | Stella Artois | Goldstar,,P002=5.0 | P007=3.0 | P005=7.0,P002=35.6 | P007=34.4 | P005=37.6
-SR000227,2026-04-15,ambiguous,True,en,P013 | P002 | P006 | P003 | P005,Gordon's | Heineken | Maccabee | Corona | Goldstar,P013,P013=1.5 | P002=7.0 | P006=3.0 | P003=7.0 | P005=5.0,P013=10.8 | P002=52.6 | P006=50.0 | P003=63.2 | P005=56.6
-SR000228,2026-04-16,messy,False,he,P002 | P011 | P001,Heineken | Hendrick's | Carlsberg,,P002=13.0 | P011=1.2 | P001=18.0,P002=39.6 | P011=15.6 | P001=57.4
-SR000229,2026-04-17,messy,False,he,P033 | P038 | P007 | P002,Aperol | House Red Wine | Stella Artois | Heineken,,P033=3.9 | P038=4.4 | P007=9.0 | P002=18.0,P033=16.5 | P038=19.0 | P007=38.4 | P002=21.6
-SR000230,2026-04-18,messy,False,he,P038 | P034 | P031 | P004,House Red Wine | Campari | Patron Silver | Guinness,,P038=3.9 | P034=1.0 | P031=2.0 | P004=8.0,P038=15.1 | P034=3.5 | P031=7.7 | P004=24.6
-SR000231,2026-04-19,ambiguous,True,en,P003 | P007 | P008 | P038,Corona | Stella Artois | Erdinger | House Red Wine,P008,P003=3.0 | P007=1.0 | P008=2.0 | P038=1.2,P003=49.2 | P007=50.4 | P008=32.2 | P038=13.8
-SR000232,2026-04-20,good,False,he,P025 | P014 | P039 | P005,Bacardi Carta Blanca | Absolut | House White Wine | Goldstar,,P025=1.4 | P014=1.2 | P039=2.0 | P005=6.0,P025=10.3 | P014=14.6 | P039=9.5 | P005=52.6
-SR000233,2026-04-21,good,False,en,P003 | P025 | P001,Corona | Bacardi Carta Blanca | Carlsberg,,P003=4.0 | P025=1.6 | P001=7.0,P003=39.2 | P025=20.7 | P001=52.4
-SR000234,2026-04-22,messy,False,he,P025 | P033 | P004 | P001,Bacardi Carta Blanca | Aperol | Guinness | Carlsberg,,P025=1.2 | P033=1.1 | P004=3.0 | P001=8.0,P025=19.5 | P033=19.7 | P004=36.6 | P001=68.4
-SR000235,2026-04-23,messy,False,he,P041 | P011 | P035 | P039,Prosecco | Hendrick's | Cointreau | House White Wine,,P041=4.4 | P011=0.8 | P035=0.9 | P039=3.2,P041=22.5 | P011=10.9 | P035=3.8 | P039=14.6
-SR000236,2026-04-24,messy,False,en,P006 | P041 | P039 | P007 | P013,Maccabee | Prosecco | House White Wine | Stella Artois | Gordon's,,P006=9.0 | P041=6.1 | P039=4.6 | P007=9.0 | P013=2.6,P006=20.0 | P041=28.4 | P039=22.0 | P007=26.4 | P013=17.3
-SR000237,2026-04-25,good,False,he,P039 | P002 | P033 | P003,House White Wine | Heineken | Aperol | Corona,,P039=3.7 | P002=12.0 | P033=3.3 | P003=7.0,P039=18.4 | P002=63.6 | P033=9.9 | P003=50.2
-SR000238,2026-04-26,messy,False,he,P041 | P007 | P006,Prosecco | Stella Artois | Maccabee,,P041=2.2 | P007=4.0 | P006=3.0,P041=21.0 | P007=38.4 | P006=34.0
-SR000239,2026-04-27,messy,False,he,P003 | P001 | P002 | P039 | P006,Corona | Carlsberg | Heineken | House White Wine | Maccabee,,P003=6.0 | P001=6.0 | P002=6.0 | P039=1.7 | P006=2.0,P003=38.2 | P001=59.4 | P002=50.6 | P039=14.9 | P006=32.0
-SR000240,2026-04-28,good,False,he,P005 | P002 | P001 | P004,Goldstar | Heineken | Carlsberg | Guinness,,P005=3.0 | P002=8.0 | P001=6.0 | P004=2.0,P005=36.6 | P002=42.6 | P001=53.4 | P004=39.6
-SR000241,2026-04-29,messy,False,he,P002 | P001 | P005 | K003 | P008,Heineken | Carlsberg | Goldstar | Carlsberg 30L | Erdinger,,P002=7.0 | P001=11.0 | P005=8.0 | K003=0.8 | P008=2.0,P002=35.6 | P001=66.4 | P005=52.6 | K003=6.5 | P008=27.2
-SR000242,2026-04-30,messy,False,he,P001 | P004 | P014 | P006,Carlsberg | Guinness | Absolut | Maccabee,,P001=13.0 | P004=5.0 | P014=1.3 | P006=6.0,P001=53.4 | P004=31.6 | P014=13.8 | P006=43.0
-SR000243,2026-05-01,good,False,en,P014 | P008 | P040 | P005,Absolut | Erdinger | Rose Wine | Goldstar,,P014=2.6 | P008=6.0 | P040=1.8 | P005=20.0,P014=11.1 | P008=18.2 | P040=11.0 | P005=21.6
-SR000244,2026-05-02,good,False,he,P001 | P031 | P005,Carlsberg | Patron Silver | Goldstar,,P001=23.0 | P031=2.5 | P005=15.0,P001=55.4 | P031=14.0 | P005=54.6
-SR000245,2026-05-03,good,False,he,P004 | P001 | P014 | P003,Guinness | Carlsberg | Absolut | Corona,,P004=4.0 | P001=14.0 | P014=1.2 | P003=10.0,P004=35.6 | P001=41.4 | P014=7.3 | P003=27.2
-SR000246,2026-05-04,good,False,he,P038 | P003 | P001 | P013,House Red Wine | Corona | Carlsberg | Gordon's,,P038=1.5 | P003=7.0 | P001=2.0 | P013=0.9,P038=14.7 | P003=20.2 | P001=39.4 | P013=12.5
-SR000247,2026-05-05,good,False,he,P004 | P002 | P001 | P007 | P006,Guinness | Heineken | Carlsberg | Stella Artois | Maccabee,,P004=2.0 | P002=4.0 | P001=8.0 | P007=4.0 | P006=4.0,P004=32.6 | P002=41.6 | P001=31.4 | P007=32.4 | P006=10.0
-SR000248,2026-05-06,good,False,en,P008 | P002 | P033,Erdinger | Heineken | Aperol,,P008=3.0 | P002=4.0 | P033=1.3,P008=28.2 | P002=61.6 | P033=24.1
-SR000249,2026-05-07,messy,False,en,P007 | P002 | P006 | P004 | P035,Stella Artois | Heineken | Maccabee | Guinness | Cointreau,,P007=9.0 | P002=10.0 | P006=8.0 | P004=6.0 | P035=0.9,P007=42.4 | P002=51.6 | P006=23.0 | P004=24.6 | P035=7.4
-SR000250,2026-05-08,messy,False,he,P033 | P003 | P040 | P002,Aperol | Corona | Rose Wine | Heineken,,P033=2.8 | P003=9.0 | P040=1.4 | P002=13.0,P033=17.9 | P003=37.2 | P040=16.2 | P002=38.6
-SR000251,2026-05-09,good,False,he,P004 | P014 | P007 | P041,Guinness | Absolut | Stella Artois | Prosecco,,P004=6.0 | P014=2.3 | P007=10.0 | P041=5.8,P004=37.6 | P014=10.6 | P007=50.4 | P041=20.9
-SR000252,2026-05-10,good,False,he,P025 | P013 | P003,Bacardi Carta Blanca | Gordon's | Corona,,P025=1.8 | P013=1.5 | P003=6.0,P025=8.7 | P013=14.3 | P003=41.2
-SR000253,2026-05-11,messy,False,he,P007 | P001 | P002 | P033,Stella Artois | Carlsberg | Heineken | Aperol,,P007=2.0 | P001=6.0 | P002=8.0 | P033=1.9,P007=44.4 | P001=37.4 | P002=34.6 | P033=11.6
-SR000254,2026-05-12,messy,False,he,P001 | P004 | P033 | P005 | P025,Carlsberg | Guinness | Aperol | Goldstar | Bacardi Carta Blanca,,P001=10.0 | P004=2.0 | P033=0.9 | P005=5.0 | P025=1.3,P001=27.4 | P004=28.6 | P033=22.7 | P005=26.6 | P025=17.9
-SR000255,2026-05-13,good,False,he,P013 | P033 | P025 | P008 | P002,Gordon's | Aperol | Bacardi Carta Blanca | Erdinger | Heineken,,P013=1.3 | P033=1.8 | P025=2.5 | P008=3.0 | P002=7.0,P013=10.7 | P033=20.9 | P025=15.5 | P008=31.2 | P002=26.6
-SR000256,2026-05-14,good,False,he,P001 | P003 | P013 | P039,Carlsberg | Corona | Gordon's | House White Wine,,P001=16.0 | P003=11.0 | P013=2.2 | P039=2.9,P001=49.4 | P003=34.2 | P013=8.5 | P039=19.5
-SR000257,2026-05-15,good,False,en,P008 | P041 | P031 | P035,Erdinger | Prosecco | Patron Silver | Cointreau,,P008=5.0 | P041=5.1 | P031=1.9 | P035=0.9,P008=21.2 | P041=12.9 | P031=10.6 | P035=14.1
-SR000258,2026-05-16,messy,False,he,P002 | P033 | P005,Heineken | Aperol | Goldstar,,P002=13.0 | P033=3.3 | P005=14.0,P002=61.6 | P033=11.2 | P005=52.6
-SR000259,2026-05-17,messy,False,en,P008 | P033 | P005,Erdinger | Aperol | Goldstar,,P008=2.0 | P033=1.4 | P005=6.0,P008=38.2 | P033=9.9 | P005=46.6
-SR000260,2026-05-18,good,False,he,P001 | P005 | P006,Carlsberg | Goldstar | Maccabee,,P001=5.0 | P005=5.0 | P006=2.0,P001=51.4 | P005=41.6 | P006=42.0
-SR000261,2026-05-19,good,False,he,P006 | P007 | P003 | P005 | P008,Maccabee | Stella Artois | Corona | Goldstar | Erdinger,,P006=2.0 | P007=4.0 | P003=6.0 | P005=9.0 | P008=2.0,P006=40.0 | P007=44.4 | P003=42.2 | P005=32.6 | P008=34.2
-SR000262,2026-05-20,good,False,en,P003 | P002 | P025 | P041,Corona | Heineken | Bacardi Carta Blanca | Prosecco,,P003=6.0 | P002=7.0 | P025=2.0 | P041=3.1,P003=60.2 | P002=65.6 | P025=12.5 | P041=22.3
-SR000263,2026-05-21,messy,False,en,P038 | P003 | P039 | P008,House Red Wine | Corona | House White Wine | Erdinger,,P038=2.9 | P003=9.0 | P039=2.7 | P008=4.0,P038=13.9 | P003=51.2 | P039=16.6 | P008=28.2
-SR000264,2026-05-22,ambiguous,True,he,P041 | P002 | P006 | P004 | P031,Prosecco | Heineken | Maccabee | Guinness | Patron Silver,P002,P041=7.1 | P002=16.0 | P006=9.0 | P004=7.0 | P031=2.4,P041=23.5 | P002=41.6 | P006=22.0 | P004=34.6 | P031=13.9
-SR000265,2026-05-23,ambiguous,True,en,P008 | P002 | P005 | P003,Erdinger | Heineken | Goldstar | Corona,P003,P008=3.0 | P002=11.0 | P005=12.0 | P003=10.0,P008=19.2 | P002=54.6 | P005=59.6 | P003=50.2
-SR000266,2026-05-24,good,False,he,P025 | P039 | P007,Bacardi Carta Blanca | House White Wine | Stella Artois,,P025=1.6 | P039=1.5 | P007=3.0,P025=13.4 | P039=19.6 | P007=36.4
-SR000267,2026-05-25,good,False,en,P007 | P008 | P006,Stella Artois | Erdinger | Maccabee,,P007=3.0 | P008=1.0 | P006=2.0,P007=33.4 | P008=16.2 | P006=37.0
-SR000268,2026-05-26,messy,False,he,P038 | P014 | P003 | P008 | P002,House Red Wine | Absolut | Corona | Erdinger | Heineken,,P038=1.0 | P014=0.9 | P003=7.0 | P008=1.0 | P002=5.0,P038=15.1 | P014=11.3 | P003=34.2 | P008=15.2 | P002=34.6
-SR000269,2026-05-27,good,False,en,P006 | P008 | P004 | P007,Maccabee | Erdinger | Guinness | Stella Artois,,P006=5.0 | P008=3.0 | P004=3.0 | P007=5.0,P006=30.0 | P008=36.2 | P004=21.6 | P007=48.4
-SR000270,2026-05-28,messy,False,en,P014 | P013 | P002,Absolut | Gordon's | Heineken,,P014=1.5 | P013=2.1 | P002=11.0,P014=8.6 | P013=10.0 | P002=38.6
-SR000271,2026-05-29,good,False,he,P033 | P007 | P019 | P004 | P041,Aperol | Stella Artois | Jameson | Guinness | Prosecco,,P033=2.9 | P007=8.0 | P019=0.9 | P004=6.0 | P041=4.8,P033=21.7 | P007=32.4 | P019=17.7 | P004=11.6 | P041=14.8
-SR000272,2026-05-30,messy,False,he,P014 | P008 | P005 | P003,Absolut | Erdinger | Goldstar | Corona,,P014=1.5 | P008=4.0 | P005=9.0 | P003=8.0,P014=16.9 | P008=25.2 | P005=52.6 | P003=49.2
-SR000273,2026-05-31,good,False,he,P007 | P001 | P002 | K003 | P005,Stella Artois | Carlsberg | Heineken | Carlsberg 30L | Goldstar,,P007=6.0 | P001=10.0 | P002=7.0 | K003=0.8 | P005=10.0,P007=43.4 | P001=52.4 | P002=57.6 | K003=5.6 | P005=42.6
-SR000274,2026-06-01,messy,False,he,P004 | P001 | P007 | P038 | P006,Guinness | Carlsberg | Stella Artois | House Red Wine | Maccabee,,P004=1.0 | P001=4.0 | P007=3.0 | P038=2.0 | P006=3.0,P004=53.6 | P001=48.4 | P007=40.4 | P038=12.0 | P006=30.0
-SR000275,2026-06-02,good,False,en,P014 | P001 | P041 | P033,Absolut | Carlsberg | Prosecco | Aperol,,P014=0.8 | P001=6.0 | P041=1.9 | P033=1.2,P014=13.7 | P001=42.4 | P041=28.6 | P033=15.5
-SR000276,2026-06-03,good,False,he,P001 | P002 | P005 | P025,Carlsberg | Heineken | Goldstar | Bacardi Carta Blanca,,P001=8.0 | P002=3.0 | P005=8.0 | P025=1.1,P001=34.4 | P002=63.6 | P005=70.6 | P025=18.3
-SR000277,2026-06-04,good,False,en,P001 | P038 | P005 | P040,Carlsberg | House Red Wine | Goldstar | Rose Wine,,P001=16.0 | P038=3.7 | P005=14.0 | P040=1.8,P001=18.4 | P038=16.9 | P005=56.6 | P040=15.8
-SR000278,2026-06-05,messy,False,he,P036 | P003 | P004,Kahlua | Corona | Guinness,,P036=0.9 | P003=14.0 | P004=7.0,P036=11.3 | P003=25.2 | P004=35.6
-SR000279,2026-06-06,good,False,he,K003 | P029 | P033 | P038,Carlsberg 30L | Jose Cuervo | Aperol | House Red Wine,,K003=1.5 | P029=1.0 | P033=3.9 | P038=4.6,K003=5.3 | P029=10.5 | P033=15.1 | P038=7.4
-SR000280,2026-06-07,messy,False,he,P014 | P025 | P002 | P005 | P004,Absolut | Bacardi Carta Blanca | Heineken | Goldstar | Guinness,,P014=1.4 | P025=1.6 | P002=7.0 | P005=5.0 | P004=3.0,P014=14.4 | P025=16.1 | P002=35.6 | P005=45.6 | P004=24.6
-SR000281,2026-06-08,messy,False,en,P003 | P004 | P033 | P007 | P008,Corona | Guinness | Aperol | Stella Artois | Erdinger,,P003=7.0 | P004=3.0 | P033=1.9 | P007=7.0 | P008=3.0,P003=42.2 | P004=21.6 | P033=11.6 | P007=34.4 | P008=20.2
-SR000282,2026-06-09,messy,False,en,P041 | P004 | P031,Prosecco | Guinness | Patron Silver,,P041=2.6 | P004=4.0 | P031=1.4,P041=12.6 | P004=17.6 | P031=15.5
-SR000283,2026-06-10,messy,False,he,P004 | P008 | P001 | P007 | P038,Guinness | Erdinger | Carlsberg | Stella Artois | House Red Wine,,P004=3.0 | P008=2.0 | P001=8.0 | P007=7.0 | P038=1.5,P004=38.6 | P008=39.2 | P001=73.4 | P007=46.4 | P038=24.1
-SR000284,2026-06-11,good,False,he,P006 | P042 | P008 | P040,Maccabee | Chardonnay | Erdinger | Rose Wine,,P006=7.0 | P042=1.0 | P008=4.0 | P040=1.4,P006=45.0 | P042=4.6 | P008=35.2 | P040=6.8
-SR000285,2026-06-12,good,False,en,P005 | P019 | P004 | P033,Goldstar | Jameson | Guinness | Aperol,,P005=16.0 | P019=1.1 | P004=7.0 | P033=3.3,P005=42.6 | P019=5.2 | P004=26.6 | P033=14.5
-SR000286,2026-06-13,ambiguous,True,en,P014 | P025 | P035,Absolut | Bacardi Carta Blanca | Cointreau,P025,P014=2.5 | P025=3.0 | P035=0.9,P014=14.6 | P025=12.5 | P035=7.5
-SR000287,2026-06-14,good,False,he,P038 | P002 | P003,House Red Wine | Heineken | Corona,,P038=3.2 | P002=12.0 | P003=11.0,P038=11.9 | P002=32.6 | P003=33.2
-SR000288,2026-06-15,good,False,en,P031 | P039 | P001 | P007,Patron Silver | House White Wine | Carlsberg | Stella Artois,,P031=1.2 | P039=2.9 | P001=12.0 | P007=6.0,P031=5.2 | P039=8.5 | P001=48.4 | P007=34.4
-SR000289,2026-06-16,good,False,he,P002 | P007 | P001 | P034,Heineken | Stella Artois | Carlsberg | Campari,,P002=14.0 | P007=8.0 | P001=18.0 | P034=0.8,P002=9.6 | P007=26.4 | P001=30.4 | P034=12.2
-SR000290,2026-06-17,messy,False,he,P007 | P038 | P039,Stella Artois | House Red Wine | House White Wine,,P007=7.0 | P038=2.4 | P039=2.7,P007=43.4 | P038=17.5 | P039=13.7
-SR000291,2026-06-18,good,False,he,P006 | P005 | P019 | P007,Maccabee | Goldstar | Jameson | Stella Artois,,P006=3.0 | P005=10.0 | P019=0.9 | P007=8.0,P006=27.0 | P005=49.6 | P019=12.5 | P007=35.4
-SR000292,2026-06-19,messy,False,en,P006 | P008 | P038 | P040,Maccabee | Erdinger | House Red Wine | Rose Wine,,P006=11.0 | P008=6.0 | P038=4.4 | P040=1.6,P006=16.0 | P008=28.2 | P038=22.5 | P040=8.8
-SR000293,2026-06-20,good,False,en,P007 | P004 | P006 | P003,Stella Artois | Guinness | Maccabee | Corona,,P007=8.0 | P004=6.0 | P006=8.0 | P003=13.0,P007=39.4 | P004=32.6 | P006=32.0 | P003=15.2
+SR000013,2025-09-13,good,False,he,P005 | P033 | P002 | P019,Goldstar | Aperol | Heineken | Jameson,,P005=17.0 | P033=3.2 | P002=16.0 | P019=1.1,P005=49.6 | P033=18.3 | P002=41.6 | P019=14.1
+SR000014,2025-09-14,good,False,en,P004 | P025 | P001 | P013,Guinness | Bacardi Carta Blanca | Carlsberg | Gordon's,,P004=5.0 | P025=2.0 | P001=6.0 | P013=0.9,P004=23.6 | P025=15.3 | P001=53.4 | P013=15.5
+SR000015,2025-09-15,good,False,he,P001 | P007 | P033 | P006,Carlsberg | Stella Artois | Aperol | Maccabee,,P001=3.0 | P007=4.0 | P033=0.9 | P006=2.0,P001=50.4 | P007=31.4 | P033=15.6 | P006=6.0
+SR000016,2025-09-16,messy,False,en,P003 | P006 | P025 | P033,Corona | Maccabee | Bacardi Carta Blanca | Aperol,,P003=8.0 | P006=3.0 | P025=1.5 | P033=2.1,P003=22.2 | P006=27.0 | P025=12.5 | P033=13.5
+SR000017,2025-09-17,good,False,en,P006 | P007 | P004 | P003,Maccabee | Stella Artois | Guinness | Corona,,P006=5.0 | P007=4.0 | P004=1.0 | P003=7.0,P006=46.0 | P007=23.4 | P004=41.6 | P003=63.2
+SR000018,2025-09-18,messy,False,en,P025 | P002 | P003 | P014,Bacardi Carta Blanca | Heineken | Corona | Absolut,,P025=3.0 | P002=12.0 | P003=11.0 | P014=1.8,P025=20.5 | P002=48.6 | P003=52.2 | P014=10.3
+SR000019,2025-09-19,good,False,en,K003 | P003 | P006 | P033 | P002,Carlsberg 30L | Corona | Maccabee | Aperol | Heineken,,K003=1.1 | P003=12.0 | P006=9.0 | P033=3.3 | P002=14.0,K003=4.1 | P003=40.2 | P006=31.0 | P033=17.6 | P002=33.6
+SR000020,2025-09-20,good,False,he,P001 | P033 | P038 | P007 | P025,Carlsberg | Aperol | House Red Wine | Stella Artois | Bacardi Carta Blanca,,P001=23.0 | P033=4.1 | P038=4.6 | P007=13.0 | P025=4.3,P001=51.4 | P033=13.5 | P038=13.2 | P007=19.4 | P025=12.8
+SR000021,2025-09-21,messy,False,he,P014 | P007 | P033 | P002,Absolut | Stella Artois | Aperol | Heineken,,P014=1.0 | P007=5.0 | P033=1.3 | P002=7.0,P014=16.2 | P007=14.4 | P033=12.2 | P002=31.6
+SR000022,2025-09-22,good,False,he,P002 | P039 | P004,Heineken | House White Wine | Guinness,,P002=9.0 | P039=1.0 | P004=1.0,P002=22.6 | P039=17.7 | P004=19.6
+SR000023,2025-09-23,good,False,en,P001 | K003 | P005,Carlsberg | Carlsberg 30L | Goldstar,,P001=11.0 | K003=1.0 | P005=8.0,P001=24.4 | K003=3.6 | P005=27.6
+SR000024,2025-09-24,good,False,he,P014 | P003 | P007,Absolut | Corona | Stella Artois,,P014=1.3 | P003=7.0 | P007=6.0,P014=13.1 | P003=46.2 | P007=48.4
+SR000025,2025-09-25,good,False,he,P039 | P001 | P013,House White Wine | Carlsberg | Gordon's,,P039=2.0 | P001=14.0 | P013=1.5,P039=10.1 | P001=45.4 | P013=9.0
+SR000026,2025-09-26,messy,False,he,P002 | P007 | P011 | P031,Heineken | Stella Artois | Hendrick's | Patron Silver,,P002=17.0 | P007=9.0 | P011=1.1 | P031=2.1,P002=24.6 | P007=32.4 | P011=16.4 | P031=8.2
+SR000027,2025-09-27,messy,False,he,P031 | P013 | P002 | P038,Patron Silver | Gordon's | Heineken | House Red Wine,,P031=1.6 | P013=2.2 | P002=12.0 | P038=3.2,P031=6.7 | P013=16.2 | P002=60.6 | P038=20.3
+SR000028,2025-09-28,messy,False,en,P041 | P025 | P001 | P008 | P006,Prosecco | Bacardi Carta Blanca | Carlsberg | Erdinger | Maccabee,,P041=3.0 | P025=1.8 | P001=9.0 | P008=2.0 | P006=4.0,P041=13.5 | P025=18.4 | P001=55.4 | P008=30.2 | P006=34.0
+SR000029,2025-09-29,good,False,he,P002 | P004 | P041 | P033 | P003,Heineken | Guinness | Prosecco | Aperol | Corona,,P002=6.0 | P004=3.0 | P041=2.5 | P033=1.5 | P003=4.0,P002=42.6 | P004=32.6 | P041=11.0 | P033=6.0 | P003=53.2
+SR000030,2025-09-30,messy,False,he,P039 | P014 | P004 | P002,House White Wine | Absolut | Guinness | Heineken,,P039=1.5 | P014=1.1 | P004=3.0 | P002=5.0,P039=22.9 | P014=16.3 | P004=29.6 | P002=37.6
+SR000031,2025-10-01,good,False,en,P002 | P014 | P004 | P006 | P003,Heineken | Absolut | Guinness | Maccabee | Corona,,P002=8.0 | P014=1.4 | P004=4.0 | P006=6.0 | P003=6.0,P002=53.6 | P014=14.9 | P004=25.6 | P006=44.0 | P003=68.2
+SR000032,2025-10-02,messy,False,en,P006 | P031 | P005 | P039 | P003,Maccabee | Patron Silver | Goldstar | House White Wine | Corona,,P006=11.0 | P031=2.5 | P005=19.0 | P039=5.1 | P003=17.0,P006=33.0 | P031=11.7 | P005=32.6 | P039=14.6 | P003=51.2
+SR000033,2025-10-03,good,False,he,P025 | P037 | P007 | P005 | P001,Bacardi Carta Blanca | Martini Rosso | Stella Artois | Goldstar | Carlsberg,,P025=4.5 | P037=1.0 | P007=13.0 | P005=19.0 | P001=22.0,P025=16.6 | P037=2.9 | P007=29.4 | P005=13.6 | P001=37.4
+SR000034,2025-10-04,good,False,he,P042 | P003 | P025 | P019,Chardonnay | Corona | Bacardi Carta Blanca | Jameson,,P042=0.8 | P003=14.0 | P025=3.2 | P019=0.9,P042=11.8 | P003=42.2 | P025=13.3 | P019=9.8
+SR000035,2025-10-05,messy,False,en,P041 | P005 | P003 | P001,Prosecco | Goldstar | Corona | Carlsberg,,P041=1.8 | P005=4.0 | P003=2.0 | P001=7.0,P041=20.7 | P005=46.6 | P003=40.2 | P001=61.4
+SR000036,2025-10-06,good,False,en,P041 | P008 | P003 | P039,Prosecco | Erdinger | Corona | House White Wine,,P041=2.8 | P008=2.0 | P003=7.0 | P039=1.5,P041=17.9 | P008=30.2 | P003=33.2 | P039=13.7
+SR000037,2025-10-07,ambiguous,True,en,P007 | P039 | P008 | P001 | P038,Stella Artois | House White Wine | Erdinger | Carlsberg | House Red Wine,P038,P007=6.0 | P039=1.5 | P008=1.0 | P001=7.0 | P038=1.7,P007=28.4 | P039=24.2 | P008=29.2 | P001=47.4 | P038=18.7
+SR000038,2025-10-08,ambiguous,True,en,P013 | P005 | P002 | P001 | P004,Gordon's | Goldstar | Heineken | Carlsberg | Guinness,P004,P013=1.7 | P005=10.0 | P002=9.0 | P001=12.0 | P004=4.0,P013=20.5 | P005=52.6 | P002=49.6 | P001=59.4 | P004=40.6
+SR000039,2025-10-09,messy,False,en,P004 | K003 | P042,Guinness | Carlsberg 30L | Chardonnay,,P004=8.0 | K003=1.7 | P042=1.2,P004=32.6 | K003=4.6 | P042=9.6
+SR000040,2025-10-10,good,False,he,P004 | P013 | P031 | P001,Guinness | Gordon's | Patron Silver | Carlsberg,,P004=5.0 | P013=2.3 | P031=2.0 | P001=18.0,P004=27.6 | P013=14.5 | P031=10.2 | P001=19.4
+SR000041,2025-10-11,messy,False,en,P036 | P006 | P020,Kahlua | Maccabee | Jack Daniel's,,P036=0.9 | P006=10.0 | P020=1.0,P036=8.7 | P006=70.0 | P020=4.6
+SR000042,2025-10-12,good,False,he,P014 | P033 | P039 | P004,Absolut | Aperol | House White Wine | Guinness,,P014=1.7 | P033=2.7 | P039=2.0 | P004=3.0,P014=5.5 | P033=7.5 | P039=21.3 | P004=18.6
+SR000043,2025-10-13,good,False,he,P033 | P003 | P008 | P007 | P006,Aperol | Corona | Erdinger | Stella Artois | Maccabee,,P033=1.3 | P003=5.0 | P008=2.0 | P007=4.0 | P006=5.0,P033=6.3 | P003=27.2 | P008=27.2 | P007=32.4 | P006=61.0
+SR000044,2025-10-14,good,False,en,P002 | P006 | P008 | P033 | P025,Heineken | Maccabee | Erdinger | Aperol | Bacardi Carta Blanca,,P002=11.0 | P006=3.0 | P008=3.0 | P033=1.7 | P025=1.6,P002=32.6 | P006=58.0 | P008=24.2 | P033=16.5 | P025=15.0
+SR000045,2025-10-15,messy,False,en,P001 | P039 | P025,Carlsberg | House White Wine | Bacardi Carta Blanca,,P001=9.0 | P039=2.7 | P025=2.2,P001=84.4 | P039=16.2 | P025=12.7
+SR000046,2025-10-16,messy,False,he,P003 | P033 | P042 | P011 | P006,Corona | Aperol | Chardonnay | Hendrick's | Maccabee,,P003=12.0 | P033=3.3 | P042=1.0 | P011=1.0 | P006=6.0,P003=51.2 | P033=11.1 | P042=16.8 | P011=13.7 | P006=49.0
+SR000047,2025-10-17,ambiguous,True,en,P001 | P005 | P031 | P014 | P007,Carlsberg | Goldstar | Patron Silver | Absolut | Stella Artois,P031,P001=20.0 | P005=13.0 | P031=2.0 | P014=2.1 | P007=9.0,P001=50.4 | P005=45.6 | P031=11.2 | P014=9.8 | P007=28.4
+SR000048,2025-10-18,good,False,he,P039 | P011 | P019,House White Wine | Hendrick's | Jameson,,P039=4.4 | P011=0.9 | P019=0.9,P039=16.7 | P011=11.8 | P019=11.7
+SR000049,2025-10-19,ambiguous,True,en,P031 | P002 | P008 | P039,Patron Silver | Heineken | Erdinger | House White Wine,P039,P031=0.8 | P002=5.0 | P008=1.0 | P039=2.7,P031=8.5 | P002=47.6 | P008=29.2 | P039=14.1
+SR000050,2025-10-20,messy,False,en,P007 | P033 | P002,Stella Artois | Aperol | Heineken,,P007=5.0 | P033=1.3 | P002=4.0,P007=35.4 | P033=14.5 | P002=43.6
+SR000051,2025-10-21,good,False,he,P031 | P002 | P001 | P041,Patron Silver | Heineken | Carlsberg | Prosecco,,P031=1.0 | P002=3.0 | P001=10.0 | P041=2.0,P031=19.0 | P002=40.6 | P001=34.4 | P041=21.5
+SR000052,2025-10-22,ambiguous,True,he,P002 | P013 | P033,Heineken | Gordon's | Aperol,P013,P002=6.0 | P013=1.2 | P033=1.5,P002=58.6 | P013=19.1 | P033=23.8
+SR000053,2025-10-23,messy,False,he,P014 | P006 | P001 | P019,Absolut | Maccabee | Carlsberg | Jameson,,P014=1.8 | P006=5.0 | P001=12.0 | P019=0.9,P014=13.9 | P006=41.0 | P001=63.4 | P019=9.1
+SR000054,2025-10-24,ambiguous,True,en,P006 | P033 | K003 | K004,Maccabee | Aperol | Carlsberg 30L | Malka 30L,K003,P006=11.0 | P033=4.1 | K003=1.3 | K004=1.0,P006=30.0 | P033=17.7 | K003=4.5 | K004=3.6
+SR000055,2025-10-25,messy,False,en,P039 | P006 | K004 | P007,House White Wine | Maccabee | Malka 30L | Stella Artois,,P039=4.4 | P006=9.0 | K004=1.0 | P007=11.0,P039=10.0 | P006=21.0 | K004=4.6 | P007=50.4
+SR000056,2025-10-26,good,False,en,P001 | P007 | P014,Carlsberg | Stella Artois | Absolut,,P001=10.0 | P007=4.0 | P014=0.9,P001=60.4 | P007=46.4 | P014=7.4
+SR000057,2025-10-27,good,False,he,P007 | P001 | P008 | P005,Stella Artois | Carlsberg | Erdinger | Goldstar,,P007=3.0 | P001=10.0 | P008=2.0 | P005=6.0,P007=43.4 | P001=50.4 | P008=28.2 | P005=52.6
+SR000058,2025-10-28,good,False,he,P014 | P002 | P003 | P001,Absolut | Heineken | Corona | Carlsberg,,P014=0.8 | P002=4.0 | P003=4.0 | P001=8.0,P014=17.7 | P002=39.6 | P003=23.2 | P001=42.4
+SR000059,2025-10-29,good,False,en,P039 | P004 | P040 | P033 | P002,House White Wine | Guinness | Rose Wine | Aperol | Heineken,,P039=3.2 | P004=4.0 | P040=1.0 | P033=2.5 | P002=8.0,P039=13.7 | P004=47.6 | P040=11.6 | P033=6.8 | P002=55.6
+SR000060,2025-10-30,good,False,en,P007 | P008 | P002 | P003 | P006,Stella Artois | Erdinger | Heineken | Corona | Maccabee,,P007=8.0 | P008=4.0 | P002=13.0 | P003=11.0 | P006=7.0,P007=45.4 | P008=19.2 | P002=42.6 | P003=52.2 | P006=44.0
+SR000061,2025-10-31,good,False,en,P006 | P007 | P013 | P001 | P038,Maccabee | Stella Artois | Gordon's | Carlsberg | House Red Wine,,P006=9.0 | P007=9.0 | P013=2.5 | P001=15.0 | P038=2.4,P006=35.0 | P007=36.4 | P013=13.7 | P001=49.4 | P038=19.2
+SR000062,2025-11-01,messy,False,en,P005 | P002 | P001,Goldstar | Heineken | Carlsberg,,P005=14.0 | P002=13.0 | P001=14.0,P005=48.6 | P002=63.6 | P001=59.4
+SR000063,2025-11-02,messy,False,he,P007 | P008 | P006,Stella Artois | Erdinger | Maccabee,,P007=6.0 | P008=1.0 | P006=3.0,P007=47.4 | P008=33.2 | P006=28.0
+SR000064,2025-11-03,good,False,en,P004 | P039 | P002 | P003,Guinness | House White Wine | Heineken | Corona,,P004=1.0 | P039=1.7 | P002=5.0 | P003=3.0,P004=28.6 | P039=11.0 | P002=50.6 | P003=45.2
+SR000065,2025-11-04,ambiguous,True,en,P008 | P007 | P003,Erdinger | Stella Artois | Corona,P007,P008=2.0 | P007=5.0 | P003=5.0,P008=29.2 | P007=39.4 | P003=40.2
+SR000066,2025-11-05,messy,False,he,P002 | P013 | P005 | P003 | P008,Heineken | Gordon's | Goldstar | Corona | Erdinger,,P002=6.0 | P013=1.3 | P005=7.0 | P003=9.0 | P008=1.0,P002=61.6 | P013=18.7 | P005=68.6 | P003=55.2 | P008=28.2
+SR000067,2025-11-06,good,False,en,P039 | P005 | P001,House White Wine | Goldstar | Carlsberg,,P039=3.2 | P005=9.0 | P001=11.0,P039=15.7 | P005=59.6 | P001=66.4
+SR000068,2025-11-07,good,False,he,P038 | P019 | P002 | P003 | P039,House Red Wine | Jameson | Heineken | Corona | House White Wine,,P038=2.4 | P019=0.9 | P002=11.0 | P003=10.0 | P039=2.4,P038=18.2 | P019=9.0 | P002=38.6 | P003=35.2 | P039=13.3
+SR000069,2025-11-08,messy,False,en,P039 | P040 | P003 | P007,House White Wine | Rose Wine | Corona | Stella Artois,,P039=2.7 | P040=1.0 | P003=7.0 | P007=7.0,P039=10.6 | P040=14.2 | P003=52.2 | P007=36.4
+SR000070,2025-11-09,messy,False,he,P007 | P041 | P013 | P008,Stella Artois | Prosecco | Gordon's | Erdinger,,P007=3.0 | P041=3.2 | P013=1.3 | P008=2.0,P007=33.4 | P041=14.4 | P013=12.9 | P008=18.2
+SR000071,2025-11-10,messy,False,he,P006 | P038 | P002 | P003,Maccabee | House Red Wine | Heineken | Corona,,P006=3.0 | P038=1.5 | P002=5.0 | P003=4.0,P006=43.0 | P038=13.6 | P002=45.6 | P003=39.2
+SR000072,2025-11-11,messy,False,en,P033 | P041 | P006 | P005,Aperol | Prosecco | Maccabee | Goldstar,,P033=1.3 | P041=2.1 | P006=2.0 | P005=7.0,P033=18.2 | P041=24.3 | P006=41.0 | P005=56.6
+SR000073,2025-11-12,messy,False,he,P005 | P001 | P014 | P040 | P002,Goldstar | Carlsberg | Absolut | Rose Wine | Heineken,,P005=4.0 | P001=5.0 | P014=0.8 | P040=0.8 | P002=5.0,P005=76.6 | P001=72.4 | P014=10.9 | P040=12.4 | P002=63.6
+SR000074,2025-11-13,good,False,en,P033 | P008 | P005 | P001 | P041,Aperol | Erdinger | Goldstar | Carlsberg | Prosecco,,P033=1.1 | P008=2.0 | P005=11.0 | P001=8.0 | P041=1.9,P033=15.9 | P008=35.2 | P005=65.6 | P001=64.4 | P041=20.8
+SR000075,2025-11-14,good,False,he,K003 | P007 | P002 | P008 | P005,Carlsberg 30L | Stella Artois | Heineken | Erdinger | Goldstar,,K003=0.9 | P007=6.0 | P002=9.0 | P008=4.0 | P005=13.0,K003=5.0 | P007=40.4 | P002=49.6 | P008=31.2 | P005=52.6
+SR000076,2025-11-15,messy,False,he,P040 | P001 | P041 | P005 | P038,Rose Wine | Carlsberg | Prosecco | Goldstar | House Red Wine,,P040=1.4 | P001=12.0 | P041=3.7 | P005=10.0 | P038=2.4,P040=8.8 | P001=63.4 | P041=24.9 | P005=66.6 | P038=15.8
+SR000077,2025-11-16,ambiguous,True,he,P001 | P008 | P005 | P006,Carlsberg | Erdinger | Goldstar | Maccabee,P006,P001=6.0 | P008=3.0 | P005=2.0 | P006=4.0,P001=57.4 | P008=24.2 | P005=64.6 | P006=44.0
+SR000078,2025-11-17,messy,False,he,P033 | P014 | P006 | P025,Aperol | Absolut | Maccabee | Bacardi Carta Blanca,,P033=1.2 | P014=0.9 | P006=1.0 | P025=1.8,P033=8.2 | P014=16.6 | P006=43.0 | P025=15.9
+SR000079,2025-11-18,good,False,en,P008 | P002 | P007 | P004 | P031,Erdinger | Heineken | Stella Artois | Guinness | Patron Silver,,P008=2.0 | P002=5.0 | P007=2.0 | P004=2.0 | P031=0.9,P008=20.2 | P002=56.6 | P007=28.4 | P004=29.6 | P031=11.1
+SR000080,2025-11-19,good,False,en,P004 | P038 | P001 | P005,Guinness | House Red Wine | Carlsberg | Goldstar,,P004=2.0 | P038=1.0 | P001=6.0 | P005=5.0,P004=27.6 | P038=24.4 | P001=75.4 | P005=47.6
+SR000081,2025-11-20,messy,False,he,P020 | P002 | P038 | P011,Jack Daniel's | Heineken | House Red Wine | Hendrick's,,P020=1.3 | P002=18.0 | P038=3.9 | P011=1.2,P020=6.1 | P002=61.6 | P038=20.5 | P011=4.0
+SR000082,2025-11-21,good,False,en,P020 | P005 | P038 | P002,Jack Daniel's | Goldstar | House Red Wine | Heineken,,P020=1.2 | P005=15.0 | P038=3.7 | P002=15.0,P020=4.8 | P005=13.6 | P038=16.9 | P002=46.6
+SR000083,2025-11-22,messy,False,en,P041 | K003 | P005,Prosecco | Carlsberg 30L | Goldstar,,P041=3.7 | K003=0.9 | P005=11.0,P041=16.2 | K003=6.4 | P005=74.6
+SR000084,2025-11-23,messy,False,en,P007 | P038 | P014 | P013,Stella Artois | House Red Wine | Absolut | Gordon's,,P007=5.0 | P038=1.5 | P014=1.1 | P013=1.4,P007=38.4 | P038=12.5 | P014=6.3 | P013=6.0
+SR000085,2025-11-24,good,False,he,P013 | P041 | P038 | P002 | P039,Gordon's | Prosecco | House Red Wine | Heineken | House White Wine,,P013=0.9 | P041=2.2 | P038=1.0 | P002=6.0 | P039=2.0,P013=5.1 | P041=10.9 | P038=11.5 | P002=46.6 | P039=18.8
+SR000086,2025-11-25,messy,False,he,P001 | P003 | P033 | P005,Carlsberg | Corona | Aperol | Goldstar,,P001=9.0 | P003=8.0 | P033=1.7 | P005=5.0,P001=46.4 | P003=31.2 | P033=16.7 | P005=62.6
+SR000087,2025-11-26,good,False,en,P025 | P039 | P001 | P006 | P033,Bacardi Carta Blanca | House White Wine | Carlsberg | Maccabee | Aperol,,P025=1.3 | P039=1.7 | P001=8.0 | P006=4.0 | P033=1.0,P025=19.3 | P039=15.6 | P001=62.4 | P006=53.0 | P033=15.7
+SR000088,2025-11-27,good,False,he,P007 | P025 | P006 | P001,Stella Artois | Bacardi Carta Blanca | Maccabee | Carlsberg,,P007=5.0 | P025=2.9 | P006=4.0 | P001=9.0,P007=48.4 | P025=16.4 | P006=49.0 | P001=53.4
+SR000089,2025-11-28,good,False,en,P004 | P008 | P005,Guinness | Erdinger | Goldstar,,P004=4.0 | P008=4.0 | P005=11.0,P004=35.6 | P008=36.2 | P005=36.6
+SR000090,2025-11-29,messy,False,en,P011 | P002 | P013,Hendrick's | Heineken | Gordon's,,P011=1.1 | P002=14.0 | P013=2.9,P011=9.8 | P002=43.6 | P013=9.1
+SR000091,2025-11-30,good,False,en,P001 | P039 | P008,Carlsberg | House White Wine | Erdinger,,P001=7.0 | P039=1.2 | P008=2.0,P001=62.4 | P039=16.4 | P008=30.2
+SR000092,2025-12-01,good,False,he,P039 | P001 | P041 | P008,House White Wine | Carlsberg | Prosecco | Erdinger,,P039=1.7 | P001=7.0 | P041=2.5 | P008=1.0,P039=14.7 | P001=55.4 | P041=35.5 | P008=29.2
+SR000093,2025-12-02,ambiguous,True,en,P003 | P005 | P025 | P007 | P001,Corona | Goldstar | Bacardi Carta Blanca | Stella Artois | Carlsberg,P001,P003=7.0 | P005=4.0 | P025=0.9 | P007=2.0 | P001=9.0,P003=29.2 | P005=26.6 | P025=18.5 | P007=21.4 | P001=46.4
+SR000094,2025-12-03,good,False,en,P004 | P039 | P006 | P003,Guinness | House White Wine | Maccabee | Corona,,P004=2.0 | P039=2.2 | P006=4.0 | P003=7.0,P004=40.6 | P039=23.0 | P006=26.0 | P003=46.2
+SR000095,2025-12-04,ambiguous,True,he,P035 | P005 | K004 | P004,Cointreau | Goldstar | Malka 30L | Guinness,P035,P035=1.0 | P005=15.0 | K004=0.9 | P004=6.0,P035=9.2 | P005=56.6 | K004=4.3 | P004=34.6
+SR000096,2025-12-05,messy,False,he,P003 | P004 | P013 | P006,Corona | Guinness | Gordon's | Maccabee,,P003=9.0 | P004=4.0 | P013=2.1 | P006=8.0,P003=25.2 | P004=30.6 | P013=12.5 | P006=36.0
+SR000097,2025-12-06,messy,False,he,P002 | P004 | P011 | P033,Heineken | Guinness | Hendrick's | Aperol,,P002=7.0 | P004=5.0 | P011=0.9 | P033=2.7,P002=57.6 | P004=25.6 | P011=5.5 | P033=18.0
+SR000098,2025-12-07,messy,False,he,P007 | P006 | P038 | P003,Stella Artois | Maccabee | House Red Wine | Corona,,P007=4.0 | P006=2.0 | P038=1.2 | P003=3.0,P007=40.4 | P006=29.0 | P038=20.7 | P003=58.2
+SR000099,2025-12-08,good,False,he,P001 | P004 | P005 | P003,Carlsberg | Guinness | Goldstar | Corona,,P001=4.0 | P004=2.0 | P005=4.0 | P003=6.0,P001=54.4 | P004=20.6 | P005=50.6 | P003=52.2
+SR000100,2025-12-09,messy,False,en,P005 | P007 | P003,Goldstar | Stella Artois | Corona,,P005=2.0 | P007=2.0 | P003=4.0,P005=48.6 | P007=38.4 | P003=48.2
+SR000101,2025-12-10,messy,False,en,P005 | P003 | P033 | P031,Goldstar | Corona | Aperol | Patron Silver,,P005=5.0 | P003=3.0 | P033=1.5 | P031=1.0,P005=67.6 | P003=69.2 | P033=14.1 | P031=9.8
+SR000102,2025-12-11,messy,False,he,P013 | P031 | P007 | P005 | P002,Gordon's | Patron Silver | Stella Artois | Goldstar | Heineken,,P013=1.5 | P031=1.1 | P007=6.0 | P005=12.0 | P002=9.0,P013=17.5 | P031=8.7 | P007=51.4 | P005=55.6 | P002=54.6
+SR000103,2025-12-12,good,False,he,P031 | P014 | P039,Patron Silver | Absolut | House White Wine,,P031=2.3 | P014=2.7 | P039=4.9,P031=18.4 | P014=17.9 | P039=14.0
+SR000104,2025-12-13,good,False,he,P002 | P042 | P039 | P001,Heineken | Chardonnay | House White Wine | Carlsberg,,P002=11.0 | P042=0.8 | P039=3.2 | P001=13.0,P002=48.6 | P042=7.4 | P039=10.8 | P001=18.4
+SR000105,2025-12-14,good,False,en,P006 | P003 | P014 | P002,Maccabee | Corona | Absolut | Heineken,,P006=7.0 | P003=7.0 | P014=1.1 | P002=11.0,P006=23.0 | P003=58.2 | P014=15.5 | P002=37.6
+SR000106,2025-12-15,messy,False,en,P008 | P038 | P006 | P004,Erdinger | House Red Wine | Maccabee | Guinness,,P008=1.0 | P038=1.2 | P006=3.0 | P004=2.0,P008=18.2 | P038=7.5 | P006=20.0 | P004=16.6
+SR000107,2025-12-16,messy,False,en,P005 | P033 | P013 | P006 | P003,Goldstar | Aperol | Gordon's | Maccabee | Corona,,P005=6.0 | P033=1.9 | P013=1.4 | P006=6.0 | P003=7.0,P005=33.6 | P033=24.5 | P013=20.4 | P006=14.0 | P003=44.2
+SR000108,2025-12-17,good,False,en,P005 | P007 | P041 | P003,Goldstar | Stella Artois | Prosecco | Corona,,P005=4.0 | P007=5.0 | P041=2.2 | P003=8.0,P005=53.6 | P007=36.4 | P041=24.0 | P003=60.2
+SR000109,2025-12-18,good,False,en,P042 | P007 | P002 | P006 | P038,Chardonnay | Stella Artois | Heineken | Maccabee | House Red Wine,,P042=0.8 | P007=6.0 | P002=9.0 | P006=7.0 | P038=2.4,P042=16.4 | P007=30.4 | P002=58.6 | P006=27.0 | P038=14.1
+SR000110,2025-12-19,messy,False,en,P041 | P001 | P040 | P039 | P004,Prosecco | Carlsberg | Rose Wine | House White Wine | Guinness,,P041=5.7 | P001=20.0 | P040=1.8 | P039=4.1 | P004=6.0,P041=26.9 | P001=42.4 | P040=14.0 | P039=20.2 | P004=22.6
+SR000111,2025-12-20,good,False,he,P001 | P002 | P033,Carlsberg | Heineken | Aperol,,P001=19.0 | P002=15.0 | P033=3.6,P001=71.4 | P002=54.6 | P033=13.9
+SR000112,2025-12-21,messy,False,en,P006 | P001 | P003 | P004,Maccabee | Carlsberg | Corona | Guinness,,P006=5.0 | P001=8.0 | P003=6.0 | P004=3.0,P006=29.0 | P001=63.4 | P003=42.2 | P004=37.6
+SR000113,2025-12-22,good,False,en,P031 | P007 | P041 | P003,Patron Silver | Stella Artois | Prosecco | Corona,,P031=0.9 | P007=4.0 | P041=2.1 | P003=6.0,P031=5.5 | P007=26.4 | P041=14.5 | P003=36.2
+SR000114,2025-12-23,good,False,en,P001 | P005 | P003,Carlsberg | Goldstar | Corona,,P001=9.0 | P005=7.0 | P003=7.0,P001=45.4 | P005=41.6 | P003=29.2
+SR000115,2025-12-24,good,False,en,P004 | P039 | P003,Guinness | House White Wine | Corona,,P004=3.0 | P039=1.2 | P003=7.0,P004=30.6 | P039=22.4 | P003=46.2
+SR000116,2025-12-25,good,False,en,P006 | P007 | P041,Maccabee | Stella Artois | Prosecco,,P006=4.0 | P007=5.0 | P041=3.4,P006=40.0 | P007=37.4 | P041=18.9
+SR000117,2025-12-26,good,False,en,P002 | P001 | P003 | P025,Heineken | Carlsberg | Corona | Bacardi Carta Blanca,,P002=10.0 | P001=12.0 | P003=11.0 | P025=2.7,P002=31.6 | P001=60.4 | P003=28.2 | P025=16.8
+SR000118,2025-12-27,good,False,he,P005 | P008 | P031,Goldstar | Erdinger | Patron Silver,,P005=8.0 | P008=3.0 | P031=1.1,P005=56.6 | P008=35.2 | P031=12.8
+SR000119,2025-12-28,messy,False,en,P007 | P005 | P039 | P002 | P014,Stella Artois | Goldstar | House White Wine | Heineken | Absolut,,P007=7.0 | P005=9.0 | P039=2.2 | P002=9.0 | P014=0.9,P007=47.4 | P005=47.6 | P039=13.2 | P002=61.6 | P014=10.3
+SR000120,2025-12-29,good,False,he,P002 | P041 | P001 | P033,Heineken | Prosecco | Carlsberg | Aperol,,P002=3.0 | P041=2.1 | P001=8.0 | P033=1.3,P002=58.6 | P041=16.9 | P001=56.4 | P033=10.1
+SR000121,2025-12-30,messy,False,he,P006 | P002 | P001 | P008,Maccabee | Heineken | Carlsberg | Erdinger,,P006=3.0 | P002=4.0 | P001=9.0 | P008=1.0,P006=20.0 | P002=54.6 | P001=47.4 | P008=31.2
+SR000122,2025-12-31,messy,False,he,P013 | P008 | P003 | P014,Gordon's | Erdinger | Corona | Absolut,,P013=0.9 | P008=3.0 | P003=4.0 | P014=0.9,P013=11.6 | P008=28.2 | P003=59.2 | P014=19.7
+SR000123,2026-01-01,messy,False,he,P002 | P033 | P041 | P007,Heineken | Aperol | Prosecco | Stella Artois,,P002=9.0 | P033=1.3 | P041=2.0 | P007=7.0,P002=64.6 | P033=18.3 | P041=23.1 | P007=30.4
+SR000124,2026-01-02,good,False,he,P003 | P002 | P001 | P033,Corona | Heineken | Carlsberg | Aperol,,P003=5.0 | P002=5.0 | P001=8.0 | P033=1.3,P003=49.2 | P002=59.6 | P001=53.4 | P033=17.0
+SR000125,2026-01-03,good,False,en,P003 | P005 | P025 | P001,Corona | Goldstar | Bacardi Carta Blanca | Carlsberg,,P003=6.0 | P005=13.0 | P025=2.4 | P001=14.0,P003=67.2 | P005=62.6 | P025=16.0 | P001=63.4
+SR000126,2026-01-04,messy,False,en,P007 | P004 | P013 | P003 | P001,Stella Artois | Guinness | Gordon's | Corona | Carlsberg,,P007=3.0 | P004=2.0 | P013=0.9 | P003=7.0 | P001=8.0,P007=40.4 | P004=45.6 | P013=19.0 | P003=60.2 | P001=55.4
+SR000127,2026-01-05,messy,False,en,P008 | P003 | P006 | P001 | P041,Erdinger | Corona | Maccabee | Carlsberg | Prosecco,,P008=1.0 | P003=5.0 | P006=3.0 | P001=6.0 | P041=1.5,P008=20.2 | P003=55.2 | P006=23.0 | P001=49.4 | P041=25.6
+SR000128,2026-01-06,good,False,he,P006 | P002 | P001 | P007 | P004,Maccabee | Heineken | Carlsberg | Stella Artois | Guinness,,P006=2.0 | P002=4.0 | P001=2.0 | P007=5.0 | P004=3.0,P006=21.0 | P002=41.6 | P001=47.4 | P007=31.4 | P004=40.6
+SR000129,2026-01-07,good,False,en,P001 | P041 | P005 | P003,Carlsberg | Prosecco | Goldstar | Corona,,P001=8.0 | P041=2.8 | P005=7.0 | P003=3.0,P001=63.4 | P041=22.3 | P005=70.6 | P003=50.2
+SR000130,2026-01-08,messy,False,he,P006 | P003 | P002,Maccabee | Corona | Heineken,,P006=6.0 | P003=8.0 | P002=5.0,P006=35.0 | P003=42.2 | P002=55.6
+SR000131,2026-01-09,good,False,en,P014 | P006 | P005 | P007,Absolut | Maccabee | Goldstar | Stella Artois,,P014=1.1 | P006=4.0 | P005=7.0 | P007=5.0,P014=11.4 | P006=31.0 | P005=57.6 | P007=45.4
+SR000132,2026-01-10,good,False,en,P003 | P014 | P004,Corona | Absolut | Guinness,,P003=12.0 | P014=2.0 | P004=6.0,P003=48.2 | P014=9.4 | P004=27.6
+SR000133,2026-01-11,good,False,he,P025 | P002 | P041 | P003,Bacardi Carta Blanca | Heineken | Prosecco | Corona,,P025=0.9 | P002=6.0 | P041=2.1 | P003=5.0,P025=15.7 | P002=53.6 | P041=21.7 | P003=43.2
+SR000134,2026-01-12,good,False,en,P004 | P013 | P001,Guinness | Gordon's | Carlsberg,,P004=4.0 | P013=0.8 | P001=10.0,P004=22.6 | P013=10.0 | P001=42.4
+SR000135,2026-01-13,good,False,en,P006 | P041 | P039,Maccabee | Prosecco | House White Wine,,P006=2.0 | P041=1.8 | P039=1.5,P006=43.0 | P041=30.1 | P039=27.0
+SR000136,2026-01-14,messy,False,en,P033 | P013 | P004 | P003 | P041,Aperol | Gordon's | Guinness | Corona | Prosecco,,P033=0.9 | P013=0.9 | P004=3.0 | P003=2.0 | P041=1.5,P033=23.1 | P013=20.7 | P004=41.6 | P003=54.2 | P041=28.6
+SR000137,2026-01-15,messy,False,he,P025 | P008 | P041 | P005,Bacardi Carta Blanca | Erdinger | Prosecco | Goldstar,,P025=2.8 | P008=3.0 | P041=3.8 | P005=10.0,P025=22.7 | P008=22.2 | P041=24.8 | P005=21.6
+SR000138,2026-01-16,good,False,he,P005 | P038 | P039,Goldstar | House Red Wine | House White Wine,,P005=13.0 | P038=3.2 | P039=3.9,P005=32.6 | P038=22.6 | P039=19.2
+SR000139,2026-01-17,good,False,en,P013 | P001 | P004 | P039,Gordon's | Carlsberg | Guinness | House White Wine,,P013=2.5 | P001=12.0 | P004=5.0 | P039=2.7,P013=14.1 | P001=61.4 | P004=25.6 | P039=16.5
+SR000140,2026-01-18,messy,False,en,P004 | P001 | P039 | P008,Guinness | Carlsberg | House White Wine | Erdinger,,P004=3.0 | P001=6.0 | P039=1.2 | P008=1.0,P004=22.6 | P001=55.4 | P039=15.3 | P008=38.2
+SR000141,2026-01-19,messy,False,en,P005 | P003 | P007 | P001,Goldstar | Corona | Stella Artois | Carlsberg,,P005=5.0 | P003=3.0 | P007=5.0 | P001=5.0,P005=66.6 | P003=43.2 | P007=44.4 | P001=50.4
+SR000142,2026-01-20,good,False,en,P025 | P006 | P033,Bacardi Carta Blanca | Maccabee | Aperol,,P025=1.2 | P006=4.0 | P033=1.3,P025=24.8 | P006=39.0 | P033=22.9
+SR000143,2026-01-21,good,False,he,P041 | P007 | P001 | P002 | P039,Prosecco | Stella Artois | Carlsberg | Heineken | House White Wine,,P041=3.0 | P007=7.0 | P001=8.0 | P002=5.0 | P039=1.5,P041=18.9 | P007=35.4 | P001=62.4 | P002=64.6 | P039=23.1
+SR000144,2026-01-22,good,False,en,P007 | P005 | P033 | P041,Stella Artois | Goldstar | Aperol | Prosecco,,P007=5.0 | P005=7.0 | P033=1.6 | P041=2.3,P007=30.4 | P005=49.6 | P033=19.7 | P041=16.6
+SR000145,2026-01-23,messy,False,en,P004 | P003 | P005 | P006 | P013,Guinness | Corona | Goldstar | Maccabee | Gordon's,,P004=4.0 | P003=10.0 | P005=11.0 | P006=4.0 | P013=1.7,P004=33.6 | P003=43.2 | P005=38.6 | P006=28.0 | P013=20.3
+SR000146,2026-01-24,messy,False,en,P041 | P001 | P039 | P005,Prosecco | Carlsberg | House White Wine | Goldstar,,P041=2.8 | P001=10.0 | P039=2.2 | P005=8.0,P041=21.9 | P001=33.4 | P039=15.3 | P005=54.6
+SR000147,2026-01-25,ambiguous,True,en,P002 | P003 | P001 | P006,Heineken | Corona | Carlsberg | Maccabee,P001,P002=5.0 | P003=4.0 | P001=10.0 | P006=3.0,P002=57.6 | P003=57.2 | P001=71.4 | P006=45.0
+SR000148,2026-01-26,good,False,he,P033 | P002 | P001 | P013,Aperol | Heineken | Carlsberg | Gordon's,,P033=1.0 | P002=4.0 | P001=6.0 | P013=0.9,P033=13.0 | P002=53.6 | P001=65.4 | P013=16.5
+SR000149,2026-01-27,good,False,en,P002 | P007 | P005 | P003,Heineken | Stella Artois | Goldstar | Corona,,P002=2.0 | P007=6.0 | P005=2.0 | P003=4.0,P002=51.6 | P007=31.4 | P005=44.6 | P003=47.2
+SR000150,2026-01-28,good,False,he,P005 | P004 | P001 | P006,Goldstar | Guinness | Carlsberg | Maccabee,,P005=1.0 | P004=2.0 | P001=5.0 | P006=2.0,P005=67.6 | P004=45.6 | P001=75.4 | P006=39.0
+SR000151,2026-01-29,good,False,he,P040 | P006 | P038,Rose Wine | Maccabee | House Red Wine,,P040=0.8 | P006=4.0 | P038=1.2,P040=8.2 | P006=35.0 | P038=15.6
+SR000152,2026-01-30,good,False,en,P006 | P005 | P039,Maccabee | Goldstar | House White Wine,,P006=6.0 | P005=11.0 | P039=3.4,P006=29.0 | P005=51.6 | P039=15.3
+SR000153,2026-01-31,messy,False,he,P003 | P031 | P019 | P041,Corona | Patron Silver | Jameson | Prosecco,,P003=14.0 | P031=1.3 | P019=0.9 | P041=4.4,P003=60.2 | P031=14.7 | P019=9.7 | P041=14.7
+SR000154,2026-02-01,messy,False,en,P005 | P008 | P004 | P006,Goldstar | Erdinger | Guinness | Maccabee,,P005=6.0 | P008=2.0 | P004=3.0 | P006=4.0,P005=56.6 | P008=33.2 | P004=31.6 | P006=43.0
+SR000155,2026-02-02,ambiguous,True,he,P041 | P025 | P006,Prosecco | Bacardi Carta Blanca | Maccabee,P006,P041=2.8 | P025=1.8 | P006=3.0,P041=9.4 | P025=13.3 | P006=40.0
+SR000156,2026-02-03,good,False,en,P004 | P006 | P007 | P041,Guinness | Maccabee | Stella Artois | Prosecco,,P004=3.0 | P006=3.0 | P007=6.0 | P041=2.4,P004=26.6 | P006=37.0 | P007=13.4 | P041=31.0
+SR000157,2026-02-04,good,False,en,P004 | P005 | P001 | P041,Guinness | Goldstar | Carlsberg | Prosecco,,P004=2.0 | P005=4.0 | P001=6.0 | P041=1.0,P004=48.6 | P005=65.6 | P001=83.4 | P041=30.0
+SR000158,2026-02-05,good,False,he,P008 | P006 | P041,Erdinger | Maccabee | Prosecco,,P008=2.0 | P006=5.0 | P041=3.4,P008=28.2 | P006=29.0 | P041=26.6
+SR000159,2026-02-06,good,False,en,P040 | P007 | P003 | P038,Rose Wine | Stella Artois | Corona | House Red Wine,,P040=1.2 | P007=5.0 | P003=10.0 | P038=2.2,P040=13.4 | P007=55.4 | P003=47.2 | P038=23.7
+SR000160,2026-02-07,good,False,en,P003 | P008 | P002,Corona | Erdinger | Heineken,,P003=13.0 | P008=5.0 | P002=10.0,P003=58.2 | P008=19.2 | P002=64.6
+SR000161,2026-02-08,good,False,he,P040 | P008 | P041 | P025,Rose Wine | Erdinger | Prosecco | Bacardi Carta Blanca,,P040=0.8 | P008=2.0 | P041=3.1 | P025=2.0,P040=11.8 | P008=17.2 | P041=14.6 | P025=14.0
+SR000162,2026-02-09,messy,False,he,P007 | P033 | P041 | P039,Stella Artois | Aperol | Prosecco | House White Wine,,P007=3.0 | P033=1.7 | P041=2.6 | P039=1.7,P007=38.4 | P033=11.0 | P041=12.0 | P039=17.9
+SR000163,2026-02-10,ambiguous,True,he,P013 | P002 | P006 | P001,Gordon's | Heineken | Maccabee | Carlsberg,P013,P013=0.8 | P002=3.0 | P006=1.0 | P001=7.0,P013=21.2 | P002=48.6 | P006=36.0 | P001=41.4
+SR000164,2026-02-11,messy,False,he,P005 | P041 | P025 | P003,Goldstar | Prosecco | Bacardi Carta Blanca | Corona,,P005=5.0 | P041=2.4 | P025=1.4 | P003=5.0,P005=55.6 | P041=19.5 | P025=21.9 | P003=67.2
+SR000165,2026-02-12,good,False,he,P025 | P003 | P007 | P041,Bacardi Carta Blanca | Corona | Stella Artois | Prosecco,,P025=1.8 | P003=4.0 | P007=5.0 | P041=3.9,P025=20.1 | P003=63.2 | P007=50.4 | P041=15.5
+SR000166,2026-02-13,ambiguous,True,en,P006 | P011 | P033,Maccabee | Hendrick's | Aperol,P011,P006=6.0 | P011=0.9 | P033=2.6,P006=24.0 | P011=6.5 | P033=27.1
+SR000167,2026-02-14,good,False,he,P002 | P019 | P031,Heineken | Jameson | Patron Silver,,P002=12.0 | P019=0.9 | P031=2.0,P002=61.6 | P019=13.5 | P031=11.3
+SR000168,2026-02-15,ambiguous,True,en,P031 | P008 | P007,Patron Silver | Erdinger | Stella Artois,P008,P031=1.0 | P008=2.0 | P007=4.0,P031=10.3 | P008=51.2 | P007=31.4
+SR000169,2026-02-16,ambiguous,True,he,P007 | P039 | P003 | P004,Stella Artois | House White Wine | Corona | Guinness,P003,P007=2.0 | P039=2.0 | P003=3.0 | P004=1.0,P007=29.4 | P039=15.0 | P003=38.2 | P004=29.6
+SR000170,2026-02-17,good,False,en,P014 | P025 | P005,Absolut | Bacardi Carta Blanca | Goldstar,,P014=1.0 | P025=2.2 | P005=6.0,P014=18.2 | P025=21.4 | P005=31.6
+SR000171,2026-02-18,good,False,en,P039 | P008 | P040 | P013,House White Wine | Erdinger | Rose Wine | Gordon's,,P039=2.2 | P008=1.0 | P040=1.0 | P013=1.1,P039=22.8 | P008=46.2 | P040=16.6 | P013=10.1
+SR000172,2026-02-19,ambiguous,True,he,P006 | P002 | P003 | P041,Maccabee | Heineken | Corona | Prosecco,P003,P006=2.0 | P002=8.0 | P003=6.0 | P041=3.4,P006=52.0 | P002=63.6 | P003=48.2 | P041=20.5
+SR000173,2026-02-20,good,False,en,P003 | P038 | P025 | P031 | P008,Corona | House Red Wine | Bacardi Carta Blanca | Patron Silver | Erdinger,,P003=9.0 | P038=2.7 | P025=2.9 | P031=2.1 | P008=3.0,P003=39.2 | P038=21.4 | P025=15.8 | P031=17.5 | P008=40.2
+SR000174,2026-02-21,messy,False,he,P007 | P039 | P031 | P006 | P002,Stella Artois | House White Wine | Patron Silver | Maccabee | Heineken,,P007=8.0 | P039=2.2 | P031=1.5 | P006=7.0 | P002=10.0,P007=46.4 | P039=14.8 | P031=16.0 | P006=36.0 | P002=41.6
+SR000175,2026-02-22,good,False,he,P006 | P005 | P004 | P039,Maccabee | Goldstar | Guinness | House White Wine,,P006=3.0 | P005=6.0 | P004=3.0 | P039=1.7,P006=33.0 | P005=64.6 | P004=34.6 | P039=13.1
+SR000176,2026-02-23,messy,False,he,P008 | P001 | P004,Erdinger | Carlsberg | Guinness,,P008=2.0 | P001=7.0 | P004=3.0,P008=33.2 | P001=60.4 | P004=31.6
+SR000177,2026-02-24,good,False,he,P007 | P004 | P008 | P006,Stella Artois | Guinness | Erdinger | Maccabee,,P007=2.0 | P004=1.0 | P008=2.0 | P006=2.0,P007=36.4 | P004=30.6 | P008=31.2 | P006=29.0
+SR000178,2026-02-25,good,False,en,P001 | P041 | P007 | P003,Carlsberg | Prosecco | Stella Artois | Corona,,P001=9.0 | P041=2.2 | P007=3.0 | P003=6.0,P001=67.4 | P041=28.7 | P007=57.4 | P003=68.2
+SR000179,2026-02-26,good,False,en,P041 | P039 | P007,Prosecco | House White Wine | Stella Artois,,P041=2.7 | P039=2.0 | P007=4.0,P041=26.0 | P039=19.0 | P007=53.4
+SR000180,2026-02-27,good,False,en,P033 | P006 | P003 | P001,Aperol | Maccabee | Corona | Carlsberg,,P033=1.6 | P006=6.0 | P003=8.0 | P001=11.0,P033=16.4 | P006=38.0 | P003=53.2 | P001=47.4
+SR000181,2026-02-28,good,False,en,P005 | P014 | P003,Goldstar | Absolut | Corona,,P005=9.0 | P014=1.8 | P003=8.0,P005=51.6 | P014=16.5 | P003=45.2
+SR000182,2026-03-01,ambiguous,True,en,P025 | P038 | P013 | P033 | P001,Bacardi Carta Blanca | House Red Wine | Gordon's | Aperol | Carlsberg,P025,P025=1.4 | P038=1.2 | P013=0.9 | P033=1.1 | P001=8.0,P025=10.4 | P038=17.5 | P013=6.7 | P033=12.7 | P001=50.4
+SR000183,2026-03-02,messy,False,he,P004 | P001 | P003 | P005 | P008,Guinness | Carlsberg | Corona | Goldstar | Erdinger,,P004=3.0 | P001=9.0 | P003=6.0 | P005=7.0 | P008=2.0,P004=34.6 | P001=41.4 | P003=34.2 | P005=40.6 | P008=15.2
+SR000184,2026-03-03,messy,False,en,P006 | P005 | P003 | P001,Maccabee | Goldstar | Corona | Carlsberg,,P006=2.0 | P005=4.0 | P003=5.0 | P001=5.0,P006=27.0 | P005=36.6 | P003=29.2 | P001=36.4
+SR000185,2026-03-04,good,False,en,P001 | P002 | P039,Carlsberg | Heineken | House White Wine,,P001=15.0 | P002=8.0 | P039=2.4,P001=69.4 | P002=71.6 | P039=5.6
+SR000186,2026-03-05,good,False,he,P033 | P006 | P003 | P001 | P007,Aperol | Maccabee | Corona | Carlsberg | Stella Artois,,P033=2.6 | P006=6.0 | P003=10.0 | P001=14.0 | P007=5.0,P033=17.7 | P006=38.0 | P003=34.2 | P001=55.4 | P007=45.4
+SR000187,2026-03-06,good,False,he,P002 | P004 | P035 | P007 | P013,Heineken | Guinness | Cointreau | Stella Artois | Gordon's,,P002=16.0 | P004=6.0 | P035=0.8 | P007=9.0 | P013=1.8,P002=46.6 | P004=18.6 | P035=10.4 | P007=36.4 | P013=11.5
+SR000188,2026-03-07,good,False,en,P014 | P033 | P031 | P001,Absolut | Aperol | Patron Silver | Carlsberg,,P014=1.7 | P033=2.8 | P031=1.9 | P001=16.0,P014=8.0 | P033=11.5 | P031=12.8 | P001=67.4
+SR000189,2026-03-08,good,False,he,P008 | P007 | P038 | P005,Erdinger | Stella Artois | House Red Wine | Goldstar,,P008=2.0 | P007=2.0 | P038=2.0 | P005=6.0,P008=22.2 | P007=24.4 | P038=11.5 | P005=55.6
+SR000190,2026-03-09,messy,False,he,P004 | P003 | P033 | P001,Guinness | Corona | Aperol | Carlsberg,,P004=2.0 | P003=5.0 | P033=1.3 | P001=7.0,P004=31.6 | P003=52.2 | P033=9.1 | P001=53.4
+SR000191,2026-03-10,good,False,he,P005 | P039 | P004 | P014,Goldstar | House White Wine | Guinness | Absolut,,P005=6.0 | P039=1.7 | P004=3.0 | P014=0.9,P005=44.6 | P039=17.4 | P004=28.6 | P014=18.3
+SR000192,2026-03-11,messy,False,en,P004 | P031 | P006,Guinness | Patron Silver | Maccabee,,P004=6.0 | P031=0.8 | P006=5.0,P004=22.6 | P031=10.1 | P006=35.0
+SR000193,2026-03-12,good,False,en,P001 | P005 | P033 | P003,Carlsberg | Goldstar | Aperol | Corona,,P001=13.0 | P005=9.0 | P033=3.0 | P003=12.0,P001=49.4 | P005=54.6 | P033=15.1 | P003=51.2
+SR000194,2026-03-13,good,False,en,P001 | P002 | P038,Carlsberg | Heineken | House Red Wine,,P001=20.0 | P002=10.0 | P038=2.2,P001=29.4 | P002=36.6 | P038=24.7
+SR000195,2026-03-14,messy,False,en,P038 | P002 | P005 | P006,House Red Wine | Heineken | Goldstar | Maccabee,,P038=2.7 | P002=13.0 | P005=14.0 | P006=6.0,P038=22.1 | P002=47.6 | P005=54.6 | P006=44.0
+SR000196,2026-03-15,good,False,en,P001 | P007 | P003,Carlsberg | Stella Artois | Corona,,P001=9.0 | P007=3.0 | P003=3.0,P001=54.4 | P007=37.4 | P003=52.2
+SR000197,2026-03-16,messy,False,en,P001 | P004 | P006 | P008 | P005,Carlsberg | Guinness | Maccabee | Erdinger | Goldstar,,P001=2.0 | P004=2.0 | P006=2.0 | P008=2.0 | P005=3.0,P001=52.4 | P004=32.6 | P006=38.0 | P008=27.2 | P005=46.6
+SR000198,2026-03-17,good,False,en,P002 | P003 | P001 | P041,Heineken | Corona | Carlsberg | Prosecco,,P002=9.0 | P003=4.0 | P001=5.0 | P041=2.8,P002=27.6 | P003=42.2 | P001=47.4 | P041=29.0
+SR000199,2026-03-18,messy,False,he,P033 | P001 | P005 | K003 | P038,Aperol | Carlsberg | Goldstar | Carlsberg 30L | House Red Wine,,P033=2.2 | P001=11.0 | P005=8.0 | K003=0.9 | P038=2.7,P033=16.4 | P001=60.4 | P005=57.6 | K003=5.8 | P038=15.7
+SR000200,2026-03-19,good,False,en,P004 | P039 | P038 | P001 | P025,Guinness | House White Wine | House Red Wine | Carlsberg | Bacardi Carta Blanca,,P004=1.0 | P039=1.5 | P038=1.7 | P001=9.0 | P025=1.5,P004=24.6 | P039=21.3 | P038=14.0 | P001=51.4 | P025=12.1
+SR000201,2026-03-20,messy,False,he,P013 | P001 | P008 | P002,Gordon's | Carlsberg | Erdinger | Heineken,,P013=1.4 | P001=10.0 | P008=3.0 | P002=9.0,P013=15.5 | P001=41.4 | P008=17.2 | P002=48.6
+SR000202,2026-03-21,messy,False,en,P005 | P003 | P013 | P004,Goldstar | Corona | Gordon's | Guinness,,P005=11.0 | P003=6.0 | P013=1.2 | P004=4.0,P005=60.6 | P003=36.2 | P013=14.3 | P004=41.6
+SR000203,2026-03-22,messy,False,en,P008 | P006 | P041,Erdinger | Maccabee | Prosecco,,P008=2.0 | P006=2.0 | P041=1.7,P008=36.2 | P006=39.0 | P041=16.8
+SR000204,2026-03-23,good,False,en,P038 | P007 | P003 | P004,House Red Wine | Stella Artois | Corona | Guinness,,P038=1.5 | P007=3.0 | P003=4.0 | P004=1.0,P038=19.4 | P007=48.4 | P003=27.2 | P004=37.6
+SR000205,2026-03-24,good,False,he,P004 | P013 | P014 | P039,Guinness | Gordon's | Absolut | House White Wine,,P004=3.0 | P013=1.1 | P014=0.9 | P039=2.0,P004=34.6 | P013=11.8 | P014=15.4 | P039=24.6
+SR000206,2026-03-25,good,False,he,P003 | P033 | P005,Corona | Aperol | Goldstar,,P003=7.0 | P033=0.9 | P005=7.0,P003=64.2 | P033=20.3 | P005=64.6
+SR000207,2026-03-26,messy,False,he,P001 | P025 | P007 | P005 | P004,Carlsberg | Bacardi Carta Blanca | Stella Artois | Goldstar | Guinness,,P001=7.0 | P025=1.9 | P007=6.0 | P005=8.0 | P004=2.0,P001=69.4 | P025=13.6 | P007=35.4 | P005=56.6 | P004=28.6
+SR000208,2026-03-27,messy,False,he,P041 | P007 | P001 | P014,Prosecco | Stella Artois | Carlsberg | Absolut,,P041=6.4 | P007=11.0 | P001=21.0 | P014=2.4,P041=27.3 | P007=24.4 | P001=48.4 | P014=10.4
+SR000209,2026-03-28,messy,False,en,P019 | P025 | P001 | P020,Jameson | Bacardi Carta Blanca | Carlsberg | Jack Daniel's,,P019=1.5 | P025=4.7 | P001=24.0 | P020=1.2,P019=26.2 | P025=5.1 | P001=48.4 | P020=14.2
+SR000210,2026-03-29,good,False,he,P001 | P007 | P003,Carlsberg | Stella Artois | Corona,,P001=3.0 | P007=4.0 | P003=6.0,P001=45.4 | P007=32.4 | P003=45.2
+SR000211,2026-03-30,good,False,en,P001 | P008 | P005 | P002,Carlsberg | Erdinger | Goldstar | Heineken,,P001=7.0 | P008=2.0 | P005=5.0 | P002=10.0,P001=38.4 | P008=15.2 | P005=35.6 | P002=29.6
+SR000212,2026-03-31,good,False,en,P007 | P003 | P033,Stella Artois | Corona | Aperol,,P007=4.0 | P003=5.0 | P033=1.5,P007=24.4 | P003=37.2 | P033=18.2
+SR000213,2026-04-01,good,False,en,P005 | P008 | P033 | P038,Goldstar | Erdinger | Aperol | House Red Wine,,P005=8.0 | P008=3.0 | P033=2.5 | P038=2.2,P005=71.6 | P008=34.2 | P033=15.7 | P038=21.9
+SR000214,2026-04-02,messy,False,en,P001 | P025 | P042,Carlsberg | Bacardi Carta Blanca | Chardonnay,,P001=20.0 | P025=4.1 | P042=1.0,P001=48.4 | P025=18.7 | P042=12.2
+SR000215,2026-04-03,messy,False,he,P037 | P033 | P039 | P038 | P005,Martini Rosso | Aperol | House White Wine | House Red Wine | Goldstar,,P037=0.9 | P033=3.3 | P039=5.1 | P038=4.4 | P005=15.0,P037=11.0 | P033=20.4 | P039=18.8 | P038=14.4 | P005=42.6
+SR000216,2026-04-04,messy,False,en,P005 | K005 | P001 | P007 | P003,Goldstar | Weihenstephan 30L | Carlsberg | Stella Artois | Corona,,P005=12.0 | K005=0.8 | P001=18.0 | P007=11.0 | P003=15.0,P005=54.6 | K005=3.7 | P001=61.4 | P007=33.4 | P003=37.2
+SR000217,2026-04-05,good,False,he,P001 | P003 | P041 | P002,Carlsberg | Corona | Prosecco | Heineken,,P001=9.0 | P003=9.0 | P041=3.3 | P002=6.0,P001=52.4 | P003=28.2 | P041=12.2 | P002=60.6
+SR000218,2026-04-06,messy,False,he,P005 | P003 | P033 | P004,Goldstar | Corona | Aperol | Guinness,,P005=11.0 | P003=9.0 | P033=2.7 | P004=4.0,P005=33.6 | P003=19.2 | P033=12.1 | P004=24.6
+SR000219,2026-04-07,good,False,he,P004 | P006 | P008 | P033 | P001,Guinness | Maccabee | Erdinger | Aperol | Carlsberg,,P004=3.0 | P006=4.0 | P008=2.0 | P033=1.2 | P001=8.0,P004=21.6 | P006=29.0 | P008=10.2 | P033=22.9 | P001=35.4
+SR000220,2026-04-08,good,False,en,P001 | P041 | P039 | P005,Carlsberg | Prosecco | House White Wine | Goldstar,,P001=6.0 | P041=3.1 | P039=2.4 | P005=8.0,P001=77.4 | P041=27.3 | P039=16.9 | P005=66.6
+SR000221,2026-04-09,messy,False,he,P040 | P005 | P006 | K003,Rose Wine | Goldstar | Maccabee | Carlsberg 30L,,P040=1.8 | P005=17.0 | P006=9.0 | K003=1.2,P040=16.8 | P005=49.6 | P006=41.0 | K003=4.7
+SR000222,2026-04-10,messy,False,he,P002 | P034 | P038,Heineken | Campari | House Red Wine,,P002=11.0 | P034=0.8 | P038=2.4,P002=36.6 | P034=10.1 | P038=21.5
+SR000223,2026-04-11,ambiguous,True,he,P042 | P003 | P008 | P006,Chardonnay | Corona | Erdinger | Maccabee,P006,P042=1.2 | P003=18.0 | P008=7.0 | P006=10.0,P042=5.4 | P003=36.2 | P008=16.2 | P006=26.0
+SR000224,2026-04-12,good,False,he,P039 | P003 | P006,House White Wine | Corona | Maccabee,,P039=1.7 | P003=8.0 | P006=5.0,P039=15.0 | P003=28.2 | P006=21.0
+SR000225,2026-04-13,good,False,en,P033 | P003 | P039,Aperol | Corona | House White Wine,,P033=2.3 | P003=6.0 | P039=2.0,P033=5.2 | P003=22.2 | P039=13.0
+SR000226,2026-04-14,messy,False,en,P002 | P041 | P001,Heineken | Prosecco | Carlsberg,,P002=8.0 | P041=3.2 | P001=8.0,P002=22.6 | P041=23.1 | P001=48.4
+SR000227,2026-04-15,ambiguous,True,en,P014 | P002 | P004 | P003 | P005,Absolut | Heineken | Guinness | Corona | Goldstar,P014,P014=1.3 | P002=9.0 | P004=3.0 | P003=8.0 | P005=6.0,P014=14.6 | P002=61.6 | P004=35.6 | P003=57.2 | P005=62.6
+SR000228,2026-04-16,messy,False,he,P003 | K003 | P002,Corona | Carlsberg 30L | Heineken,,P003=15.0 | K003=1.3 | P002=15.0,P003=42.2 | K003=5.1 | P002=46.6
+SR000229,2026-04-17,messy,False,he,P025 | P033 | P006 | P001,Bacardi Carta Blanca | Aperol | Maccabee | Carlsberg,,P025=3.7 | P033=4.3 | P006=9.0 | P001=19.0,P025=13.7 | P033=17.5 | P006=15.0 | P001=6.4
+SR000230,2026-04-18,messy,False,he,P025 | P034 | P031 | P004,Bacardi Carta Blanca | Campari | Patron Silver | Guinness,,P025=2.9 | P034=0.9 | P031=1.8 | P004=6.0,P025=10.8 | P034=2.9 | P031=8.8 | P004=41.6
+SR000231,2026-04-19,ambiguous,True,en,P003 | P039 | P004 | P038,Corona | House White Wine | Guinness | House Red Wine,P004,P003=6.0 | P039=1.7 | P004=3.0 | P038=2.2,P003=37.2 | P039=6.7 | P004=38.6 | P038=10.6
+SR000232,2026-04-20,good,False,he,P039 | P033 | P002 | P007,House White Wine | Aperol | Heineken | Stella Artois,,P039=1.7 | P033=1.5 | P002=2.0 | P007=5.0,P039=17.0 | P033=11.0 | P002=9.6 | P007=25.4
+SR000233,2026-04-21,good,False,en,P003 | P039 | P005,Corona | House White Wine | Goldstar,,P003=7.0 | P039=2.2 | P005=9.0,P003=23.2 | P039=26.8 | P005=45.6
+SR000234,2026-04-22,messy,False,he,P038 | P013 | P003 | P002,House Red Wine | Gordon's | Corona | Heineken,,P038=2.0 | P013=1.8 | P003=7.0 | P002=9.0,P038=16.3 | P013=16.2 | P003=64.2 | P002=61.6
+SR000235,2026-04-23,messy,False,he,P006 | P040 | P031 | P004,Maccabee | Rose Wine | Patron Silver | Guinness,,P006=5.0 | P040=1.2 | P031=1.3 | P004=4.0,P006=33.0 | P040=13.0 | P031=15.7 | P004=22.6
+SR000236,2026-04-24,messy,False,en,P006 | P007 | P008 | P005 | P025,Maccabee | Stella Artois | Erdinger | Goldstar | Bacardi Carta Blanca,,P006=7.0 | P007=7.0 | P008=4.0 | P005=9.0 | P025=2.7,P006=26.0 | P007=24.4 | P008=25.2 | P005=37.6 | P025=22.1
+SR000237,2026-04-25,good,False,he,P039 | P005 | P041 | P007,House White Wine | Goldstar | Prosecco | Stella Artois,,P039=4.4 | P005=15.0 | P041=5.5 | P007=10.0,P039=13.9 | P005=46.6 | P041=23.5 | P007=38.4
+SR000238,2026-04-26,messy,False,he,P008 | P007 | P004,Erdinger | Stella Artois | Guinness,,P008=3.0 | P007=4.0 | P004=3.0,P008=16.2 | P007=34.4 | P004=31.6
+SR000239,2026-04-27,messy,False,he,P005 | P001 | P002 | P033 | P039,Goldstar | Carlsberg | Heineken | Aperol | House White Wine,,P005=7.0 | P001=10.0 | P002=10.0 | P033=1.9 | P039=2.2,P005=35.6 | P001=38.4 | P002=34.6 | P033=17.8 | P039=10.5
+SR000240,2026-04-28,good,False,he,P006 | P005 | P001 | P039,Maccabee | Goldstar | Carlsberg | House White Wine,,P006=4.0 | P005=7.0 | P001=8.0 | P039=2.2,P006=29.0 | P005=28.6 | P001=30.4 | P039=20.3
+SR000241,2026-04-29,messy,False,he,P002 | P005 | P001 | P040 | P025,Heineken | Goldstar | Carlsberg | Rose Wine | Bacardi Carta Blanca,,P002=6.0 | P005=8.0 | P001=7.0 | P040=0.8 | P025=2.0,P002=71.6 | P005=68.6 | P001=71.4 | P040=18.6 | P025=23.4
+SR000242,2026-04-30,messy,False,he,P005 | P004 | P014 | P002,Goldstar | Guinness | Absolut | Heineken,,P005=13.0 | P004=5.0 | P014=1.2 | P002=6.0,P005=55.6 | P004=40.6 | P014=16.0 | P002=65.6
+SR000243,2026-05-01,good,False,en,P031 | P025 | P019 | P005,Patron Silver | Bacardi Carta Blanca | Jameson | Goldstar,,P031=2.8 | P025=6.4 | P019=1.6 | P005=22.0,P031=16.6 | P025=14.7 | P019=13.9 | P005=33.6
+SR000244,2026-05-02,good,False,he,P001 | P038 | P003,Carlsberg | House Red Wine | Corona,,P001=15.0 | P038=2.7 | P003=9.0,P001=67.4 | P038=14.4 | P003=50.2
+SR000245,2026-05-03,good,False,he,P008 | P003 | P019 | P005,Erdinger | Corona | Jameson | Goldstar,,P008=4.0 | P003=9.0 | P019=0.9 | P005=9.0,P008=15.2 | P003=41.2 | P019=12.3 | P005=35.6
+SR000246,2026-05-04,good,False,he,P038 | P001 | P006 | P014,House Red Wine | Carlsberg | Maccabee | Absolut,,P038=1.5 | P001=8.0 | P006=3.0 | P014=0.8,P038=11.0 | P001=50.4 | P006=22.0 | P014=9.2
+SR000247,2026-05-05,good,False,he,P006 | P002 | P001 | P007 | P003,Maccabee | Heineken | Carlsberg | Stella Artois | Corona,,P006=3.0 | P002=9.0 | P001=9.0 | P007=4.0 | P003=6.0,P006=19.0 | P002=39.6 | P001=41.4 | P007=28.4 | P003=31.2
+SR000248,2026-05-06,good,False,en,P006 | P003 | P013,Maccabee | Corona | Gordon's,,P006=3.0 | P003=4.0 | P013=1.0,P006=40.0 | P003=51.2 | P013=16.9
+SR000249,2026-05-07,messy,False,en,P003 | P002 | P007 | P004 | P040,Corona | Heineken | Stella Artois | Guinness | Rose Wine,,P003=10.0 | P002=9.0 | P007=6.0 | P004=5.0 | P040=1.0,P003=41.2 | P002=48.6 | P007=40.4 | P004=35.6 | P040=10.8
+SR000250,2026-05-08,messy,False,he,P013 | P006 | P020 | P005,Gordon's | Maccabee | Jack Daniel's | Goldstar,,P013=2.9 | P006=9.0 | P020=1.1 | P005=14.0,P013=12.1 | P006=26.0 | P020=11.1 | P005=35.6
+SR000251,2026-05-09,good,False,he,P006 | P031 | P007 | P008,Maccabee | Patron Silver | Stella Artois | Erdinger,,P006=6.0 | P031=1.9 | P007=9.0 | P008=5.0,P006=44.0 | P031=6.2 | P007=46.4 | P008=20.2
+SR000252,2026-05-10,good,False,he,P033 | P038 | P003,Aperol | House Red Wine | Corona,,P033=2.1 | P038=1.7 | P003=6.0,P033=11.0 | P038=8.8 | P003=40.2
+SR000253,2026-05-11,messy,False,he,P039 | P005 | P002 | P025,House White Wine | Goldstar | Heineken | Bacardi Carta Blanca,,P039=2.0 | P005=5.0 | P002=7.0 | P025=1.7,P039=7.4 | P005=32.6 | P002=30.6 | P025=13.4
+SR000254,2026-05-12,messy,False,he,P001 | P006 | P031 | P003 | P038,Carlsberg | Maccabee | Patron Silver | Corona | House Red Wine,,P001=11.0 | P006=3.0 | P031=0.8 | P003=3.0 | P038=1.7,P001=35.4 | P006=34.0 | P031=15.4 | P003=34.2 | P038=18.1
+SR000255,2026-05-13,good,False,he,P004 | P025 | P008 | P041 | P005,Guinness | Bacardi Carta Blanca | Erdinger | Prosecco | Goldstar,,P004=1.0 | P025=1.4 | P008=2.0 | P041=1.7 | P005=5.0,P004=36.6 | P025=22.9 | P008=35.2 | P041=24.5 | P005=24.6
+SR000256,2026-05-14,good,False,he,P005 | P001 | P039 | P025,Goldstar | Carlsberg | House White Wine | Bacardi Carta Blanca,,P005=13.0 | P001=10.0 | P039=2.0 | P025=2.1,P005=59.6 | P001=68.4 | P039=13.6 | P025=20.8
+SR000257,2026-05-15,good,False,en,P008 | P025 | P042 | P037,Erdinger | Bacardi Carta Blanca | Chardonnay | Martini Rosso,,P008=5.0 | P025=5.2 | P042=1.4 | P037=1.1,P008=27.2 | P025=15.6 | P042=7.8 | P037=13.3
+SR000258,2026-05-16,messy,False,he,P003 | P025 | P002,Corona | Bacardi Carta Blanca | Heineken,,P003=11.0 | P025=2.7 | P002=14.0,P003=44.2 | P025=12.9 | P002=47.6
+SR000259,2026-05-17,messy,False,en,P033 | P013 | P007,Aperol | Gordon's | Stella Artois,,P033=1.8 | P013=1.7 | P007=6.0,P033=7.3 | P013=7.4 | P007=41.4
+SR000260,2026-05-18,good,False,he,P001 | P002 | P006,Carlsberg | Heineken | Maccabee,,P001=8.0 | P002=6.0 | P006=3.0,P001=56.4 | P002=33.6 | P006=27.0
+SR000261,2026-05-19,good,False,he,P039 | P005 | P004 | P001 | P041,House White Wine | Goldstar | Guinness | Carlsberg | Prosecco,,P039=2.0 | P005=3.0 | P004=3.0 | P001=5.0 | P041=1.5,P039=22.5 | P005=36.6 | P004=31.6 | P001=51.4 | P041=25.6
+SR000262,2026-05-20,good,False,en,P002 | P005 | P007 | P008,Heineken | Goldstar | Stella Artois | Erdinger,,P002=8.0 | P005=9.0 | P007=3.0 | P008=4.0,P002=70.6 | P005=51.6 | P007=55.4 | P008=36.2
+SR000263,2026-05-21,messy,False,en,P038 | P001 | P025 | P008,House Red Wine | Carlsberg | Bacardi Carta Blanca | Erdinger,,P038=2.9 | P001=18.0 | P025=3.4 | P008=5.0,P038=21.4 | P001=48.4 | P025=14.8 | P008=31.2
+SR000264,2026-05-22,ambiguous,True,he,P004 | P002 | P006 | P008 | K003,Guinness | Heineken | Maccabee | Erdinger | Carlsberg 30L,P002,P004=8.0 | P002=21.0 | P006=14.0 | P008=7.0 | K003=1.7,P004=14.6 | P002=39.6 | P006=24.0 | P008=24.2 | K003=3.6
+SR000265,2026-05-23,ambiguous,True,en,P014 | P002 | P005 | P003,Absolut | Heineken | Goldstar | Corona,P003,P014=3.2 | P002=17.0 | P005=18.0 | P003=19.0,P014=13.3 | P002=46.6 | P005=45.6 | P003=39.2
+SR000266,2026-05-24,good,False,he,P013 | P039 | P003,Gordon's | House White Wine | Corona,,P013=1.5 | P039=1.5 | P003=3.0,P013=4.7 | P039=16.4 | P003=36.2
+SR000267,2026-05-25,good,False,en,P008 | P033 | P025,Erdinger | Aperol | Bacardi Carta Blanca,,P008=2.0 | P033=1.2 | P025=1.8,P008=15.2 | P033=11.9 | P025=12.3
+SR000268,2026-05-26,messy,False,he,P031 | P040 | P005 | P025 | P007,Patron Silver | Rose Wine | Goldstar | Bacardi Carta Blanca | Stella Artois,,P031=1.1 | P040=0.8 | P005=9.0 | P025=1.2 | P007=6.0,P031=18.5 | P040=14.0 | P005=24.6 | P025=23.1 | P007=27.4
+SR000269,2026-05-27,good,False,en,P004 | P003 | P006 | P007,Guinness | Corona | Maccabee | Stella Artois,,P004=3.0 | P003=5.0 | P006=3.0 | P007=5.0,P004=19.6 | P003=68.2 | P006=45.0 | P007=46.4
+SR000270,2026-05-28,messy,False,en,P013 | P025 | P005,Gordon's | Bacardi Carta Blanca | Goldstar,,P013=1.4 | P025=1.8 | P005=8.0,P013=11.7 | P025=20.0 | P005=58.6
+SR000271,2026-05-29,good,False,he,P014 | P007 | K005 | P004 | P039,Absolut | Stella Artois | Weihenstephan 30L | Guinness | House White Wine,,P014=2.3 | P007=13.0 | K005=0.9 | P004=6.0 | P039=5.4,P014=17.6 | P007=29.4 | K005=1.8 | P004=9.6 | P039=14.5
+SR000272,2026-05-30,messy,False,he,P042 | P008 | P002 | P007,Chardonnay | Erdinger | Heineken | Stella Artois,,P042=1.0 | P008=5.0 | P002=14.0 | P007=11.0,P042=10.2 | P008=22.2 | P002=56.6 | P007=42.4
+SR000273,2026-05-31,good,False,he,P004 | P001 | P003 | P040 | P005,Guinness | Carlsberg | Corona | Rose Wine | Goldstar,,P004=3.0 | P001=9.0 | P003=8.0 | P040=0.8 | P005=7.0,P004=48.6 | P001=50.4 | P003=49.2 | P040=8.8 | P005=41.6
+SR000274,2026-06-01,messy,False,he,P031 | P002 | P003 | P004 | P007,Patron Silver | Heineken | Corona | Guinness | Stella Artois,,P031=1.0 | P002=5.0 | P003=4.0 | P004=2.0 | P007=5.0,P031=9.8 | P002=48.6 | P003=45.2 | P004=46.6 | P007=35.4
+SR000275,2026-06-02,good,False,en,P040 | P001 | P008 | P025,Rose Wine | Carlsberg | Erdinger | Bacardi Carta Blanca,,P040=0.8 | P001=6.0 | P008=2.0 | P025=1.3,P040=19.4 | P001=33.4 | P008=19.2 | P025=20.4
+SR000276,2026-06-03,good,False,he,P002 | P041 | P001 | P008,Heineken | Prosecco | Carlsberg | Erdinger,,P002=12.0 | P041=3.0 | P001=11.0 | P008=2.0,P002=54.6 | P041=28.0 | P001=70.4 | P008=41.2
+SR000277,2026-06-04,good,False,en,P001 | P025 | P005 | P013,Carlsberg | Bacardi Carta Blanca | Goldstar | Gordon's,,P001=14.0 | P025=3.3 | P005=13.0 | P013=2.4,P001=56.4 | P025=15.3 | P005=57.6 | P013=11.0
+SR000278,2026-06-05,messy,False,he,P036 | P005 | P006,Kahlua | Goldstar | Maccabee,,P036=1.0 | P005=15.0 | P006=7.0,P036=13.8 | P005=42.6 | P006=18.0
+SR000279,2026-06-06,good,False,he,P013 | P042 | P025 | P008,Gordon's | Chardonnay | Bacardi Carta Blanca | Erdinger,,P013=2.2 | P042=0.8 | P025=3.2 | P008=5.0,P013=18.0 | P042=6.4 | P025=20.1 | P008=27.2
+SR000280,2026-06-07,messy,False,he,P040 | P025 | P002 | P001 | P004,Rose Wine | Bacardi Carta Blanca | Heineken | Carlsberg | Guinness,,P040=1.0 | P025=1.3 | P002=8.0 | P001=6.0 | P004=3.0,P040=12.8 | P025=18.7 | P002=48.6 | P001=63.4 | P004=20.6
+SR000281,2026-06-08,messy,False,en,P001 | P004 | P014 | P041 | P025,Carlsberg | Guinness | Absolut | Prosecco | Bacardi Carta Blanca,,P001=8.0 | P004=2.0 | P014=1.1 | P041=2.0 | P025=1.5,P001=55.4 | P004=18.6 | P014=3.5 | P041=20.7 | P025=17.2
+SR000282,2026-06-09,messy,False,en,P008 | P006 | P040,Erdinger | Maccabee | Rose Wine,,P008=3.0 | P006=5.0 | P040=1.2,P008=20.2 | P006=25.0 | P040=11.0
+SR000283,2026-06-10,messy,False,he,P004 | P039 | P005 | P007 | P013,Guinness | House White Wine | Goldstar | Stella Artois | Gordon's,,P004=3.0 | P039=2.0 | P005=8.0 | P007=5.0 | P013=1.0,P004=35.6 | P039=21.7 | P005=24.6 | P007=50.4 | P013=13.3
+SR000284,2026-06-11,good,False,he,P006 | P031 | P008 | P013,Maccabee | Patron Silver | Erdinger | Gordon's,,P006=6.0 | P031=1.5 | P008=3.0 | P013=1.6,P006=39.0 | P031=9.6 | P008=38.2 | P013=11.8
+SR000285,2026-06-12,good,False,en,P002 | P019 | P041 | P033,Heineken | Jameson | Prosecco | Aperol,,P002=15.0 | P019=1.0 | P041=5.2 | P033=3.2,P002=28.6 | P019=5.9 | P041=18.9 | P033=21.0
+SR000286,2026-06-13,ambiguous,True,en,P013 | P025 | K001,Gordon's | Bacardi Carta Blanca | Carlsberg 50L,P025,P013=2.2 | P025=3.7 | K001=0.9,P013=6.6 | P025=15.1 | K001=4.4
+SR000287,2026-06-14,good,False,he,P041 | P005 | P002,Prosecco | Goldstar | Heineken,,P041=3.0 | P005=10.0 | P002=8.0,P041=9.7 | P005=52.6 | P002=4.6
+SR000288,2026-06-15,good,False,en,P031 | P033 | P001 | P007,Patron Silver | Aperol | Carlsberg | Stella Artois,,P031=1.6 | P033=3.3 | P001=17.0 | P007=7.0,P031=1.4 | P033=11.8 | P001=31.4 | P007=34.4
+SR000289,2026-06-16,good,False,he,P003 | P006 | P001 | P019,Corona | Maccabee | Carlsberg | Jameson,,P003=12.0 | P006=7.0 | P001=15.0 | P019=0.9,P003=11.2 | P006=29.0 | P001=16.4 | P019=14.6
+SR000290,2026-06-17,messy,False,he,P041 | P031 | P014,Prosecco | Patron Silver | Absolut,,P041=4.7 | P031=2.0 | P014=2.5,P041=19.1 | P031=9.4 | P014=9.7
+SR000291,2026-06-18,good,False,he,P041 | P002 | K003 | P003,Prosecco | Heineken | Carlsberg 30L | Corona,,P041=4.0 | P002=8.0 | K003=0.8 | P003=7.0,P041=15.2 | P002=56.6 | K003=5.3 | P003=42.2
+SR000292,2026-06-19,messy,False,en,P007 | P004 | P039 | P014,Stella Artois | Guinness | House White Wine | Absolut,,P007=9.0 | P004=5.0 | P039=3.4 | P014=2.0,P007=22.4 | P004=16.6 | P039=17.6 | P014=17.4
+SR000293,2026-06-20,good,False,en,P004 | P041 | P006 | P003,Guinness | Prosecco | Maccabee | Corona,,P004=6.0 | P041=5.6 | P006=10.0 | P003=12.0,P004=34.6 | P041=16.3 | P006=46.0 | P003=42.2

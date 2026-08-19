@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-08-19T14:46:21",
+  "generated_at": "2026-08-19T18:17:17",
   "simulation_window": [
     "2025-09-01",
     "2026-06-20"
   ],
   "anchor": "2026-06-14T18:00:00",
   "random_seed": 20260614,
-  "weather_loaded": false,
-  "holidays_loaded": false,
+  "weather_loaded": true,
+  "holidays_loaded": true,
   "provenance": {
     "simulated": [
       "products (extended)",
@@ -37,13 +37,15 @@
     "cocktail_recipes.csv": 27,
     "staff.csv": 7,
     "staff_schedule.csv": 1132,
-    "sales.csv": 17521,
+    "sales.csv": 17559,
     "inventory_counts.csv": 5063,
-    "orders.csv": 1993,
-    "reservations.csv": 2056,
+    "orders.csv": 2058,
+    "reservations.csv": 2104,
     "shift_reports.csv": 293,
     "whatsapp_messages.csv": 69,
-    "broadcasts.csv": 25
+    "broadcasts.csv": 25,
+    "weather.csv": 293,
+    "holidays.csv": 50
   },
   "ground_truth_rows": {
     "true_inventory.csv": 17873,
@@ -51,7 +53,7 @@
     "incident_events.csv": 54,
     "shift_report_truth.csv": 293,
     "daily_demand.csv": 293,
-    "deliveries_received.csv": 1992,
+    "deliveries_received.csv": 2056,
     "incidents.csv": 22,
     "anchor_discrepancies.csv": 61
   }

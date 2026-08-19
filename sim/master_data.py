@@ -14,7 +14,9 @@ from pathlib import Path
 
 from . import config as C
 
-SOURCE_PRODUCTS = Path("/mnt/project/products.csv")
+# The original 55-SKU course catalogue, not the enriched 61-SKU file the build
+# emits to data/public. Reading the output here would make the build circular.
+SOURCE_PRODUCTS = Path(__file__).resolve().parent.parent / "data" / "source" / "products.csv"
 
 # ------------------------------------------------------------------ suppliers
 # Delivery days and order minimums follow RAG-003. Telephone numbers from the

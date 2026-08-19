@@ -1,0 +1,56 @@
+product_id,name,category,unit,unit_cost,unit_price
+P001,Carlsberg,beer,bottle,5.0,24
+P002,Heineken,beer,bottle,5.5,25
+P003,Corona,beer,bottle,6.0,27
+P004,Guinness,beer,bottle,7.0,29
+P005,Goldstar,beer,bottle,4.5,23
+P006,Maccabee,beer,bottle,4.5,23
+P007,Stella Artois,beer,bottle,5.5,26
+P008,Erdinger,beer,bottle,7.0,29
+P009,Bombay Sapphire,gin,bottle,75.0,240
+P010,Tanqueray,gin,bottle,82.0,260
+P011,Hendrick's,gin,bottle,125.0,350
+P012,Beefeater,gin,bottle,68.0,230
+P013,Gordon's,gin,bottle,55.0,200
+P014,Absolut,vodka,bottle,65.0,220
+P015,Finlandia,vodka,bottle,60.0,210
+P016,Grey Goose,vodka,bottle,130.0,390
+P017,Belvedere,vodka,bottle,125.0,380
+P018,Stolichnaya,vodka,bottle,60.0,210
+P019,Jameson,whiskey,bottle,80.0,250
+P020,Jack Daniel's,whiskey,bottle,85.0,270
+P021,Johnnie Walker Black,whiskey,bottle,105.0,320
+P022,Chivas Regal,whiskey,bottle,100.0,310
+P023,Maker's Mark,whiskey,bottle,110.0,330
+P024,Glenfiddich 12,whiskey,bottle,145.0,420
+P025,Bacardi Carta Blanca,rum,bottle,60.0,210
+P026,Havana Club 3,rum,bottle,70.0,230
+P027,Captain Morgan,rum,bottle,65.0,220
+P028,Diplomatico Reserva,rum,bottle,145.0,390
+P029,Jose Cuervo,tequila,bottle,72.0,240
+P030,Olmeca Blanco,tequila,bottle,70.0,235
+P031,Patron Silver,tequila,bottle,160.0,450
+P032,Don Julio Blanco,tequila,bottle,180.0,480
+P033,Aperol,aperitif,bottle,62.0,210
+P034,Campari,aperitif,bottle,70.0,220
+P035,Cointreau,liqueur,bottle,95.0,290
+P036,Kahlua,liqueur,bottle,75.0,250
+P037,Martini Rosso,vermouth,bottle,45.0,170
+P038,House Red Wine,wine,bottle,38.0,140
+P039,House White Wine,wine,bottle,38.0,140
+P040,Rose Wine,wine,bottle,40.0,145
+P041,Prosecco,wine,bottle,45.0,160
+P042,Chardonnay,wine,bottle,55.0,180
+P043,Coca-Cola,soft_drink,bottle,3.0,14
+P044,Coca-Cola Zero,soft_drink,bottle,3.0,14
+P045,Sprite,soft_drink,bottle,3.0,14
+P046,Tonic Water,soft_drink,bottle,3.0,14
+P047,Soda Water,soft_drink,bottle,2.5,12
+P048,Red Bull,soft_drink,can,5.5,20
+P049,Ginger Beer,soft_drink,bottle,4.0,16
+P050,Orange Juice,juice,liter,8.0,0
+P051,Cranberry Juice,juice,liter,9.0,0
+P052,Lime Juice,juice,liter,10.0,0
+P053,Lemon Juice,juice,liter,9.0,0
+P054,Sugar Syrup,cocktail_ingredient,liter,6.0,0
+P055,Fresh Mint,cocktail_ingredient,bunch,4.0,0
