@@ -1,6 +1,6 @@
 # BarMate Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> Work this plan task by task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Build and deploy an autonomous bar operations agent that answers plain-language questions by choosing its own data sources, reconciling books against human reports, and refusing to act beyond its authority.
 
@@ -8,7 +8,7 @@
 
 **Tech Stack:** Python 3.12, Flask, Vercel serverless, LLMod.ai (`MB5R2CF-azure/gpt-5.4-mini`, `MB5R2CF-azure/text-embedding-3-small`), pytest. Stdlib only in the request path.
 
-**Read first:** `docs/specs/2026-08-19-barmate-design.md`, `CLAUDE.md`, `data/DATASET.md`.
+**Read first:** `docs/specs/2026-08-19-barmate-design.md`, `README.md`, `data/DATASET.md`.
 
 ---
 
@@ -1884,13 +1884,8 @@ Everything else has complete code.
 
 ## Execution handoff
 
-Plan complete. Two execution options:
-
-**1. Subagent-driven (recommended).** A fresh subagent per task with review
-between tasks. Best fit here because Tasks 2 to 5 are genuinely independent and
-map cleanly onto three people.
-
-**2. Inline execution.** Work the tasks in one session with checkpoints.
+Plan complete. Tasks 2 to 5 are genuinely independent and map cleanly onto
+three people, with review between tasks.
 
 Suggested split across the team: Guy on Phase 2 (the agent loop and reflect
 gate, Tasks 6 to 9), Reut on Phase 1 tools (Tasks 2 to 5), Yuval on Phase 3
