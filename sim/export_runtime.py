@@ -64,7 +64,12 @@ def build():
     counts = [r for r in read("inventory_counts.csv") if r["date"] < ANCHOR_DATE]
     orders = [r for r in read("orders.csv") if r["order_date"] < ANCHOR_DATE]
     reports = [r for r in read("shift_reports.csv") if r["date"] < ANCHOR_DATE]
-    chat = [r for r in read("whatsapp_messages.csv") if r["timestamp"] <= ANCHOR_TS]
+    # incident_id is dropped, not merely ignored. It labels which messages
+    # correspond to a planted incident, so shipping it would let an agent list
+    # every incident with a filter instead of by reading the chat. That is the
+    # thing GT005 to GT008 are meant to measure.
+    chat = [{k: v for k, v in r.items() if k != "incident_id"}
+            for r in read("whatsapp_messages.csv") if r["timestamp"] <= ANCHOR_TS]
 
     # Reservations and the rota are FORWARD-LOOKING. A booking for next Friday is
     # known today, so a horizon of upcoming days is legitimately visible. Sales
