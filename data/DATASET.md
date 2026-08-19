@@ -193,6 +193,13 @@ catalogue.
   `fetch_external.py` pulled 293 days of ERA5 weather and 50 holiday days, and
   every figure in this document reflects that. Re-running the fetch and build
   will move the numbers again, so do it before final evaluation, not after.
+  Both now ship in the runtime bundle as well as the database. Neither is cut
+  at the anchor: holidays are published years ahead, and the weather archive
+  runs to 2026-06-20, six days past it, which is what a forecast would
+  legitimately give a manager standing at the pass on Sunday evening. The
+  holiday table ends at Shavuot on 2026-05-23, so nothing in the forecast
+  horizon triggers the 1.3x rule and the tool reports that rather than
+  assuming it either way.
 - **Event multipliers apply only to the four dates with real broadcast data.**
   The rest of the calendar runs at 1.0. This means the 1.5x football uplift is a
   policy rule from RAG-004, not a coefficient estimated from history, and the

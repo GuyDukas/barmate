@@ -136,6 +136,17 @@ def build():
         "shift_reports": reports,
         "whatsapp": chat,
         "knowledge": knowledge,
+        # Both are external signals about the world rather than records of the
+        # venue's trading, so neither is cut at the anchor. Holidays are
+        # published years ahead and weather runs six days past the anchor,
+        # which is what a forecast would legitimately give a manager standing
+        # at the pass on Sunday evening. They ship because the database
+        # carries them: a tool that reads a table in production and raises
+        # KeyError under test is worse than one that cannot read it at all.
+        "holidays": numeric(read("holidays.csv"), []),
+        "weather": numeric(read("weather.csv"),
+                           ["temperature_2m_max", "temperature_2m_min",
+                            "precipitation_sum", "wind_speed_10m_max"]),
     }
 
     RUNTIME.mkdir(parents=True, exist_ok=True)

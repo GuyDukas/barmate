@@ -61,7 +61,7 @@ def _anchor_date():
     return data.anchor_date()
 
 
-def _serving_ml(p):
+def serving_ml(p):
     """Millilitres one POS unit takes off the shelf."""
     if p["category"] == "draught_beer":
         return 330.0
@@ -111,7 +111,7 @@ def _pos_units(mv, start, end):
     """Units the POS accounts for between two dates, exclusive at both ends."""
     p = mv["product"]
     unit_ml = float(p["volume_ml"] or 1000)
-    serving = _serving_ml(p)
+    serving = serving_ml(p)
     used = 0.0
     for s in mv["sales"]:
         if not start < s["date"] < end:

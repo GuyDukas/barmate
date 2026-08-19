@@ -19,6 +19,11 @@ from app import data
 
 TIMEOUT = 20
 
+# PostgREST's default ceiling on an unbounded select, and the page size used
+# to read past it.
+PAGE = 1000
+MAX_ROWS = 50000
+
 # One connection pool per warm instance. A single reconciliation makes six or
 # more selects, and without a session each pays its own DNS lookup, TCP
 # handshake and TLS negotiation.
@@ -36,6 +41,8 @@ _FLAT = {
     "shift_reports": "shift_reports",
     "whatsapp_messages": "whatsapp",
     "knowledge": "knowledge",
+    "holidays": "holidays",
+    "weather": "weather",
 }
 
 # Bundle keys grouped by a column, flattened when read as a table.
@@ -90,6 +97,28 @@ def select(table, columns="*", order=None, limit=None, **filters):
         params["limit"] = limit
 
     url = f"{os.environ['SUPABASE_URL'].rstrip('/')}/rest/v1/{table}"
+    if limit:
+        return _get(url, params)
+
+    # PostgREST answers an unbounded select with at most PAGE rows and no
+    # error of any kind, so a table larger than that comes back quietly
+    # truncated. Reservations alone hold nearly two thousand rows. Paging is
+    # safe without an explicit order here because every table is seeded once
+    # and never written to again.
+    rows, offset = [], 0
+    while True:
+        page = _get(url, {**params, "limit": PAGE, "offset": offset})
+        rows += page
+        if len(page) < PAGE:
+            return rows
+        offset += PAGE
+        if offset >= MAX_ROWS:
+            raise RuntimeError(
+                f"select on '{table}' passed {MAX_ROWS} rows; refusing to page "
+                "further rather than return a partial table as if complete")
+
+
+def _get(url, params):
     response = _session.get(
         url, headers=_headers(), params=urllib.parse.urlencode(params, safe=".,*()"),
         timeout=TIMEOUT,
