@@ -153,3 +153,31 @@ def test_find_discrepancies_separates_logged_losses_from_the_blind_spot():
     assert {"K003", "P043", "P016"} <= logged
     assert r["unverified_since"] == "2026-06-10"
     assert r["note"]
+
+
+def test_the_envelope_says_why_a_line_is_wide():
+    """GT006. The agent asked for House White Wine's variance, got 4.2, and
+    correctly concluded it was not theft -- but could not say why the tolerance
+    is so wide, because nothing told it. The envelope knows: this is a
+    happy-hour line, and RAG-005 is the document that explains it."""
+    wine = inventory.variance_envelope("P039")
+    assert wine["happy_hour_line"] is True
+    assert "RAG-005" in wine["explanation_docs"]
+
+    gin = inventory.variance_envelope("P010")
+    assert gin["happy_hour_line"] is False
+    assert gin["explanation_docs"] == []
+
+
+def test_stock_position_names_the_protocol_that_widens_the_line():
+    """GT006. Every stock question goes through get_inventory, and the agent
+    kept concluding 'possible mismatch' on House White Wine without ever
+    reaching the document that explains why that line runs short. The fact is
+    a property of the product and costs nothing to carry."""
+    wine = inventory.get_inventory("P039")
+    assert wine["happy_hour_line"] is True
+    assert "RAG-005" in wine["explanation_docs"]
+
+    gin = inventory.get_inventory("P010")
+    assert gin["happy_hour_line"] is False
+    assert gin["explanation_docs"] == []

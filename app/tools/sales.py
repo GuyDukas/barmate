@@ -301,3 +301,71 @@ def forecast_reorder(product_id, horizon_days=3, weeks=DEFAULT_WEEKS):
                "reaching the books, so the position above is optimistic. "
                "Recount before acting on it." if disputed else "")),
     }
+
+
+def forecast_category(category, horizon_days=3, weeks=DEFAULT_WEEKS):
+    """Every product in a category, forecast in one call.
+
+    A question about beer is one question. Answering it a product at a time
+    costs the agent an iteration per SKU, and on a thirteen-product shelf it
+    runs out of turns and answers on a third of the stock.
+
+    The per-product arithmetic is identical to forecast_reorder; what is added
+    is the roll-up a person actually asked for -- what to order, from which
+    supplier, and which lines cannot be trusted without a recount.
+    """
+    from app.tools.catalog import resolve_category
+
+    found = resolve_category(category)
+    if not found["found"]:
+        return {"ok": False, "category": category,
+                "error": f"'{category}' is not a product category here",
+                "available_categories": found["available_categories"]}
+
+    rows, disputed, unconfirmed = [], [], False
+    coverage_end = bookings_end = None
+    for p in found["products"]:
+        r = forecast_reorder(p["product_id"], horizon_days=horizon_days, weeks=weeks)
+        if not r["ok"]:
+            continue
+        coverage_end = r["broadcast_coverage_ends"]
+        bookings_end = r["bookings_known_through"]
+        unconfirmed = unconfirmed or r["horizon_partially_unconfirmed"]
+        if r["stock_position_disputed"]:
+            disputed.append(r["product_id"])
+        rows.append({k: r[k] for k in (
+            "product_id", "name", "unit", "book_stock", "safety_stock",
+            "below_safety_stock", "gross_need", "units_already_ordered",
+            "net_need", "recommended_order", "supplier_id", "supplier_minimum",
+            "supplier_minimum_basis", "count_is_stale", "stock_position_disputed")})
+
+    rows.sort(key=lambda r: -r["net_need"])
+
+    # A result that quietly covers half the shelf is worse than one that says
+    # so. "Beer" at a venue with draught lines is two categories, and a
+    # weekend order built on the bottles alone leaves out the five kegs.
+    missing = found.get("related_categories") or []
+
+    return {
+        "ok": True,
+        "category": found["did_you_mean"] or category,
+        "incomplete": bool(missing),
+        "missing_categories": missing,
+        "horizon_days": horizon_days,
+        "products": rows,
+        "to_order": [r for r in rows if r["recommended_order"]],
+        "below_safety_stock": [r["product_id"] for r in rows if r["below_safety_stock"]],
+        "disputed": disputed,
+        "broadcast_coverage_ends": coverage_end,
+        "bookings_known_through": bookings_end,
+        "horizon_partially_unconfirmed": unconfirmed,
+        "multiplier_source": "RAG-004",
+        "note": ("Recommendation only. BarMate cannot place or transmit orders."
+                 + (f" This covers '{found['did_you_mean'] or category}' only; "
+                    f"{', '.join(missing)} holds further products of the same "
+                    "kind and is NOT included here. Call forecast_category "
+                    "again for it before answering." if missing else "")
+                 + (f" Stock was reported leaving {', '.join(disputed)} since the "
+                    "last count without reaching the books; recount those before "
+                    "acting." if disputed else "")),
+    }

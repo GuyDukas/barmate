@@ -21,6 +21,7 @@ TOOLS = {
     "find_discrepancies": inventory.find_discrepancies,
     "get_sales_history": sales.get_sales_history,
     "forecast_reorder": sales.forecast_reorder,
+    "forecast_category": sales.forecast_category,
     "get_context": context.get_context,
     "get_shift_reports": human.get_shift_reports,
     "get_chat": human.get_chat,
@@ -35,8 +36,10 @@ SCHEMAS = {
         "product the venue does not carry. Resolve a name to a product_id before "
         "asking anything else about it; never invent an id.",
     "resolve_category":
-        "resolve_category(category: str) -> every product in a category, e.g. "
-        "'gin', 'draught_beer', 'wine', 'soft_drink'.",
+        "resolve_category(category: str) -> every product in a category, and "
+        "the list of categories when the name misses. Beer sits in two of "
+        "them: 'beer' is bottles, 'draught_beer' is the five kegs. A question "
+        "about beer at a venue with draught lines means both.",
     "get_inventory":
         "get_inventory(product_id: str) -> book stock at the anchor, the last "
         "physical count and its date, days since that count and whether it is "
@@ -67,6 +70,11 @@ SCHEMAS = {
         "-> demand over the horizon with the RAG-004 multipliers applied, minus "
         "stock on hand and orders already in flight, rounded to the supplier "
         "minimum. Recommendation only: BarMate cannot place or transmit orders.",
+    "forecast_category":
+        "forecast_category(category: str, horizon_days: int = 3) -> the same "
+        "forecast for every product in a category at once, sorted by need, with "
+        "the lines whose stock position is disputed called out. Use this rather "
+        "than forecasting a shelf one SKU at a time.",
     "get_context":
         "get_context(date_from: str, date_to: str) -> per day: real broadcast "
         "listings with source URLs, confirmed bookings and covers, weather and "

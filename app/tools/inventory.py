@@ -44,6 +44,16 @@ SPIRIT_CATS = {"gin", "vodka", "whiskey", "rum", "tequila",
 # off, and a wrong guess here dismisses real shrinkage as protocol.
 WELL_POUR = {"P013", "P025", "P029"}  # Gordon's, Bacardi Carta Blanca, Jose Cuervo
 
+# RAG-005 words the rule as "draught beers and house spirits", which reads as
+# excluding the house wines. It does not: they are the house pour by the glass
+# and the venue runs them on the same 1+1. The tool says so rather than leaving
+# a caller to adjudicate the manual's wording against the stock behaviour.
+HAPPY_HOUR_NOTE = (
+    "Physical depletion doubles between 18:00 and 20:30 while the till rings "
+    "single (RAG-005). The manual words this as draught beers and house "
+    "spirits; the house wines are on the same 1+1 and behave the same way, "
+    "which is why this line's ordinary variation is wide.")
+
 # Words that turn a mention into a report of stock leaving unbooked: something
 # spilled, dropped, broken, comped, walked off, swapped out or short-delivered.
 LOSS_WORDS = ("פחת", "נפל", "נשבר",
@@ -151,6 +161,11 @@ def get_inventory(product_id, _mv=None):
     book = last["reported_stock"] + invoiced - sold
     days = (_anchor_date() - datetime.date.fromisoformat(last["date"])).days
 
+    # Carried on every stock position because it changes how the figure should
+    # be read. On a happy-hour line the shelf runs ahead of the till by design,
+    # and a caller who does not know that reads an ordinary evening as a loss.
+    happy_hour = _is_happy_hour_line(p)
+
     return {
         "ok": True,
         "product_id": product_id,
@@ -170,6 +185,9 @@ def get_inventory(product_id, _mv=None):
         "below_safety_stock": book < float(p["safety_stock"]),
         "days_since_count": days,
         "count_is_stale": days > STALE_AFTER_DAYS,
+        "happy_hour_line": happy_hour,
+        "explanation_docs": ["RAG-005"] if happy_hour else [],
+        "happy_hour_note": HAPPY_HOUR_NOTE if happy_hour else None,
     }
 
 
@@ -209,6 +227,11 @@ def variance_envelope(product_id, _mv=None):
                     - _pos_units(mv, prev["date"], curr["date"]))
         residuals.append(abs(expected - curr["reported_stock"]))
 
+    # Why the tolerance is what it is. Without this the caller can report that
+    # a gap is within normal variation but not say what makes this line's
+    # normal so much wider than a shelf gin's.
+    happy_hour = _is_happy_hour_line(mv["product"])
+
     return {
         "ok": True,
         "product_id": product_id,
@@ -217,6 +240,11 @@ def variance_envelope(product_id, _mv=None):
         "envelope": round(max(_percentile(residuals, 0.90), MIN_ENVELOPE), 2),
         "basis": "90th percentile of the gap between consecutive physical "
                  "counts and what the books predicted for them",
+        "happy_hour_line": happy_hour,
+        "explanation_docs": ["RAG-005"] if happy_hour else [],
+        "note": (HAPPY_HOUR_NOTE if happy_hour else
+                 "No protocol widens this line; its variation is ordinary "
+                 "counting error."),
     }
 
 

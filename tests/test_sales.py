@@ -148,3 +148,47 @@ def test_an_undisputed_line_carries_no_such_warning():
     quiet = sales.forecast_reorder("P010", horizon_days=1)
     assert quiet["stock_position_disputed"] is False
     assert quiet["reports_since_count"] == []
+
+
+def test_a_category_forecast_covers_every_product_in_one_call():
+    """GT003. Asked how much beer to order, the agent forecast five of the
+    thirteen beer SKUs one call at a time, ran out of iterations and answered
+    on a third of the shelf. A category is one question and should cost one
+    call."""
+    r = sales.forecast_category("draught_beer", horizon_days=3)
+    assert r["ok"] is True
+    assert len(r["products"]) == 5
+    assert {p["product_id"] for p in r["products"]} == {"K001", "K002", "K003",
+                                                        "K004", "K005"}
+    assert all("recommended_order" in p for p in r["products"])
+    assert r["broadcast_coverage_ends"] == "2026-06-17"
+
+
+def test_a_category_forecast_surfaces_the_disputed_lines():
+    r = sales.forecast_category("draught_beer", horizon_days=1)
+    assert "K003" in r["disputed"]
+
+
+def test_an_unknown_category_forecast_says_so():
+    r = sales.forecast_category("cheese")
+    assert r["ok"] is False
+    assert "available_categories" in r
+
+
+def test_a_bottle_only_beer_forecast_declares_what_it_left_out():
+    """The agent resolved 'beer', forecast the eight bottles and answered a
+    weekend order question without the five kegs -- most of what a bar with
+    draught lines actually sells. A hint at resolve time was ignored; a warning
+    inside the result it just read is harder to miss."""
+    r = sales.forecast_category("beer")
+    assert r["incomplete"] is True
+    assert "draught_beer" in r["missing_categories"]
+    assert "draught_beer" in r["note"]
+
+    kegs = sales.forecast_category("draught_beer")
+    assert kegs["incomplete"] is True
+    assert "beer" in kegs["missing_categories"]
+
+    gin = sales.forecast_category("gin")
+    assert gin["incomplete"] is False
+    assert gin["missing_categories"] == []

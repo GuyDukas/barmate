@@ -65,10 +65,18 @@ def resolve_category(category):
             suggestion = near[0]
             hits = [p for p in products if p["category"] == suggestion]
 
+    # Beer is one word and two categories here. An agent asked how much beer to
+    # order that resolves 'beer' alone forecasts the bottles and silently
+    # ignores five kegs, which is most of what a bar with draught lines sells.
+    resolved = suggestion or (c if hits else None)
+    related = sorted({"beer", "draught_beer"} - {resolved}) if resolved in (
+        "beer", "draught_beer") else []
+
     return {
         "category": category,
         "found": bool(hits),
         "did_you_mean": suggestion,
+        "related_categories": related,
         "available_categories": available,
         "products": [{"product_id": p["product_id"], "name": p["name"],
                       "safety_stock": p["safety_stock"]} for p in hits],
