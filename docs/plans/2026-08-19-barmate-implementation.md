@@ -189,7 +189,7 @@ carry is correct behaviour, and GT009 tests it.
 - Create: `app/tools/catalog.py`
 - Create: `tests/test_catalog.py`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```python
 # tests/test_catalog.py
@@ -221,12 +221,12 @@ def test_category_lookup():
     assert len(r["products"]) == 5
 ```
 
-- [ ] **Step 2: Run it, verify it fails**
+- [x] **Step 2: Run it, verify it fails**
 
 Run: `pytest tests/test_catalog.py -v`
 Expected: FAIL, `ModuleNotFoundError`
 
-- [ ] **Step 3: Implement `app/tools/catalog.py`**
+- [x] **Step 3: Implement `app/tools/catalog.py`**
 
 ```python
 """Catalogue lookup. Never guesses: an unrecognised name comes back as
@@ -272,12 +272,12 @@ def resolve_category(category):
          "safety_stock": p["safety_stock"]} for p in hits]}
 ```
 
-- [ ] **Step 4: Run tests, verify they pass**
+- [x] **Step 4: Run tests, verify they pass**
 
 Run: `pytest tests/test_catalog.py -v`
 Expected: 5 passed
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add app/tools/catalog.py tests/test_catalog.py
