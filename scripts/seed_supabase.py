@@ -80,6 +80,9 @@ NUMERIC = {
     "quantity", "party_size", "temperature_2m_max", "temperature_2m_min",
     "precipitation_sum", "wind_speed_10m_max",
 }
+# Declared integer in the schema, so a float would be rejected outright:
+# Postgres will not accept 6.0 for an integer column.
+INTEGER = {"party_size"}
 BOOLEAN = {"is_draught", "is_live", "yomtov"}
 TRUE = {"1", "true", "yes", "y", "t"}
 
@@ -116,6 +119,11 @@ def coerce(row, drop):
             out[column] = None
         elif column in BOOLEAN:
             out[column] = value.lower() in TRUE
+        elif column in INTEGER:
+            try:
+                out[column] = int(float(value))
+            except ValueError:
+                out[column] = None
         elif column in NUMERIC:
             try:
                 out[column] = float(value)
@@ -174,6 +182,29 @@ def read_knowledge():
     return docs
 
 
+CLEAR_COLUMN = {
+    "suppliers": "supplier_id", "products": "product_id", "staff": "staff_id",
+    "cocktails": "cocktail_id", "cocktail_recipes": "cocktail_id",
+    "sales": "sale_id", "inventory_counts": "count_id", "orders": "order_id",
+    "reservations": "reservation_id", "staff_schedule": "schedule_id",
+    "shift_reports": "report_id", "whatsapp_messages": "id",
+    "broadcasts": "id", "weather": "date", "holidays": "date",
+    "knowledge": "doc_id",
+}
+
+
+def clear(url, key, tables):
+    """Empty the tables so seeding is idempotent. Children first: orders and
+    counts carry foreign keys into products, which cannot be emptied first."""
+    for table in reversed(tables):
+        column = CLEAR_COLUMN[table]
+        r = requests.delete(f"{url}/rest/v1/{table}",
+                            params={column: "not.is.null"},
+                            headers=headers(key, "return=minimal"), timeout=TIMEOUT)
+        if r.status_code >= 400:
+            sys.exit(f"clearing {table}: HTTP {r.status_code}\n{r.text[:400]}")
+
+
 def insert(url, key, table, rows):
     endpoint = f"{url}/rest/v1/{table}"
     for start in range(0, len(rows), BATCH):
@@ -209,6 +240,9 @@ def main():
         print(f"  {'knowledge':<20} {count(url, key, 'knowledge')}\n")
         return 0
 
+    names = [t[0] for t in TABLES] + ["knowledge"]
+    print("\n  clearing existing rows...")
+    clear(url, key, names)
     print()
     total, total_cut = 0, 0
     for table, filename, cutoff, mode, drop in TABLES:
