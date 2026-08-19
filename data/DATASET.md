@@ -113,9 +113,15 @@ This is not only a realism point. A flat noise floor of plus or minus two units
 would bury a dropped bottle and a walkout below the detection threshold, making
 those incidents unfindable by any agent however good. Measured at the anchor:
 
-- median gap across all 61 products: **0.00 units**
-- largest gap among unaffected control products: **0.29 units**
-- smallest planted signal: **0.52 units**
+- median gap across all 61 products: **0.01 units**
+- largest gap among unaffected control products: **0.43 units** (Jose Cuervo)
+- smallest planted signal: **0.51 units** (Johnnie Walker Black)
+
+Those last two were 0.29 and 0.52 before the weather multipliers were switched
+on. Higher throughput lifts the noise floor, and the separation is now 0.08
+units rather than 0.23. Detection still works, but a materiality threshold
+hardcoded near 0.5 would now sit inside the noise. Derive it from the count
+distribution rather than picking a constant.
 
 ## Planted incidents
 
@@ -132,11 +138,11 @@ Headline cases at the anchor:
 
 | Incident | Product | Book | Physical | Gap | Mentioned by anyone? |
 |---|---|---|---|---|---|
-| INC-041 | Bombay Sapphire | 14.22 | 0.00 | 14.22 | No |
-| INC-050 | Carlsberg 30L | 6.96 | 1.15 kegs | 5.81 | Chat only |
-| INC-048 | Coca-Cola | 244.78 | 220.90 | 23.88 | Chat only |
-| INC-044 | Havana Club | 10.60 | 9.60 | 1.00 | No |
-| INC-043 | Grey Goose | 13.77 | 12.77 | 1.00 | Chat only |
+| INC-041 | Bombay Sapphire | 6.95 | 0.00 | 6.95 | No |
+| INC-050 | Carlsberg 30L | 6.08 | 1.15 kegs | 4.93 | Chat only |
+| INC-048 | Coca-Cola | 245.50 | 221.50 | 24.00 | Chat only |
+| INC-044 | Havana Club | 6.49 | 5.49 | 1.00 | No |
+| INC-043 | Grey Goose | 6.91 | 5.91 | 1.00 | Chat only |
 
 The logged-versus-unlogged column is the point. Distinguishing a loss someone
 mentioned from one nobody did is RAG-013's reconciliation matrix, and it cannot
@@ -144,7 +150,7 @@ be done from the POS alone.
 
 ## The discriminator worth knowing about
 
-Four products show gaps of 1.1 to 1.6 units at the anchor that are **not**
+Four products show gaps of 1.49 to 1.76 units at the anchor that are **not**
 shrinkage: House Red, House White, Bacardi and Gordon's. These are happy-hour
 lines, where RAG-005 specifies that physical depletion runs at double the rung-up
 volume between 18:00 and 20:30.
@@ -166,9 +172,10 @@ catalogue.
 
 ## Known limits
 
-- **Weather and holiday multipliers are inert until `fetch_external.py` runs.**
-  The demand model does not use them, so re-running the build after fetching
-  will change the numbers. Re-run before final evaluation, not after.
+- **Weather and holiday multipliers are live** as of the 2026-08-19 build.
+  `fetch_external.py` pulled 293 days of ERA5 weather and 50 holiday days, and
+  every figure in this document reflects that. Re-running the fetch and build
+  will move the numbers again, so do it before final evaluation, not after.
 - **Event multipliers apply only to the four dates with real broadcast data.**
   The rest of the calendar runs at 1.0. This means the 1.5x football uplift is a
   policy rule from RAG-004, not a coefficient estimated from history, and the
