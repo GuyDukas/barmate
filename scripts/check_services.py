@@ -50,15 +50,28 @@ def check_supabase():
     if r.status_code >= 400:
         return report(BAD, "Supabase", f"HTTP {r.status_code}: {r.text[:120]}")
 
+    # PostgREST emits Swagger 2 (definitions) or OpenAPI 3
+    # (components.schemas) depending on version, and neither key is present at
+    # all when the schema is empty. paths is the one signal common to both.
     tables = []
     try:
-        tables = sorted((r.json().get("definitions") or {}).keys())
+        body = r.json()
+        tables = sorted(
+            (body.get("definitions") or {})
+            or ((body.get("components") or {}).get("schemas") or {})
+            or {p.lstrip("/") for p in (body.get("paths") or {}) if p != "/"}
+        )
     except ValueError:
         pass
-    if tables:
-        report(OK, "Supabase", f"reachable, {len(tables)} tables: {', '.join(tables[:6])}")
+
+    if not tables:
+        report(BAD, "Supabase", "authenticated, but no tables. Run db/schema.sql "
+                                "in the SQL Editor")
+    elif len(tables) < 16:
+        report(WARN, "Supabase",
+               f"only {len(tables)}/16 tables: {', '.join(tables)}")
     else:
-        report(WARN, "Supabase", "reachable and authenticated, but no tables yet")
+        report(OK, "Supabase", f"{len(tables)} tables present")
     return None
 
 

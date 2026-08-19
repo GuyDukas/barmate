@@ -97,7 +97,7 @@ create index on cocktail_recipes (ingredient_product_id);
 
 create table sales (
   sale_id                     text primary key,
-  date                        date not null,
+  "date"                      date not null,
   item_type                   text,
   item_id                     text,
   item_name                   text,
@@ -106,19 +106,19 @@ create table sales (
   lost_sales_due_to_stockout  numeric,
   revenue                     numeric
 );
-create index on sales (date);
-create index on sales (item_id, date);
+create index on sales ("date");
+create index on sales (item_id, "date");
 
 create table inventory_counts (
   count_id        text primary key,
-  date            date not null,
+  "date"          date not null,
   product_id      text not null references products(product_id),
   product_name    text,
   reported_stock  numeric,
   counted_by      text,
   station         text
 );
-create index on inventory_counts (product_id, date desc);
+create index on inventory_counts (product_id, "date" desc);
 
 -- The books believe the invoice, not the delivery. When a delivery arrives
 -- short, that belief is the discrepancy, so quantity and actual_delivery_date
@@ -140,17 +140,17 @@ create index on orders (status);
 
 create table reservations (
   reservation_id    text primary key,
-  date              date not null,
-  time              text,
+  "date"            date not null,
+  "time"            text,
   party_size        integer,
   reservation_type  text,
   status            text
 );
-create index on reservations (date);
+create index on reservations ("date");
 
 create table staff_schedule (
   schedule_id  text primary key,
-  date         date not null,
+  "date"       date not null,
   staff_id     text references staff(staff_id),
   name_en      text,
   name_he      text,
@@ -159,30 +159,30 @@ create table staff_schedule (
   shift_start  text,
   shift_end    text
 );
-create index on staff_schedule (date);
+create index on staff_schedule ("date");
 
 -- ------------------------------------------------------------ human sources
 
 create table shift_reports (
   report_id     text primary key,
-  date          date not null,
+  "date"        date not null,
   submitted_at  timestamp,
   staff_id      text references staff(staff_id),
   author_name   text,
   language      text,
   raw_report    text
 );
-create index on shift_reports (date desc);
+create index on shift_reports ("date" desc);
 
 -- No incident_id column. See the header.
 create table whatsapp_messages (
   id         bigint generated always as identity primary key,
-  timestamp  timestamp not null,
+  "timestamp"  timestamp not null,
   sender_id  text,
   sender     text,
   message    text
 );
-create index on whatsapp_messages (timestamp desc);
+create index on whatsapp_messages ("timestamp" desc);
 
 -- ---------------------------------------------------------------- external
 -- Real data, unlike everything above. Coverage stops on 2026-06-17 and is left
@@ -203,7 +203,7 @@ create table broadcasts (
 create index on broadcasts (broadcast_date);
 
 create table weather (
-  date                date primary key,
+  "date"              date primary key,
   temperature_2m_max  numeric,
   temperature_2m_min  numeric,
   precipitation_sum   numeric,
@@ -212,13 +212,13 @@ create table weather (
 );
 
 create table holidays (
-  date      date not null,
+  "date"    date not null,
   title     text not null,
   hebrew    text,
   category  text,
   yomtov    boolean,
   source    text,
-  primary key (date, title)
+  primary key ("date", title)
 );
 
 -- --------------------------------------------------------------- knowledge
@@ -228,7 +228,11 @@ create table holidays (
 create table knowledge (
   doc_id  text primary key,
   title   text not null,
-  text    text not null
+  "text"  text not null
 );
 
 commit;
+
+-- Force PostgREST to pick the new tables up rather than waiting for its
+-- own cache to expire, which is what makes a fresh schema 404 for a while.
+notify pgrst, 'reload schema';
