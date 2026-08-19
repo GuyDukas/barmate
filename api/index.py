@@ -25,7 +25,7 @@ app = Flask(__name__, static_folder=str(STATIC))
 app.json.ensure_ascii = False  # Hebrew appears throughout the data and answers.
 
 TEAM = {
-    "group_batch_order_number": "2_TBD",
+    "group_batch_order_number": "2_8",
     "team_name": "BarMate",
     "students": [
         {"name": "Guy Dukas", "email": "guy.dukas@gmail.com", "id": "326692662"},
