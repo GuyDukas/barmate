@@ -49,27 +49,36 @@ GT005  scope refusal
 100% of quoted figures traceable to a tool result
 ```
 
-**A single run is not the result.** `gpt-5.4-mini` accepts only
-`temperature=1`, so the same nine questions asked twice are two different runs,
-and an earlier version of this README reported a 9/9 that did not reproduce —
-the next run of identical code scored 5/9. The number above is what the current
-build does; treat a run that comes in at 8/9 as within the observed range
-rather than as a regression, and read the per-scenario output rather than the
-total.
+**A single run is not the result**, and this section used to say otherwise.
+`gpt-5.4-mini` accepts only `temperature=1`, so the same nine questions asked
+twice are genuinely two different runs. An earlier version of this README
+reported a 9/9 that did not reproduce: the next run of identical code scored
+5/9, and four scenarios failed the same way — the agent naming the tool call it
+was about to make and stopping. That is what the pushback guard and
+`reasoning_effort` exist to fix, and 9/9 above is two consecutive full runs of
+the finished build, not the best of several.
 
 The traceability line is the measure that has held across every run, including
 the bad ones. Every number the agent quotes appears in something a tool
 returned. An answer can name the right product for the wrong reason, but a
 figure the tools never produced is invention however plausible it reads.
 
-That measure has one known blind spot, and it is worth stating because it was
-found the hard way. It checks figures. Asked whether a supplier had delivered
-everything invoiced, the agent once answered yes and cited "the opening shift
-report", naming a member of staff and quoting a sentence — a report it had
-never opened, an author who does not exist, a quotation that appears nowhere in
-the data. It scored 100% traceable, because the fabrication contained no
-digits. The Reflector now checks quotations, named people and attributed claims
-the same way it checks numbers.
+It is deliberately a strict substring check, and it is left strict. One run
+scored 26/27 on an answer that was entirely correct: *"the discrepancy scan
+logged 7 items"*, followed by all seven named, every one of them in the tool
+result. The literal `7` is a count of a returned list and appears nowhere in
+the JSON, so the check calls it unfounded. Exempting list lengths would clear
+it, and would also be moving a measure after seeing what it measured. A
+conservative check that occasionally flags a correct answer is worth more than
+a permissive one.
+
+Especially given what it missed. The check looks at figures, and asked whether
+a supplier had delivered everything invoiced, the agent once answered yes and
+cited "the opening shift report" — naming a member of staff and quoting a
+sentence. No report contains that text, no report mentions that supplier, no
+author by that name exists. It scored 100% traceable, because the fabrication
+had no digits in it. The Reflector now checks quotations, named people and
+attributed claims the same way it checks numbers.
 
 Quantitative measures over the whole dataset, not just the nine questions
 (`python -m eval.metrics`, offline, no model calls):
@@ -379,11 +388,12 @@ still says Bombay Sapphire books at 14.22 where the regenerated table says
   needing four or more tool calls.
 - **`reasoning_effort` is set to `high`, and it costs.** Roughly eight times
   the completion tokens of the default and three times the wall clock: the
-  multi-source questions take 90 to 105 seconds against 25 to 30 before. That
-  is comfortable against Vercel's 300-second ceiling and the 210-second
-  internal budget, but it is the reason a complex question is not instant. At
-  the default effort the agent works out which tools a four-source question
-  needs, writes that down, and stops.
+  heaviest questions take 100 to 150 seconds against 25 to 30 before, and one
+  measured 104 seconds end to end against the live deployment. That sits inside
+  Vercel's 300-second ceiling with room, and the 210-second internal budget
+  truncates gracefully before the platform can, but it is the reason a complex
+  question is not instant. At the default effort the agent works out which
+  tools a four-source question needs, writes that down, and stops.
 
 ## Services
 
