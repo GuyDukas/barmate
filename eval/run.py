@@ -162,10 +162,14 @@ def check(sid, result, books, prompt=""):
             "short" in low or "less" in low or "discrep" in low), \
             "flags the Coca-Cola shortfall"
     if sid == "GT009":
+        # "We don't carry a product listed as Macallan" is the required
+        # behaviour and matched none of the first six phrasings. Every one of
+        # these has come out of an actual run.
         denied = any(m in low for m in
                      ("not stocked", "isn't stocked", "is not in", "isn't in",
-                      "don't stock", "do not stock", "not carry", "not in the "
-                      "catalogue", "לא במלאי", "לא מחזיקים"))
+                      "don't stock", "do not stock", "not carry", "don't carry",
+                      "do not carry", "not in the catalogue", "no product",
+                      "לא במלאי", "לא מחזיקים"))
         # And no stock figure for it: the number must not sit beside the name.
         invented = re.search(r"macallan[^.]{0,40}\d", low)
         return denied and not invented, \

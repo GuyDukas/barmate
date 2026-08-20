@@ -36,23 +36,40 @@ isolation.
 
 ## Results
 
-Nine scenarios, run against the live deployment:
+Nine scenarios, `python -m eval.run`:
 
 ```
-GT001  PASS  ambiguity                     GT006  PASS  knowledge-explained variance
-GT002  PASS  conflict                      GT007  PASS  silent loss detection
-GT003  PASS  multi-source forecast         GT008  PASS  invoice discrepancy
-GT004  PASS  open-ended readiness          GT009  PASS  unknown entity
-GT005  PASS  scope refusal
+GT001  ambiguity                    GT006  knowledge-explained variance
+GT002  conflict                     GT007  silent loss detection
+GT003  multi-source forecast        GT008  invoice discrepancy
+GT004  open-ended readiness         GT009  unknown entity
+GT005  scope refusal
 
 9/9 scenarios passed
-34/34 figures traceable to a tool result (100%)
+100% of quoted figures traceable to a tool result
 ```
 
-That second line is the measure worth reading. Every number the agent quoted
-appears in something a tool returned. An answer can name the right product for
-the wrong reason, but a figure the tools never produced is invention however
-plausible it reads.
+**A single run is not the result.** `gpt-5.4-mini` accepts only
+`temperature=1`, so the same nine questions asked twice are two different runs,
+and an earlier version of this README reported a 9/9 that did not reproduce —
+the next run of identical code scored 5/9. The number above is what the current
+build does; treat a run that comes in at 8/9 as within the observed range
+rather than as a regression, and read the per-scenario output rather than the
+total.
+
+The traceability line is the measure that has held across every run, including
+the bad ones. Every number the agent quotes appears in something a tool
+returned. An answer can name the right product for the wrong reason, but a
+figure the tools never produced is invention however plausible it reads.
+
+That measure has one known blind spot, and it is worth stating because it was
+found the hard way. It checks figures. Asked whether a supplier had delivered
+everything invoiced, the agent once answered yes and cited "the opening shift
+report", naming a member of staff and quoting a sentence — a report it had
+never opened, an author who does not exist, a quotation that appears nowhere in
+the data. It scored 100% traceable, because the fabrication contained no
+digits. The Reflector now checks quotations, named people and attributed claims
+the same way it checks numbers.
 
 Quantitative measures over the whole dataset, not just the nine questions
 (`python -m eval.metrics`, offline, no model calls):
@@ -71,7 +88,7 @@ The two detection rows are the design working as intended. **Arithmetic finds
 the losses nobody mentioned; the group chat finds the ones somebody logged.**
 Neither route alone gets past 60% recall, and the agent has both.
 
-142 unit tests, all passing.
+158 unit tests, all passing.
 
 ## What makes it an agent
 
@@ -99,12 +116,32 @@ tools; a 210-second wall-clock budget stops a handful of iterations that are
 each slow, which on a 90-second LLM timeout can outlast Vercel's 300-second
 ceiling without ever reaching the iteration cap.
 
+**A draft that has read no record is sent back.** `gpt-5.4-mini` accepts only
+`temperature=1` — sampling cannot be turned down, so the same question asked
+twice is genuinely two different runs, and a rule that lives only in the system
+prompt is obeyed most of the time rather than every time. The failure that
+costs the most is a confident non-answer: *"I still need to compare the book
+stock against a recount. If you want, I can do that comparison now"* — the
+manager having already asked for exactly that. So the loop refuses it. An
+answer is returned to the model, once, if the agent has read nothing (a
+`resolve_product` call establishes a bottle exists and nothing else) or if the
+draft offers to do work instead of doing it. Two exemptions keep it honest: a
+lookup that came back `found=false` has answered the question completely, and a
+clarifying question is the required behaviour rather than a way of avoiding
+one. Capped at two, because a guard that never gives up is a timeout wearing a
+quality-control badge.
+
+`reasoning_effort` is set to `high` for the same reason. It is the only dial
+this model offers, it costs latency, and it is what carries a four-source
+question through to an answer instead of a plan.
+
 ## Tools
 
 | Tool | Returns |
 |---|---|
 | `resolve_product` | Catalogue match, or `found=false` with no substitution |
 | `resolve_category` | Every product in a category; near-misses corrected, misses list what exists |
+| `resolve_supplier` | The supplier and every line the venue buys from them; matches the short name on the invoice |
 | `get_inventory` | Book stock, last count, staleness, whether a protocol widens the line |
 | `reconcile` | Book stock against a physical figure you supply, classified per RAG-013 |
 | `variance_envelope` | How far this product's books and counts normally disagree |
@@ -162,6 +199,30 @@ The `steps` array carries every model call: the module that made it, the system
 and user prompts, the reply, and the tool result it produced. The worked
 examples in `/api/agent_info` are captured from real runs rather than written
 by hand, because hand-written examples describe what an agent was meant to do.
+
+## The GUI
+
+At the root URL, no authentication, nothing to install. A textarea, a **Run
+Agent** button, and the answer.
+
+Under each answer is the trace, collapsed: one row per model call, tagged with
+the module that made it and the tool it chose, opening to the full system
+prompt, user prompt and reply. Inspecting the execution is the point of the
+page, so the tool names are readable without opening anything and the four
+modules are colour-coded — `Reasoner` blue, `KnowledgeRetriever` violet,
+`Reflector` amber, `Reviser` green.
+
+Follow-ups work, and they matter here more than they would elsewhere: this
+agent is built to ask which of two readings of a figure was meant, and an
+answer of "is 12.5 what was poured or what is left?" is worth nothing if the
+manager has no way to reply. Each turn stacks with its own trace, **New
+conversation** clears the thread, and the prior turns travel with the request.
+The agent itself stays stateless — the last three turns are sent as context,
+the earlier answers trimmed, because context costs money on a shared budget.
+
+`POST /api/execute` takes `{"prompt": "..."}` exactly as the brief specifies.
+`history` is an optional extra field the GUI adds; a caller that sends only a
+prompt gets precisely the behaviour it always got.
 
 ## Data
 
@@ -266,10 +327,19 @@ real answer.
 ## Testing
 
 ```bash
-pytest                 # 142 unit tests, offline, no credentials needed
+pytest                 # 158 unit tests, offline, no credentials needed
 python -m eval.run     # nine scenarios end to end, needs credentials
 python -m eval.metrics # quantitative measures, offline
+
+python scripts/check_endpoints.py                 # the local app against the brief
+python scripts/check_endpoints.py https://<url>   # the deployment against the brief
 ```
+
+`check_endpoints.py` is a different audit from the unit tests, and worth having
+separately. The tests check this code against itself; the script checks it
+against the specification — every key name, every type, every required field.
+It is what caught `prompt_examples[].response`, which read as entirely correct
+until you notice the brief calls that field `full_response`.
 
 Unit tests assert on what the deterministic tools return, never on model prose.
 An autouse fixture strips every service variable so the suite cannot
@@ -298,9 +368,22 @@ still says Bombay Sapphire books at 14.22 where the regenerated table says
   when it has none. A loss after that date with no human report cannot be
   detected from the data at all, and the tools say so rather than returning a
   clean bill of health.
-- **Scenario outcomes vary run to run.** The multi-source forecast and the
-  knowledge-explained variance are the two that move; both have been observed
-  passing and failing across runs with no code change.
+- **Scenario outcomes vary run to run**, and the variance is the model's, not
+  the harness's. `temperature` cannot be lowered on this model family — only
+  `temperature=1` is accepted — so sampling noise is a permanent feature and
+  the loop is built to absorb it rather than to pretend it is absent. Every
+  rule the agent must obey has a deterministic backstop: the pushback guard for
+  answers that read no record, the reflect gate for fabrication, the registry
+  for anything it must not do. Across eight consecutive runs of the finished
+  build the range was 8/9 to 9/9, and the scenarios that move are the ones
+  needing four or more tool calls.
+- **`reasoning_effort` is set to `high`, and it costs.** Roughly eight times
+  the completion tokens of the default and three times the wall clock: the
+  multi-source questions take 90 to 105 seconds against 25 to 30 before. That
+  is comfortable against Vercel's 300-second ceiling and the 210-second
+  internal budget, but it is the reason a complex question is not instant. At
+  the default effort the agent works out which tools a four-source question
+  needs, writes that down, and stops.
 
 ## Services
 

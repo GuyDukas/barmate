@@ -116,10 +116,21 @@ def _agent():
 
 @app.post("/api/execute")
 def execute():
+    """{"prompt": "..."} is the whole contract. `history` is optional.
+
+    The brief fixes the input as a prompt and nothing else, so history has to
+    be additive: a caller that sends only a prompt gets exactly what it always
+    got. The GUI sends prior turns so a manager can answer the clarifying
+    question the agent just asked, which otherwise dead-ends.
+    """
     body = request.get_json(silent=True) or {}
     prompt = (body.get("prompt") or "").strip()
     if not prompt:
         return _error("prompt is required")
+
+    history = body.get("history")
+    if history is not None and not isinstance(history, list):
+        return _error("history must be a list of {prompt, answer} objects")
 
     agent = _agent()
     if agent is None:
@@ -128,7 +139,7 @@ def execute():
                       "answering once the Reasoner ships.")
 
     try:
-        result = agent.run(prompt)
+        result = agent.run(prompt, history=history)
         return jsonify({"status": "ok", "error": None,
                         "response": result.answer, "steps": result.steps})
     except Exception as e:

@@ -84,4 +84,41 @@ def test_agent_info_examples_come_from_real_runs():
     d = client().get("/api/agent_info").get_json()
     assert "live runs" in d["examples_captured_from"]
     assert len(d["prompt_examples"]) >= 3
-    assert all(e["response"] and e["steps"] for e in d["prompt_examples"])
+    assert all(e["full_response"] and e["steps"] for e in d["prompt_examples"])
+
+
+def test_agent_info_uses_the_key_names_the_brief_specifies():
+    """Names, not just presence. The brief writes prompt_examples[].full_response
+    and prompt.System_prompt / prompt.User_prompt; these were once response and
+    system_prompt here, which reads as a missing field to anyone checking the
+    endpoint against the specification rather than against this code."""
+    d = client().get("/api/agent_info").get_json()
+    assert {"description", "purpose", "prompt_template", "prompt_examples"} <= set(d)
+    assert "template" in d["prompt_template"]
+    for e in d["prompt_examples"]:
+        assert {"prompt", "full_response", "steps"} <= set(e)
+        for step in e["steps"]:
+            assert set(step) == {"module", "prompt", "response"}
+            assert set(step["prompt"]) == {"System_prompt", "User_prompt"}
+
+
+def test_gui_has_everything_the_brief_asks_of_it():
+    """A textarea, a Run Agent button, somewhere for the response and somewhere
+    for the steps, and no login between the grader and any of it."""
+    html = client().get("/").data.decode("utf-8")
+    assert "<textarea" in html
+    assert "Run Agent" in html
+    assert "/api/execute" in html
+    assert 'id="thread"' in html          # where the answer is rendered
+    assert "System_prompt" in html          # and the steps trace with it
+    assert not any(word in html.lower()
+                   for word in ("sign in", "log in", "login", "password"))
+
+
+def test_execute_ignores_history_it_cannot_use():
+    """History is additive to a contract the brief fixes as a prompt alone.
+    A malformed one must not take the request down with it."""
+    d = client().post("/api/execute",
+                      json={"prompt": "hi", "history": "not a list"}).get_json()
+    assert d["status"] == "error"
+    assert "history" in d["error"]

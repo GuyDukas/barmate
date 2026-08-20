@@ -19,6 +19,14 @@ EMBED_MODEL = "MB5R2CF-azure/text-embedding-3-small"
 TIMEOUT = 90
 MAX_RETRIES = 3
 
+# This model family refuses temperature: only 1 is accepted, so sampling
+# cannot be turned down and two identical runs are genuinely two different
+# runs. reasoning_effort is the one dial it does offer, and the failure it
+# addresses is the expensive one -- at the default the model would work out
+# which tools a multi-step question needs, write that down, and stop, leaving
+# the manager holding a plan instead of an answer.
+REASONING_EFFORT = "high"
+
 # One connection pool per warm instance. Without it every call pays its own
 # DNS lookup, TCP handshake and TLS negotiation, which was intermittently
 # costing twenty seconds a request.
@@ -52,11 +60,12 @@ def _post(path, payload):
     raise RuntimeError(f"LLM call failed after {MAX_RETRIES} attempts: {last}")
 
 
-def chat(system_prompt, user_prompt, json_mode=True):
+def chat(system_prompt, user_prompt, json_mode=True, effort=None):
     payload = {
         "model": TEXT_MODEL,
         "messages": [{"role": "system", "content": system_prompt},
                      {"role": "user", "content": user_prompt}],
+        "reasoning_effort": effort or REASONING_EFFORT,
     }
     if json_mode:
         payload["response_format"] = {"type": "json_object"}

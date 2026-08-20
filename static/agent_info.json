@@ -8,7 +8,7 @@
   "prompt_examples": [
     {
       "prompt": "The bartender says the Bombay Sapphire is finished but the system shows stock. Which is right?",
-      "response": "The system and the bartender do not agree. For Bombay Sapphire, the book stock is 6.95 bottles, but the bartender says there are 0 left.\n\nThat gap is material, and the reconciliation classifies it as unexplained shrinkage. So the right operational answer is: treat the bartender’s physical count as the shelf reality, keep the book figure as the paperwork position, and do a recount before drawing any conclusion.",
+      "full_response": "The system and the bartender do not agree. For Bombay Sapphire, the book stock is 6.95 bottles, but the bartender says there are 0 left.\n\nThat gap is material, and the reconciliation classifies it as unexplained shrinkage. So the right operational answer is: treat the bartender’s physical count as the shelf reality, keep the book figure as the paperwork position, and do a recount before drawing any conclusion.",
       "steps": [
         {
           "module": "Reasoner",
@@ -107,7 +107,7 @@
     },
     {
       "prompt": "House White Wine looks short against the till. Are we being robbed?",
-      "response": "House White Wine is booked at 13.9 bottles, but that figure is already 4 days stale. This line is a documented happy-hour line: the manual says physical depletion doubles between 18:00 and 20:30 while the till rings single, and its normal variance is wide (typical 3.15 bottles, envelope 4.2). So a short-looking till position here is not, by itself, evidence that we’re being robbed.\n\nI’d treat it as a line that needs a recount and a check of shift reports/chat for any reported loss before calling it theft. If you want, I can check whether any loss was reported for this wine since the last count.",
+      "full_response": "House White Wine is booked at 13.9 bottles, but that figure is already 4 days stale. This line is a documented happy-hour line: the manual says physical depletion doubles between 18:00 and 20:30 while the till rings single, and its normal variance is wide (typical 3.15 bottles, envelope 4.2). So a short-looking till position here is not, by itself, evidence that we’re being robbed.\n\nI’d treat it as a line that needs a recount and a check of shift reports/chat for any reported loss before calling it theft. If you want, I can check whether any loss was reported for this wine since the last count.",
       "steps": [
         {
           "module": "Reasoner",
@@ -245,7 +245,7 @@
     },
     {
       "prompt": "How much Macallan do we have left?",
-      "response": "We don’t carry Macallan. The whiskies we do stock are Jameson, Jack Daniel’s, Johnnie Walker Black, Chivas Regal, Maker’s Mark, and Glenfiddich 12.",
+      "full_response": "We don’t carry Macallan. The whiskies we do stock are Jameson, Jack Daniel’s, Johnnie Walker Black, Chivas Regal, Maker’s Mark, and Glenfiddich 12.",
       "steps": [
         {
           "module": "Reasoner",
@@ -361,7 +361,7 @@
     },
     {
       "prompt": "How many chasers can a shift manager comp before it needs approval?",
-      "response": "A shift manager can comp up to 10 chasers without approval. More than 10 chasers needs manager approval.",
+      "full_response": "A shift manager can comp up to 10 chasers without approval. More than 10 chasers needs manager approval.",
       "steps": [
         {
           "module": "KnowledgeRetriever",

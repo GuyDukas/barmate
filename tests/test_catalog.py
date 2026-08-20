@@ -64,3 +64,44 @@ def test_a_known_category_is_unaffected():
     r = catalog.resolve_category("gin")
     assert r["found"] is True
     assert len(r["products"]) == 5
+
+
+def test_a_supplier_resolves_by_the_short_name_people_actually_use():
+    """Nobody says Central Bottling Company. The invoices and the staff say
+    CBC, and a question about a delivery arrives with the short name."""
+    r = catalog.resolve_supplier("CBC")
+    assert r["found"]
+    s = r["suppliers"][0]
+    assert s["supplier_id"] == "SUP03"
+    assert s["delivery_days"] == "Wed,Sun"
+
+
+def test_a_supplier_brings_every_line_the_venue_buys_from_them():
+    """A question about what arrived from a supplier is a question about all
+    of their products. One picked as a sample is not an answer."""
+    products = catalog.resolve_supplier("CBC")["suppliers"][0]["products"]
+    ids = {p["product_id"] for p in products}
+    assert len(ids) == 14
+    assert {p["category"] for p in products} <= {"soft_drink", "juice",
+                                                 "cocktail_ingredient"}
+
+
+def test_an_unknown_supplier_is_refused_and_the_real_ones_named():
+    r = catalog.resolve_supplier("Diageo")
+    assert r["found"] is False
+    assert {s["name"] for s in r["suppliers"]}
+    assert "not a supplier" in r["note"]
+
+
+def test_a_supplier_id_resolves_as_readily_as_a_name():
+    assert catalog.resolve_supplier("SUP01")["suppliers"][0]["name"] ==         "Hakerem Distillers"
+
+
+def test_the_supplier_list_says_it_is_not_evidence_about_a_delivery():
+    """Observed live: asked whether CBC delivered everything invoiced, the
+    agent read this list, found it complete, and answered yes -- citing a
+    shift report it had never opened, with an author who does not exist."""
+    r = catalog.resolve_supplier("CBC")
+    note = r["answers_who_sells_what_only"]
+    assert "not the delivery" in note
+    assert "reconciling" in note

@@ -1,9 +1,16 @@
 # BarMate design specification
 
 **Date:** 2026-08-19
-**Team:** Guy, Reut, Yuval (group 326692662)
+**Team:** Guy Dukas, Reut Ness, Yuval Belelovsky (group batch and order `2_8`)
 **Course:** Modern AI Agents, Technion, Spring 2026
-**Deadline:** 2026-08-23 (extension anticipated but not assumed)
+**Deadline:** 2026-08-23
+
+> **Status: the design as planned, kept as written.** It is not a description
+> of what shipped, and the two differ where building it taught us something.
+> The tool table below lists nine tools including `get_open_orders`; the
+> registry ships sixteen and folds open orders into `forecast_reorder`, where
+> the arithmetic that needs them lives. `README.md` and
+> `app/tools/registry.py` are the current account.
 
 ---
 

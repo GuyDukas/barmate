@@ -81,3 +81,61 @@ def resolve_category(category):
         "products": [{"product_id": p["product_id"], "name": p["name"],
                       "safety_stock": p["safety_stock"]} for p in hits],
     }
+
+
+def resolve_supplier(query):
+    """The supplier, and everything the venue buys from them.
+
+    A manager naming a supplier -- "did we get everything we paid for from
+    CBC?" -- is asking about fourteen products at once, and nothing else in the
+    registry maps a company to its lines. Without this the agent puts CBC to
+    resolve_category, is told the venue has no such category, and answers a
+    question about a delivery by listing shelf labels.
+
+    Matched on the short name as well as the registered one, because that is
+    how the invoices and the staff refer to them: nobody says Central Bottling
+    Company.
+    """
+    q = _norm(query)
+    suppliers = db.select("suppliers")
+    if not q:
+        return {"found": False, "suppliers": [
+            {"supplier_id": s["supplier_id"], "name": s["name"]} for s in suppliers]}
+
+    hits = []
+    for s in suppliers:
+        name = _norm(s["name"])
+        # "CBC (Central Bottling Company)" -> also match "CBC" and the words
+        # inside the bracket, either of which is what gets typed.
+        parts = {name, name.split("(")[0].strip(),
+                 name.partition("(")[2].rstrip(")").strip()}
+        if (s["supplier_id"].upper() == query.strip().upper()
+                or any(p and (q == p or q in p or p in q) for p in parts if p)):
+            hits.append(s)
+
+    if not hits:
+        return {"found": False, "suppliers": [
+            {"supplier_id": s["supplier_id"], "name": s["name"]} for s in suppliers],
+            "note": f"'{query}' is not a supplier the venue buys from."}
+
+    products = db.products()
+    return {"found": True, "suppliers": [{
+        "supplier_id": s["supplier_id"],
+        "name": s["name"],
+        "delivery_days": s["delivery_days"],
+        "min_order_rule": s["min_order_rule"],
+        "min_order_qty": s["min_order_qty"],
+        "categories": s["categories"],
+        "products": [{"product_id": p["product_id"], "name": p["name"],
+                      "category": p["category"]}
+                     for p in products if p["supplier_id"] == s["supplier_id"]],
+    } for s in hits],
+        # Asked whether a supplier delivered everything invoiced, the agent has
+        # been observed reading this list, finding it complete, and answering
+        # yes -- citing a shift report it never opened. The list is who sells
+        # what. It is not evidence about any delivery.
+        "answers_who_sells_what_only": (
+            "This is the supply relationship, not the delivery. Whether "
+            "everything invoiced actually arrived is answered by reconciling "
+            "these product lines against the books and reading what staff "
+            "reported, never from this list and never from the manual.")}

@@ -15,6 +15,7 @@ from app.tools import catalog, context, human, inventory, knowledge, sales
 TOOLS = {
     "resolve_product": catalog.resolve_product,
     "resolve_category": catalog.resolve_category,
+    "resolve_supplier": catalog.resolve_supplier,
     "get_inventory": inventory.get_inventory,
     "reconcile": inventory.reconcile,
     "variance_envelope": inventory.variance_envelope,
@@ -40,6 +41,12 @@ SCHEMAS = {
         "the list of categories when the name misses. Beer sits in two of "
         "them: 'beer' is bottles, 'draught_beer' is the five kegs. A question "
         "about beer at a venue with draught lines means both.",
+    "resolve_supplier":
+        "resolve_supplier(query: str) -> the supplier, their delivery days, "
+        "their minimum order rule and every product the venue buys from them. "
+        "Matches the short name people actually use, so 'CBC' finds Central "
+        "Bottling Company. A question about what arrived from a supplier is a "
+        "question about all of their lines, not one of them.",
     "get_inventory":
         "get_inventory(product_id: str) -> book stock at the anchor, the last "
         "physical count and its date, days since that count and whether it is "

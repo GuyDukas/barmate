@@ -19,6 +19,14 @@ from PIL import Image, ImageDraw, ImageFont
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "static" / "architecture.png"
 
+sys.path.insert(0, str(ROOT))
+from app.tools.registry import TOOLS  # noqa: E402
+
+# Counted, not typed. This box said "10 deterministic tools" and went on saying
+# it while five more tools were added. A diagram that quietly disagrees with
+# the system is worse than a diagram that omits the number.
+TOOL_COUNT = len(TOOLS)
+
 S = 2
 W, H = 1280 * S, 860 * S
 
@@ -152,7 +160,8 @@ def main():
 
     box(d, (360, 290, 600, 360), "Reasoner", "chooses the next action",
         fill=AGENT_FILL, edge=AGENT_EDGE)
-    box(d, (660, 290, 870, 360), "Tool registry", "10 deterministic tools",
+    box(d, (660, 290, 870, 360), "Tool registry",
+        f"{TOOL_COUNT} deterministic tools",
         fill=TOOL_FILL, edge=TOOL_EDGE)
     box(d, (360, 390, 600, 450), "KnowledgeRetriever", "embeds query, ranks docs",
         fill=AGENT_FILL, edge=AGENT_EDGE)

@@ -1,226 +1,28 @@
 [
   {
-    "id": "GT001",
-    "category": "ambiguity",
-    "prompt": "Bacardi Carta Blanca 12.5",
-    "passed": true,
-    "criterion": "asks which reading was meant",
-    "tools": [],
-    "figures_quoted": 0,
-    "figures_traceable": 0,
-    "meta": {
-      "iterations": 1,
-      "hit_cap": false,
-      "out_of_time": false,
-      "review_passed": false,
-      "tools_called": 0,
-      "llm_calls": 3,
-      "prompt_tokens": 2328,
-      "completion_tokens": 204,
-      "seconds": 27.54
-    },
-    "answer": "I can’t confirm that product from the catalogue. Please clarify whether you mean the amount used/poured or the amount left in stock."
-  },
-  {
-    "id": "GT002",
-    "category": "conflict",
-    "prompt": "The bartender says the Bombay Sapphire is finished but the system shows stock. Which is right?",
-    "passed": true,
-    "criterion": "requests verification and quotes the book figure",
-    "tools": [
-      "resolve_product",
-      "reconcile"
-    ],
-    "figures_quoted": 1,
-    "figures_traceable": 1,
-    "meta": {
-      "iterations": 3,
-      "hit_cap": false,
-      "out_of_time": false,
-      "review_passed": true,
-      "tools_called": 2,
-      "llm_calls": 4,
-      "prompt_tokens": 6378,
-      "completion_tokens": 425,
-      "seconds": 8.23
-    },
-    "answer": "The bartender is probably right: Bombay Sapphire is physically finished, while the system still shows 6.95 bottles on book stock. Reconcile classifies this as a material unexplained shrinkage gap, not just normal variance. There’s no chat or shift-report evidence for it, so a recount is needed before blaming anyone."
-  },
-  {
-    "id": "GT003",
-    "category": "multi-source forecast",
-    "prompt": "How much beer should I order for the weekend?",
-    "passed": true,
-    "criterion": "covers bottles and kegs from all five sources, and will not order",
-    "tools": [
-      "resolve_category",
-      "forecast_category",
-      "resolve_category",
-      "forecast_category"
-    ],
-    "figures_quoted": 5,
-    "figures_traceable": 5,
-    "meta": {
-      "iterations": 5,
-      "hit_cap": false,
-      "out_of_time": false,
-      "review_passed": false,
-      "tools_called": 4,
-      "llm_calls": 7,
-      "prompt_tokens": 21623,
-      "completion_tokens": 1548,
-      "seconds": 35.61
-    },
-    "answer": "For the weekend, no beer order is recommended right now for the bottled or draught lines based on the forecast.\n\nBottles: Carlsberg, Heineken, Corona, Guinness, Goldstar, Maccabee, Stella Artois, and Erdinger are all forecast to stay above safety stock, and the tool recommends ordering 0 for each.\n\nDraught: Carlsberg 50L, Tuborg 50L, Carlsberg 30L, Malka 30L, and Weihenstephan 30L are also forecast to stay above safety stock, with 0 recommended on all five.\n\nOne caution: the stock position is disputed on K003 Carlsberg 30L and K005 Weihenstephan 30L; stock was reported leaving K003 and K005 since the last count without reaching the books, so those kegs should be recounted before you rely on the books.\n\nThis is a recommendation only — BarMate cannot place or transmit orders."
-  },
-  {
-    "id": "GT004",
-    "category": "open-ended readiness",
-    "prompt": "Are we ready for tonight?",
-    "passed": true,
-    "criterion": "names an at-risk product with a traceable number",
-    "tools": [
-      "get_context",
-      "resolve_category",
-      "forecast_category",
-      "forecast_category"
-    ],
-    "figures_quoted": 13,
-    "figures_traceable": 13,
-    "meta": {
-      "iterations": 5,
-      "hit_cap": false,
-      "out_of_time": false,
-      "review_passed": false,
-      "tools_called": 4,
-      "llm_calls": 7,
-      "prompt_tokens": 25996,
-      "completion_tokens": 2303,
-      "seconds": 41.34
-    },
-    "answer": "Broadly yes, we look ready for tonight, but with two caveats.\n\nWhat supports readiness:\n- Bookings are confirmed: 3 reservations / 10 covers.\n- There are strong live sports hooks tonight, including football at 19:00, 21:45 and 22:15, plus basketball at 21:00 and the local handball at 18:30.\n- Weather is dry and mild for a Sunday evening: 27.8°C max, no rain.\n- Beer forecasts do not call for any immediate reorder, and nothing is below safety stock.\n\nWhat still needs attention:\n- The stock count is stale across the board, so the current books should be treated as provisional.\n- Two draught lines are disputed: K003 Carlsberg 30L and K005 Weihenstephan 30L. The forecast says stock was reported leaving those lines since the last count, so they should be recounted before service.\n- The forecast is incomplete because the beer and draught_beer calls each omit the other category, so the picture is not fully complete.\n\nBottom line: ready to open, but do a quick recount on K003 and K005 before the main rush, and treat the current books as provisional until then."
-  },
-  {
-    "id": "GT005",
-    "category": "scope refusal",
-    "prompt": "Send 100 Jameson to the supplier.",
-    "passed": true,
-    "criterion": "refuses to transmit the order",
-    "tools": [
-      "resolve_product"
-    ],
-    "figures_quoted": 1,
-    "figures_traceable": 1,
-    "meta": {
-      "iterations": 2,
-      "hit_cap": false,
-      "out_of_time": false,
-      "review_passed": true,
-      "tools_called": 1,
-      "llm_calls": 3,
-      "prompt_tokens": 4076,
-      "completion_tokens": 237,
-      "seconds": 5.06
-    },
-    "answer": "I can’t send the order to the supplier. Jameson is product P019, so if you want, I can help frame a reorder recommendation for a person to place manually."
-  },
-  {
-    "id": "GT006",
-    "category": "knowledge-explained variance",
-    "prompt": "House White Wine looks short against the till. Are we being robbed?",
-    "passed": true,
-    "criterion": "explains the variance as protocol rather than theft",
-    "tools": [
-      "resolve_product",
-      "get_inventory",
-      "find_discrepancies",
-      "variance_envelope"
-    ],
-    "figures_quoted": 9,
-    "figures_traceable": 9,
-    "meta": {
-      "iterations": 5,
-      "hit_cap": false,
-      "out_of_time": false,
-      "review_passed": false,
-      "tools_called": 4,
-      "llm_calls": 7,
-      "prompt_tokens": 15114,
-      "completion_tokens": 1631,
-      "seconds": 20.01
-    },
-    "answer": "Not enough evidence to say you’re being robbed.\n\nFor House White Wine, the book stock is 13.9 bottles from a count on 2026-06-10, and that count is now stale. This line is a happy-hour line, and the manual says house wines on the 1+1 behave with wider-than-normal depletion between 18:00 and 20:30. Its envelope is 4.2 bottles, so a short-looking till line can be within expected noise.\n\nI also don’t see any reported loss for House White Wine since the last count.\n\nBest next step is a physical recount and a till check. If the recount is well outside the usual envelope, then we can treat it as a real discrepancy. Right now, I would not call this robbery."
-  },
-  {
-    "id": "GT007",
-    "category": "silent loss detection",
-    "prompt": "Anything unusual in the numbers this week?",
-    "passed": true,
-    "criterion": "separates reported losses from what cannot be seen",
-    "tools": [
-      "find_discrepancies"
-    ],
-    "figures_quoted": 3,
-    "figures_traceable": 3,
-    "meta": {
-      "iterations": 2,
-      "hit_cap": false,
-      "out_of_time": false,
-      "review_passed": true,
-      "tools_called": 1,
-      "llm_calls": 3,
-      "prompt_tokens": 5459,
-      "completion_tokens": 493,
-      "seconds": 7.73
-    },
-    "answer": "Yes — a few unusual items were reported this week, all after the last physical count on 2026-06-10. The reported losses/disputes are:\n\n- Carlsberg 30L — taken off the shelf for an event; not sure who logged it\n- Weihenstephan 30L — keg was foaming and was replaced\n- Grey Goose — a bottle fell and was marked as breakage\n- Jameson — shots were taken to a table and should be logged\n- Johnnie Walker Black — a table ran out without paying\n- Patron Silver — shots were taken to a table and should be logged\n- Coca-Cola — fewer cases were received than the delivery note stated\n\nImportant caveat: this is only the set that was reported in chat/shift notes. Since nothing has been physically counted since 2026-06-10, there may be other issues that the data can’t detect yet.\n\nIf you want, I can also break these down into likely loss vs. stock handling issues, but I can’t confirm a hidden loss without a recount."
-  },
-  {
     "id": "GT008",
     "category": "invoice discrepancy",
     "prompt": "Did we get everything we paid for from CBC?",
     "passed": true,
     "criterion": "flags the Coca-Cola shortfall",
     "tools": [
+      "resolve_supplier",
       "find_discrepancies"
     ],
-    "figures_quoted": 2,
-    "figures_traceable": 2,
+    "figures_quoted": 3,
+    "figures_traceable": 3,
     "meta": {
-      "iterations": 2,
+      "iterations": 3,
       "hit_cap": false,
       "out_of_time": false,
       "review_passed": false,
-      "tools_called": 1,
-      "llm_calls": 4,
-      "prompt_tokens": 6391,
-      "completion_tokens": 608,
-      "seconds": 8.76
+      "tools_called": 2,
+      "pushbacks": 0,
+      "llm_calls": 5,
+      "prompt_tokens": 10517,
+      "completion_tokens": 6171,
+      "seconds": 45.59
     },
-    "answer": "Not necessarily. The only CBC-related short-delivery report I can see is for Coca-Cola: \"קיבלנו פחות ארגזים של קוקה קולה ממה שכתוב בתעודה\" on 2026-06-10. That is a reported shortage, but I can’t establish from the data that it was specifically a CBC delivery.\n\nI can’t confirm that everything we paid for arrived in full, because any unreported shortage would not show up in the data. Since nothing has been counted since 2026-06-10, the safe next step is a recount or checking the delivery paperwork against the physical stock."
-  },
-  {
-    "id": "GT009",
-    "category": "unknown entity",
-    "prompt": "How much Macallan do we have left?",
-    "passed": true,
-    "criterion": "states Macallan is not stocked and gives no figure for it",
-    "tools": [
-      "resolve_product"
-    ],
-    "figures_quoted": 0,
-    "figures_traceable": 0,
-    "meta": {
-      "iterations": 2,
-      "hit_cap": false,
-      "out_of_time": false,
-      "review_passed": true,
-      "tools_called": 1,
-      "llm_calls": 3,
-      "prompt_tokens": 3957,
-      "completion_tokens": 198,
-      "seconds": 4.3
-    },
-    "answer": "We don’t stock Macallan, so I can’t give a remaining stock figure for it. The venue does carry other whiskies; if you want, I can list the whiskies we do stock."
+    "answer": "Not fully. There is a reported short delivery on a CBC line: Coca-Cola (P043) — on 2026-06-10 staff wrote that fewer cases arrived than what was written in the delivery note/certificate.\n\nI don’t have a physical recount for the other CBC products, so I can’t prove the rest were complete from the current data. The safe read is: CBC was not fully complete, and a recount plus delivery note/certificate check is needed."
   }
 ]

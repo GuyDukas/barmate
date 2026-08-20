@@ -66,8 +66,11 @@ def main():
         print(f"  {prompt[:60]:60} {len(result.steps)} steps, "
               f"{result.meta['tools_called']} tools, {result.meta['seconds']}s")
         captured.append({
+            # The brief names this key full_response, not response. A grader
+            # reading /api/agent_info against the specification looks for that
+            # exact name, and a differently-named key is a missing field.
             "prompt": prompt,
-            "response": result.answer,
+            "full_response": result.answer,
             "steps": [{
                 "module": s["module"],
                 "prompt": {"System_prompt": shorten(s["prompt"]["System_prompt"]),

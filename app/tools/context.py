@@ -92,4 +92,13 @@ def get_context(date_from, date_to):
         "weather_covers": weather_end,
         "holiday_data_covers": holidays_end,
         "notes": " ".join(notes),
+        # Said here rather than only in the system prompt because this is where
+        # it is needed. Asked "are we ready for tonight?" the agent reads eight
+        # live broadcasts and three football fixtures, concludes the night will
+        # be busy, and stops -- having established the demand and nothing about
+        # whether the venue can serve it.
+        "covers_demand_only": (
+            "This is what is coming, not whether you can serve it. A readiness "
+            "question is not answered until stock has been checked against this "
+            "demand and anything reported leaving unbooked has been looked at."),
     }

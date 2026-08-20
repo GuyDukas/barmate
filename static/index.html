@@ -8,15 +8,21 @@
   :root {
     --bg: #fbfbfc; --panel: #ffffff; --ink: #191b21; --muted: #6b7280;
     --line: #e3e5ea; --accent: #2f6fd0; --accent-ink: #ffffff;
-    --tool: #eaf5ee; --tool-edge: #b6ddc3; --err: #b4232b; --err-bg: #fdf2f2;
-    --code: #f5f6f8;
+    --err: #b4232b; --err-bg: #fdf2f2; --code: #f5f6f8; --quote: #f2f4f8;
+    --m-reason: #e8f0fe; --m-reason-edge: #4276d2;
+    --m-know: #f0eafb; --m-know-edge: #7b56c4;
+    --m-reflect: #fdf1e3; --m-reflect-edge: #c67630;
+    --m-revise: #e9f6ec; --m-revise-edge: #348c52;
   }
   @media (prefers-color-scheme: dark) {
     :root {
       --bg: #14161a; --panel: #1b1e24; --ink: #e8eaee; --muted: #9aa2b1;
       --line: #2b2f37; --accent: #5b93e6; --accent-ink: #0e1116;
-      --tool: #1b2a20; --tool-edge: #2f4a38; --err: #ff8a8a; --err-bg: #2a1a1c;
-      --code: #14171c;
+      --err: #ff8a8a; --err-bg: #2a1a1c; --code: #14171c; --quote: #22262e;
+      --m-reason: #1a2434; --m-reason-edge: #4d7cc4;
+      --m-know: #251f36; --m-know-edge: #8b6bd0;
+      --m-reflect: #2e2318; --m-reflect-edge: #c98b45;
+      --m-revise: #1b2a20; --m-revise-edge: #3f9a60;
     }
   }
   * { box-sizing: border-box; }
@@ -38,7 +44,7 @@
     border-radius: 12px; padding: 18px; margin-bottom: 18px;
   }
   textarea {
-    width: 100%; min-height: 96px; resize: vertical; padding: 12px 14px;
+    width: 100%; min-height: 88px; resize: vertical; padding: 12px 14px;
     border: 1px solid var(--line); border-radius: 9px; background: var(--bg);
     color: var(--ink); font: inherit;
   }
@@ -54,7 +60,8 @@
     background: transparent; color: var(--muted); border: 1px solid var(--line);
     font-weight: 400;
   }
-  .examples { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+  .ghost:hover:not(:disabled) { color: var(--ink); border-color: var(--accent); }
+  .examples { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
   .examples button {
     background: transparent; color: var(--muted); border: 1px solid var(--line);
     font-size: 13px; font-weight: 400; padding: 6px 11px; border-radius: 999px;
@@ -63,21 +70,41 @@
   .examples button:hover { color: var(--ink); border-color: var(--accent); }
   h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .07em;
        color: var(--muted); margin: 0 0 10px; font-weight: 600; }
+  .ask {
+    background: var(--quote); border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0; padding: 10px 14px; margin-bottom: 14px;
+    white-space: pre-wrap;
+  }
   .answer { white-space: pre-wrap; }
   .err { background: var(--err-bg); border-color: var(--err); color: var(--err); }
+  .meta { color: var(--muted); font-size: 12.5px; margin-top: 14px; }
+  details.trace > summary, details.step > summary { cursor: pointer; }
+  details.trace {
+    margin-top: 14px; border-top: 1px solid var(--line); padding-top: 12px;
+  }
+  details.trace > summary {
+    font-size: 13px; text-transform: uppercase; letter-spacing: .07em;
+    color: var(--muted); font-weight: 600; margin-bottom: 10px;
+  }
   details.step {
     border: 1px solid var(--line); border-radius: 9px; margin-bottom: 8px;
     background: var(--bg); overflow: hidden;
   }
   details.step > summary {
-    cursor: pointer; padding: 10px 14px; font-weight: 600; font-size: 14px;
-    display: flex; align-items: center; gap: 10px;
+    padding: 10px 14px; font-weight: 600; font-size: 14px;
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
   }
   .badge {
-    background: var(--tool); border: 1px solid var(--tool-edge); color: var(--ink);
-    font-size: 11.5px; font-weight: 600; padding: 2px 8px; border-radius: 999px;
+    font-size: 11.5px; font-weight: 600; padding: 2px 9px; border-radius: 999px;
+    border: 1px solid var(--line); background: var(--quote); color: var(--ink);
   }
+  .badge.Reasoner { background: var(--m-reason); border-color: var(--m-reason-edge); }
+  .badge.KnowledgeRetriever { background: var(--m-know); border-color: var(--m-know-edge); }
+  .badge.Reflector { background: var(--m-reflect); border-color: var(--m-reflect-edge); }
+  .badge.Reviser { background: var(--m-revise); border-color: var(--m-revise-edge); }
   .n { color: var(--muted); font-weight: 400; font-size: 12.5px; }
+  .tool { color: var(--muted); font-weight: 400; font-size: 12.5px;
+          font-family: ui-monospace, Consolas, monospace; }
   .step-body { padding: 0 14px 14px; }
   .lbl { font-size: 11.5px; text-transform: uppercase; letter-spacing: .06em;
          color: var(--muted); margin: 10px 0 4px; font-weight: 600; }
@@ -106,30 +133,19 @@
     <div class="anchor">Frozen at Sunday 2026-06-14, 18:00 &middot; one hour before doors</div>
   </header>
 
-  <div class="card">
+  <!-- Every turn of the conversation lands here: the question, the answer, and
+       the trace of the LLM calls behind it. -->
+  <div id="thread"></div>
+
+  <div class="card" id="composer">
     <label for="prompt" class="lbl" style="margin-top:0">Your question</label>
     <textarea id="prompt" placeholder="How much Bombay Sapphire do we have and should I trust that number?"></textarea>
     <div class="row">
       <button id="run">Run Agent</button>
-      <button id="clear" class="ghost">Clear</button>
+      <button id="reset" class="ghost" disabled>New conversation</button>
       <span id="status" class="tag"></span>
     </div>
     <div class="examples" id="examples"></div>
-  </div>
-
-  <div class="card err" id="errorCard" hidden>
-    <h2 style="color:inherit">Error</h2>
-    <div id="errorText"></div>
-  </div>
-
-  <div class="card" id="answerCard" hidden>
-    <h2>Response</h2>
-    <div class="answer" id="answer"></div>
-  </div>
-
-  <div class="card" id="stepsCard" hidden>
-    <h2>Steps <span class="n" id="stepCount"></span></h2>
-    <div id="steps"></div>
   </div>
 
   <footer>
@@ -144,14 +160,19 @@
 const EXAMPLES = [
   "How much Bombay Sapphire do we have and should I trust that number?",
   "Did we lose any stock this week?",
-  "How busy is tonight and do I need another bartender?",
+  "Are we ready for tonight?",
   "What should I order from the beer supplier before Tuesday?",
-  "Why is the house red down more than the till says?",
-  "What is on TV this weekend?"
+  "Why is the house white down more than the till says?",
+  "Did we get everything we paid for from CBC?"
 ];
 
 const $ = id => document.getElementById(id);
 const promptEl = $("prompt");
+
+// The agent is stateless; the conversation lives here and travels with each
+// request. That is what lets a manager answer the clarifying question it just
+// asked -- "is 12.5 what was poured or what is left?" needs a reply.
+let history = [];
 
 EXAMPLES.forEach(text => {
   const b = document.createElement("button");
@@ -161,56 +182,76 @@ EXAMPLES.forEach(text => {
   $("examples").appendChild(b);
 });
 
-function show(el, on) { el.hidden = !on; }
-
-function render(steps) {
-  const host = $("steps");
-  host.textContent = "";
-  steps.forEach((s, i) => {
-    const d = document.createElement("details");
-    d.className = "step";
-    if (i === 0) d.open = true;
-
-    const sum = document.createElement("summary");
-    const n = document.createElement("span");
-    n.className = "n"; n.textContent = (i + 1) + ".";
-    const badge = document.createElement("span");
-    badge.className = "badge"; badge.textContent = s.module || "module";
-    sum.appendChild(n); sum.appendChild(badge);
-    d.appendChild(sum);
-
-    const body = document.createElement("div");
-    body.className = "step-body";
-    const p = s.prompt || {};
-    const sys = p.system_prompt ?? p.System_prompt;
-    const usr = p.user_prompt ?? p.User_prompt;
-    if (sys) body.appendChild(block("System prompt", sys));
-    if (usr) body.appendChild(block("User prompt", usr));
-    body.appendChild(block("Response", s.response));
-    d.appendChild(body);
-    host.appendChild(d);
-  });
+function el(tag, cls, text) {
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text !== undefined) n.textContent = text;
+  return n;
 }
 
 function block(label, value) {
   const frag = document.createDocumentFragment();
-  const l = document.createElement("div");
-  l.className = "lbl"; l.textContent = label;
-  const pre = document.createElement("pre");
+  frag.appendChild(el("div", "lbl", label));
+  const pre = el("pre");
   pre.textContent = typeof value === "string" ? value : JSON.stringify(value, null, 2);
-  frag.appendChild(l); frag.appendChild(pre);
+  frag.appendChild(pre);
   return frag;
+}
+
+function stepNode(s, i) {
+  const d = el("details", "step");
+  const sum = el("summary");
+  sum.appendChild(el("span", "n", (i + 1) + "."));
+  sum.appendChild(el("span", "badge " + (s.module || ""), s.module || "module"));
+  // The tool the step chose, surfaced without opening it: reading which calls
+  // were made in what order is most of what inspecting a trace is for.
+  const action = s.response && s.response.action;
+  if (action) sum.appendChild(el("span", "tool", action));
+  d.appendChild(sum);
+
+  const body = el("div", "step-body");
+  const p = s.prompt || {};
+  const sys = p.System_prompt ?? p.system_prompt;
+  const usr = p.User_prompt ?? p.user_prompt;
+  if (sys) body.appendChild(block("System prompt", sys));
+  if (usr) body.appendChild(block("User prompt", usr));
+  body.appendChild(block("Response", s.response));
+  d.appendChild(body);
+  return d;
+}
+
+function turnNode(prompt, data, seconds) {
+  const card = el("div", "card");
+  card.appendChild(el("div", "ask", prompt));
+
+  if (data.status === "ok") {
+    card.appendChild(el("div", "answer", data.response ?? ""));
+  } else {
+    const e = el("div", "answer");
+    e.style.color = "var(--err)";
+    e.textContent = data.error || "Unknown error.";
+    card.appendChild(e);
+  }
+
+  const steps = Array.isArray(data.steps) ? data.steps : [];
+  if (steps.length) {
+    const trace = el("details", "trace");
+    trace.appendChild(el("summary", null,
+      steps.length + (steps.length === 1 ? " LLM call" : " LLM calls")
+      + " — show the trace"));
+    steps.forEach((s, i) => trace.appendChild(stepNode(s, i)));
+    card.appendChild(trace);
+  }
+
+  card.appendChild(el("div", "meta", seconds + "s"));
+  return card;
 }
 
 async function run() {
   const prompt = promptEl.value.trim();
-  show($("errorCard"), false);
-  show($("answerCard"), false);
-  show($("stepsCard"), false);
-
   if (!prompt) {
-    $("errorText").textContent = "Enter a question first.";
-    show($("errorCard"), true);
+    promptEl.focus();
+    $("status").textContent = "Enter a question first.";
     return;
   }
 
@@ -218,43 +259,38 @@ async function run() {
   $("status").innerHTML = '<span class="spin"></span> thinking, this can take a minute';
   const started = Date.now();
 
+  let data;
   try {
     const res = await fetch("/api/execute", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ prompt })
+      body: JSON.stringify({ prompt, history })
     });
-    const data = await res.json();
-
-    if (data.status === "ok") {
-      $("answer").textContent = data.response ?? "";
-      show($("answerCard"), true);
-    } else {
-      $("errorText").textContent = data.error || "Unknown error.";
-      show($("errorCard"), true);
-    }
-
-    const steps = Array.isArray(data.steps) ? data.steps : [];
-    if (steps.length) {
-      $("stepCount").textContent = steps.length + (steps.length === 1 ? " LLM call" : " LLM calls");
-      render(steps);
-      show($("stepsCard"), true);
-    }
-    $("status").textContent = ((Date.now() - started) / 1000).toFixed(1) + "s";
+    data = await res.json();
   } catch (e) {
-    $("errorText").textContent = "Request failed: " + e.message;
-    show($("errorCard"), true);
-    $("status").textContent = "";
-  } finally {
-    $("run").disabled = false;
+    data = { status: "error", error: "Request failed: " + e.message, steps: [] };
   }
+
+  const seconds = ((Date.now() - started) / 1000).toFixed(1);
+  $("thread").appendChild(turnNode(prompt, data, seconds));
+
+  if (data.status === "ok") {
+    history.push({ prompt, answer: data.response ?? "" });
+    promptEl.value = "";
+  }
+  $("reset").disabled = history.length === 0;
+  $("run").disabled = false;
+  $("status").textContent = "";
+  $("composer").scrollIntoView({ behavior: "smooth", block: "end" });
 }
 
 $("run").onclick = run;
-$("clear").onclick = () => {
+$("reset").onclick = () => {
+  history = [];
+  $("thread").textContent = "";
   promptEl.value = "";
-  ["errorCard", "answerCard", "stepsCard"].forEach(id => show($(id), false));
   $("status").textContent = "";
+  $("reset").disabled = true;
   promptEl.focus();
 };
 promptEl.addEventListener("keydown", e => {
