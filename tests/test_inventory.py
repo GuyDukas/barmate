@@ -181,3 +181,29 @@ def test_stock_position_names_the_protocol_that_widens_the_line():
     gin = inventory.get_inventory("P010")
     assert gin["happy_hour_line"] is False
     assert gin["explanation_docs"] == []
+
+
+def test_a_counted_figure_on_a_two_bar_line_carries_a_scope_warning():
+    """Reported live: a bartender said "3 left on the shelf" for a line
+    carried at both bars, and a venue-wide book figure of 45.4 turned that
+    into 42.4 units of unexplained shrinkage -- an accusation manufactured
+    out of the difference between one shelf and the whole venue."""
+    r = inventory.reconcile("P007", physical_stock=3)
+    assert r["station"] == "both"
+    assert "RAG-007" in r["scope_note"]
+    # And it must not suppress the arithmetic while it asks.
+    assert r["gap_units"] is not None
+    assert r["book_stock"] == 45.4
+
+
+def test_a_single_bar_line_needs_no_scope_warning():
+    """Carlsberg 30L lives at the outside bar and nowhere else, so a count
+    of it is not ambiguous about which bar was counted."""
+    r = inventory.reconcile("K003", physical_stock=1)
+    assert r["station"] == "outside"
+    assert "scope_note" not in r
+
+
+def test_no_counted_figure_means_no_scope_question():
+    """Nothing was counted, so there is no count whose scope could be wrong."""
+    assert "scope_note" not in inventory.reconcile("P007")

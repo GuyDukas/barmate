@@ -350,8 +350,29 @@ def reconcile(product_id, physical_stock=None):
         "physical_stock": physical_stock,
         "expected_variance": envelope["envelope"],
         "happy_hour_line": happy_hour,
+        "station": p["station"],
         "evidence": evidence,
     }
+
+    # Book stock covers the venue. A figure a person counted covers whatever
+    # they were standing in front of, and RAG-007 divides this venue into an
+    # inside bar and an outside bar. For a line carried at both, "three left on
+    # the shelf" against a venue-wide book figure manufactures a shortfall out
+    # of a scope difference, and the classification below would call it theft.
+    #
+    # The note asks for the scope. It deliberately does not withhold the
+    # figures while it waits: an answer that refuses to say anything until a
+    # question is answered is the same dead end as one that answers the wrong
+    # question confidently.
+    if physical_stock is not None and p["station"] == "both":
+        result["scope_note"] = (
+            f"{p['name']} is carried at both bars (RAG-007), and book stock "
+            "covers the venue. If the figure supplied counted one bar, the gap "
+            "below is a scope difference and not a loss. Give the position and "
+            "say what the gap means under each reading, then ask which the "
+            "count covered. Do not hold the figures back for the answer, and "
+            "do not drop the recommendation the gap already warrants: a "
+            "recount settles both readings, so it is still worth asking for.")
 
     if physical_stock is None:
         result.update({

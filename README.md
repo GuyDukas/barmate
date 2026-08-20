@@ -78,7 +78,7 @@ The two detection rows are the design working as intended. **Arithmetic finds
 the losses nobody mentioned; the group chat finds the ones somebody logged.**
 Neither route alone gets past 60% recall, and the agent has both.
 
-160 unit tests, all passing.
+163 unit tests, all passing.
 
 ## What makes it an agent
 
@@ -133,7 +133,7 @@ question through to an answer instead of a plan.
 | `resolve_category` | Every product in a category; near-misses corrected, misses list what exists |
 | `resolve_supplier` | The supplier and every line the venue buys from them; matches the short name on the invoice |
 | `get_inventory` | Book stock, last count, staleness, whether a protocol widens the line |
-| `reconcile` | Book stock against a physical figure you supply, classified per RAG-013 |
+| `reconcile` | Book stock against a physical figure you supply, classified per RAG-013; flags when the count and the books may not cover the same bar |
 | `variance_envelope` | How far this product's books and counts normally disagree |
 | `find_discrepancies` | Every product with a loss somebody reported since the last count |
 | `get_sales_history` | Weekday baselines, stockout losses |
@@ -278,7 +278,7 @@ top of this page is the agent, running; the endpoints answer without any setup
 on your part. What follows is for running it yourself.
 
 **Nor is it needed to run the test suite.** A fresh clone with no credentials
-at all runs all 160 tests against the offline fixture in
+at all runs all 163 tests against the offline fixture in
 `data/runtime/bundle.json.gz`, and `python -m eval.metrics` reproduces every
 quantitative measure in this README the same way. Both go through the same tool
 code the deployed agent uses.
@@ -335,7 +335,7 @@ real answer.
 ## Testing
 
 ```bash
-pytest                 # 160 unit tests, offline, no credentials needed
+pytest                 # 163 unit tests, offline, no credentials needed
 python -m eval.run     # nine scenarios end to end, needs credentials
 python -m eval.metrics # quantitative measures, offline
 
