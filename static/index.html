@@ -157,13 +157,21 @@
 </div>
 
 <script>
+// Ordered by how long they actually take, fastest first, because the first one
+// clicked sets the impression and a hundred-second wait reads as a hang. Each
+// exercises something different: staleness, the manual, the reorder
+// arithmetic, a protocol that looks like theft, Hebrew, and the month view.
+// "What should I order from the beer supplier before Tuesday?" used to sit
+// here and was the worst of both -- the slowest chip, and at a three day
+// horizon nothing in the catalogue needs ordering, so it answered "order
+// nothing" after a hundred seconds.
 const EXAMPLES = [
   "How much Bombay Sapphire do we have and should I trust that number?",
-  "Did we lose any stock this week?",
-  "Are we ready for tonight?",
-  "What should I order from the beer supplier before Tuesday?",
+  "How many chasers can a shift manager comp before it needs approval?",
+  "What kegs should I order for the week ahead?",
   "Why is the house white down more than the till says?",
-  "Did we get everything we paid for from CBC?"
+  "מה קרה למלאי השבוע?",
+  "Anything unusual in the numbers over the last month?"
 ];
 
 const $ = id => document.getElementById(id);

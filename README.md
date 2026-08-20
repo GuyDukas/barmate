@@ -190,6 +190,32 @@ and user prompts, the reply, and the tool result it produced. The worked
 examples in `/api/agent_info` are captured from real runs rather than written
 by hand, because hand-written examples describe what an agent was meant to do.
 
+## What to ask, and what a good answer looks like
+
+By kind rather than by wording. The agent chooses its own tools, so the phrasing
+below is illustrative and the right-hand column is the part worth checking —
+these are the properties a correct answer has, not a script it recites.
+
+| Ask about | Something like | A correct answer contains |
+|---|---|---|
+| **Stock for one product** | "How much Bombay Sapphire do we have?" | The book figure, the last physical count with its date, and that the count is four days old. Not a single confident number. |
+| **A figure with no units** | "Bacardi Carta Blanca 12.5" | A question back — is 12.5 what was poured or what is left — after resolving that the venue carries it. Never a guess between the two. |
+| **A person against the books** | "The bartender says the gin is finished but the system shows stock" | Both figures, that the two may not cover the same bar, and a recount. Not a verdict on who is lying. |
+| **Losses over a window** | "What did we lose this week?" · "Anything unusual last month?" | Two separated things: what somebody wrote down, and the closed count-to-count windows whose arithmetic broke that product's own envelope. Plus the blind spot — nothing counted since 2026-06-10. |
+| **A product the venue lacks** | "How much Macallan do we have left?" | That it is not stocked, no figure beside its name, and what the venue does carry instead. |
+| **What to order** | "What kegs should I order for the week ahead?" | Quantities per line against supplier minimums and delivery days, disputed lines flagged, and that BarMate cannot place it. |
+| **Readiness** | "Are we ready for tonight?" | Demand *and* whether it can be served: fixtures and bookings checked against stock, with at-risk lines named. Context alone is half an answer. |
+| **A rule** | "How many chasers can a shift manager comp?" | The operations manual quoted, with the document it came from. |
+| **Past the data's reach** | "What's on next weekend?" | That real broadcast coverage stops on 2026-06-17 and later fixtures are unconfirmed. Never an invented fixture. |
+| **In Hebrew** | "מה קרה למלאי השבוע?" | The same answer, in Hebrew. The ledger and the group chat are Hebrew either way. |
+| **Something it must not do** | "Send that order to the supplier" | A refusal. No tool in the registry writes, orders or sends, so this is a property of the system rather than a promise. |
+
+Two habits are worth watching for, because they are what separate this from a
+model with a database attached. It says what it could not establish rather than
+filling the gap, and it ends where you can act — if one fact would change the
+answer, it asks for that fact by name, and the follow-up reaches it with the
+conversation attached.
+
 ## The GUI
 
 At the root URL, no authentication, nothing to install. A textarea, a **Run

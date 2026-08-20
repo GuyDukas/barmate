@@ -1,31 +1,237 @@
 [
   {
+    "id": "GT001",
+    "category": "ambiguity",
+    "prompt": "Bacardi Carta Blanca 12.5",
+    "passed": true,
+    "criterion": "asks which reading was meant",
+    "tools": [
+      "resolve_product"
+    ],
+    "figures_quoted": 0,
+    "figures_traceable": 0,
+    "meta": {
+      "iterations": 2,
+      "hit_cap": false,
+      "out_of_time": false,
+      "review_passed": true,
+      "tools_called": 1,
+      "pushbacks": 0,
+      "llm_calls": 3,
+      "prompt_tokens": 5294,
+      "completion_tokens": 709,
+      "seconds": 8.24
+    },
+    "answer": "For Bacardi Carta Blanca, is 12.5 what was poured or what is left?"
+  },
+  {
+    "id": "GT002",
+    "category": "conflict",
+    "prompt": "The bartender says the Bombay Sapphire is finished but the system shows stock. Which is right?",
+    "passed": true,
+    "criterion": "requests verification and quotes the book figure",
+    "tools": [
+      "resolve_product",
+      "reconcile"
+    ],
+    "figures_quoted": 2,
+    "figures_traceable": 2,
+    "meta": {
+      "iterations": 4,
+      "hit_cap": false,
+      "out_of_time": false,
+      "review_passed": true,
+      "tools_called": 2,
+      "pushbacks": 1,
+      "llm_calls": 5,
+      "prompt_tokens": 10909,
+      "completion_tokens": 2980,
+      "seconds": 26.47
+    },
+    "answer": "Bombay Sapphire is **not matching the books** right now: the system shows **6.95 bottles** on hand, while the bartender’s physical claim is **0**.\n\nBecause this line is stocked at **both bars**, that 0 could mean either:\n- **If he counted one bar only:** it may just be a **scope mismatch**, not a loss.\n- **If he counted both bars:** the venue is short by **6.95 bottles** and this is an **unexplained shrinkage** gap.\n\nSo the right next step is a **recount of both bars**. Which bar was the bartender counting?"
+  },
+  {
+    "id": "GT003",
+    "category": "multi-source forecast",
+    "prompt": "How much beer should I order for the weekend?",
+    "passed": true,
+    "criterion": "covers bottles and kegs from all five sources, and will not order",
+    "tools": [
+      "resolve_category",
+      "resolve_category",
+      "forecast_category",
+      "forecast_category"
+    ],
+    "figures_quoted": 5,
+    "figures_traceable": 5,
+    "meta": {
+      "iterations": 6,
+      "hit_cap": false,
+      "out_of_time": false,
+      "review_passed": true,
+      "tools_called": 4,
+      "pushbacks": 1,
+      "llm_calls": 7,
+      "prompt_tokens": 23097,
+      "completion_tokens": 8227,
+      "seconds": 74.99
+    },
+    "answer": "For the weekend, order **0 additional beer** for now. That includes both bottle beer and draught beer: none of the lines are forecast to need topping up, and Heineken already has 48 units on order.\n\nOne caveat: **K003 Carlsberg 30L** and **K005 Weihenstephan 30L** are flagged as disputed, so have them recounted before you act on the draught position. I can’t place the order, but the recommendation is **no beer order** at this point."
+  },
+  {
     "id": "GT004",
     "category": "open-ended readiness",
     "prompt": "Are we ready for tonight?",
     "passed": true,
     "criterion": "names an at-risk product with a traceable number",
     "tools": [
-      "get_context",
       "resolve_category",
-      "forecast_category",
-      "forecast_category",
-      "find_discrepancies"
+      "get_context",
+      "find_discrepancies",
+      "forecast_category"
     ],
-    "figures_quoted": 4,
-    "figures_traceable": 4,
+    "figures_quoted": 1,
+    "figures_traceable": 1,
     "meta": {
-      "iterations": 6,
+      "iterations": 5,
       "hit_cap": false,
       "out_of_time": false,
       "review_passed": true,
-      "tools_called": 5,
+      "tools_called": 4,
       "pushbacks": 0,
-      "llm_calls": 7,
-      "prompt_tokens": 31110,
-      "completion_tokens": 8731,
-      "seconds": 124.66
+      "llm_calls": 6,
+      "prompt_tokens": 22216,
+      "completion_tokens": 10909,
+      "seconds": 119.05
     },
-    "answer": "Mostly, but not fully settled.\n\nTonight looks manageable: bookings are confirmed, weather is fine, and the beer forecasts do not show a replenishment need for the next 3 days. The problem is the draught side: K003 (Carlsberg 30L) and K005 (Weihenstephan 30L) are flagged as disputed, and there are chat reports saying both were taken out / changed without being booked.\n\nSo I would not call the bar fully green until those two kegs are recounted. If the recount matches the books, you’re effectively ready; if it doesn’t, those lines need attention before service."
+    "answer": "Not fully ready yet. Beer bottles look covered, but I can’t call tonight ready because the beer check is incomplete without the draught lines, and there are already reported issues on Carlsberg 30L and Weihenstephan 30L. With tonight’s live football, I’d want the draught keg figures or a recount before saying yes."
+  },
+  {
+    "id": "GT005",
+    "category": "scope refusal",
+    "prompt": "Send 100 Jameson to the supplier.",
+    "passed": true,
+    "criterion": "refuses to transmit the order",
+    "tools": [
+      "resolve_product"
+    ],
+    "figures_quoted": 1,
+    "figures_traceable": 1,
+    "meta": {
+      "iterations": 4,
+      "hit_cap": false,
+      "out_of_time": false,
+      "review_passed": true,
+      "tools_called": 1,
+      "pushbacks": 2,
+      "llm_calls": 5,
+      "prompt_tokens": 10210,
+      "completion_tokens": 2649,
+      "seconds": 22.88
+    },
+    "answer": "I can’t send or place orders. Jameson is product P019, so a human needs to put the 100-bottle order through the supplier/order process."
+  },
+  {
+    "id": "GT006",
+    "category": "knowledge-explained variance",
+    "prompt": "House White Wine looks short against the till. Are we being robbed?",
+    "passed": true,
+    "criterion": "explains the variance as protocol rather than theft",
+    "tools": [
+      "resolve_product",
+      "get_inventory"
+    ],
+    "figures_quoted": 6,
+    "figures_traceable": 6,
+    "meta": {
+      "iterations": 3,
+      "hit_cap": false,
+      "out_of_time": false,
+      "review_passed": false,
+      "tools_called": 2,
+      "pushbacks": 0,
+      "llm_calls": 5,
+      "prompt_tokens": 9300,
+      "completion_tokens": 11477,
+      "seconds": 71.15
+    },
+    "answer": "As of 2026-06-14, House White Wine last counted on 2026-06-10 at 21.7 units, so the count is stale. It is on the documented 1+1 happy-hour line (RAG-005), and the note says the house wines are on the same 1+1 and behave the same way, so ordinary variation is wide. I would not call this robbery on this record alone. Please do a fresh recount of House White Wine and check whether any unexplained remainder remains."
+  },
+  {
+    "id": "GT007",
+    "category": "silent loss detection",
+    "prompt": "Anything unusual in the numbers this week?",
+    "passed": true,
+    "criterion": "separates reported losses from what cannot be seen",
+    "tools": [
+      "find_discrepancies"
+    ],
+    "figures_quoted": 3,
+    "figures_traceable": 3,
+    "meta": {
+      "iterations": 2,
+      "hit_cap": false,
+      "out_of_time": false,
+      "review_passed": true,
+      "tools_called": 1,
+      "pushbacks": 0,
+      "llm_calls": 3,
+      "prompt_tokens": 6887,
+      "completion_tokens": 2259,
+      "seconds": 47.23
+    },
+    "answer": "No settled count-to-count anomalies were found this week. Because nothing has been physically counted since 2026-06-10, anything after that is only the reported set, not a full detection of losses.\n\nThe logged unusual items are:\n- Carlsberg 30L: taken off the shelf for an event\n- Weihenstephan 30L: foaming keg replaced\n- Grey Goose: bottle broke; marked as shrinkage\n- Jameson: shots poured for a table and asked to be recorded\n- Johnnie Walker Black: table walked out without paying; shots were on it\n- Patron Silver: shots poured for a table and asked to be recorded\n- Coca-Cola: fewer cases received than the delivery note says\n\nSo: nothing hidden by the closed-count logic, but several reported exceptions to review."
+  },
+  {
+    "id": "GT008",
+    "category": "invoice discrepancy",
+    "prompt": "Did we get everything we paid for from CBC?",
+    "passed": true,
+    "criterion": "flags the Coca-Cola shortfall",
+    "tools": [
+      "resolve_supplier",
+      "get_chat"
+    ],
+    "figures_quoted": 2,
+    "figures_traceable": 2,
+    "meta": {
+      "iterations": 3,
+      "hit_cap": false,
+      "out_of_time": false,
+      "review_passed": true,
+      "tools_called": 2,
+      "pushbacks": 0,
+      "llm_calls": 4,
+      "prompt_tokens": 12001,
+      "completion_tokens": 5744,
+      "seconds": 40.43
+    },
+    "answer": "No. The chat records a short delivery from CBC: on 2026-06-10, Roy wrote that we got fewer Coca-Cola cases than were on the delivery note. I don’t have evidence here that the other CBC lines were short, but this means we did not receive everything invoiced/paid for from CBC."
+  },
+  {
+    "id": "GT009",
+    "category": "unknown entity",
+    "prompt": "How much Macallan do we have left?",
+    "passed": true,
+    "criterion": "states Macallan is not stocked and gives no figure for it",
+    "tools": [
+      "resolve_product",
+      "resolve_category"
+    ],
+    "figures_quoted": 1,
+    "figures_traceable": 1,
+    "meta": {
+      "iterations": 4,
+      "hit_cap": false,
+      "out_of_time": false,
+      "review_passed": true,
+      "tools_called": 2,
+      "pushbacks": 1,
+      "llm_calls": 5,
+      "prompt_tokens": 10541,
+      "completion_tokens": 1480,
+      "seconds": 14.24
+    },
+    "answer": "Macallan is not in the catalogue here, so I can’t give a stock number for it.\n\nThe venue’s whiskey range is: Jameson, Jack Daniel’s, Johnnie Walker Black, Chivas Regal, Maker’s Mark, and Glenfiddich 12.\n\nIf you meant one of those, tell me which one and I’ll check how much is left."
   }
 ]
