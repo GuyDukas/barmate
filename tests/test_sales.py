@@ -192,3 +192,49 @@ def test_a_bottle_only_beer_forecast_declares_what_it_left_out():
     gin = sales.forecast_category("gin")
     assert gin["incomplete"] is False
     assert gin["missing_categories"] == []
+
+
+def test_the_venue_forecast_covers_every_category_in_one_call():
+    """Observed: "are we ready for tonight?" reached for forecast_category
+    five times running, hit the iteration cap at 216 seconds, and had covered
+    a third of the shelf."""
+    from app import db
+    r = sales.forecast_venue(horizon_days=1)
+    assert r["ok"]
+    assert set(r["categories_covered"]) == {p["category"] for p in db.products()}
+    assert r["reviewed"] == len(db.products())
+
+
+def test_only_the_lines_needing_attention_come_back():
+    """A readiness answer does not want the fifty-four products that are fine."""
+    r = sales.forecast_venue(horizon_days=1)
+    assert all(line["below_safety_stock"] or line["recommended_order"]
+               or line["stock_position_disputed"] for line in r["at_risk"])
+    assert r["at_risk_found"] < r["reviewed"]
+
+
+def test_the_disputed_kegs_surface_for_tonight():
+    """The two kegs stock was reported leaving are what makes tonight not
+    ready, and they are what the scenario expects to be named."""
+    r = sales.forecast_venue(horizon_days=1)
+    assert {"K003", "K005"} <= set(r["disputed"])
+
+
+def test_the_venue_forecast_fits_the_observation_limit_at_any_horizon():
+    """Twenty-five at-risk lines over a week is eight thousand characters
+    against a three and a half thousand character limit, and a truncated
+    payload puts the agent back where it started minus the iterations."""
+    import json
+    from app.agent.loop import OBSERVATION_CHAR_LIMIT
+    for horizon in (1, 3, 7, 14, 30):
+        payload = json.dumps(sales.forecast_venue(horizon_days=horizon),
+                             ensure_ascii=False, default=str)
+        assert len(payload) <= OBSERVATION_CHAR_LIMIT, f"{horizon}d: {len(payload)}"
+
+
+def test_the_shortest_lines_are_listed_before_the_merely_disputed():
+    r = sales.forecast_venue(horizon_days=7)
+    ranked = [(not l["below_safety_stock"], -l["recommended_order"])
+              for l in r["at_risk"]]
+    assert ranked == sorted(ranked)
+    assert len(r["at_risk"]) <= sales.AT_RISK_LIMIT

@@ -78,7 +78,7 @@ The two detection rows are the design working as intended. **Arithmetic finds
 the losses nobody mentioned; the group chat finds the ones somebody logged.**
 Neither route alone gets past 60% recall, and the agent has both.
 
-169 unit tests, all passing.
+181 unit tests, all passing.
 
 ## What makes it an agent
 
@@ -133,12 +133,14 @@ question through to an answer instead of a plan.
 | `resolve_category` | Every product in a category; near-misses corrected, misses list what exists |
 | `resolve_supplier` | The supplier and every line the venue buys from them; matches the short name on the invoice |
 | `get_inventory` | Book stock, last count, staleness, whether a protocol widens the line |
+| `get_category_inventory` | The same for every line in a category at once, so a shelf is one call rather than one per bottle |
 | `reconcile` | Book stock against a physical figure you supply, classified per RAG-013; flags when the count and the books may not cover the same bar |
 | `variance_envelope` | How far this product's books and counts normally disagree |
 | `find_discrepancies` | Over any window: the losses somebody reported, and the closed count-to-count windows whose arithmetic broke the product's own envelope |
 | `get_sales_history` | Weekday baselines, stockout losses |
 | `forecast_reorder` | Demand with RAG-004 multipliers, minus stock and orders in flight |
 | `forecast_category` | The same for a whole category in one call, declaring what it excludes |
+| `forecast_venue` | Every category at once, filtered to the lines that are short, due an order, or disputed |
 | `get_context` | Fixtures, bookings, weather, holidays, and how far each source reaches |
 | `get_shift_reports` | Closing reports with figures extracted, ambiguity flagged |
 | `get_chat` | Shift-group messages, filterable by product in either language |
@@ -304,7 +306,7 @@ top of this page is the agent, running; the endpoints answer without any setup
 on your part. What follows is for running it yourself.
 
 **Nor is it needed to run the test suite.** A fresh clone with no credentials
-at all runs all 169 tests against the offline fixture in
+at all runs all 181 tests against the offline fixture in
 `data/runtime/bundle.json.gz`, and `python -m eval.metrics` reproduces every
 quantitative measure in this README the same way. Both go through the same tool
 code the deployed agent uses.
@@ -361,7 +363,7 @@ real answer.
 ## Testing
 
 ```bash
-pytest                 # 169 unit tests, offline, no credentials needed
+pytest                 # 181 unit tests, offline, no credentials needed
 python -m eval.run     # nine scenarios end to end, needs credentials
 python -m eval.metrics # quantitative measures, offline
 

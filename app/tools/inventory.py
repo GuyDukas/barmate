@@ -457,6 +457,86 @@ def reconcile(product_id, physical_stock=None):
 
 # --------------------------------------------------------------- the sweep
 
+def get_category_inventory(category):
+    """The stock position for a whole category in one call.
+
+    The same argument forecast_category makes for ordering, which had never
+    been made for stock: a question about the whisky is one question, and
+    answering it a product at a time costs an iteration per bottle. Six lines
+    need twelve calls to report a figure and its envelope, the loop caps at
+    eight, and the agent gets three quarters of the way through a shelf before
+    it has to stop and say what it could not establish. Observed against the
+    deployment on a two-word follow-up, "and the whisky?".
+
+    Everything here comes from get_inventory and variance_envelope, sharing
+    one movement fetch per product rather than a round trip each.
+    """
+    from app.tools.catalog import resolve_category
+
+    found = resolve_category(category)
+    if not found["found"]:
+        return {"ok": False, "category": category,
+                "error": f"'{category}' is not a product category here",
+                "available_categories": found["available_categories"]}
+
+    as_of = _anchor_date().isoformat()
+    rows, stale, disputed = [], [], []
+    for entry in found["products"]:
+        pid = entry["product_id"]
+        mv = _movement(pid)
+        if mv is None:
+            continue
+        stock = get_inventory(pid, _mv=mv)
+        if not stock["ok"]:
+            continue
+        envelope = variance_envelope(pid, _mv=mv)
+        ev = _evidence(stock["last_count_date"], as_of).get(pid)
+        is_disputed = bool(ev and (ev["chat"] or ev["shift_reports"]))
+        if stock["count_is_stale"]:
+            stale.append(pid)
+        if is_disputed:
+            disputed.append(pid)
+        rows.append({
+            "product_id": pid,
+            "name": stock["name"],
+            "unit": stock["unit"],
+            "book_stock": stock["book_stock"],
+            "last_count": stock["last_count"],
+            "last_count_date": stock["last_count_date"],
+            "days_since_count": stock["days_since_count"],
+            "count_is_stale": stock["count_is_stale"],
+            "safety_stock": stock["safety_stock"],
+            "below_safety_stock": stock["below_safety_stock"],
+            "expected_variance": envelope["envelope"],
+            "happy_hour_line": envelope["happy_hour_line"],
+            "stock_position_disputed": is_disputed,
+        })
+
+    rows.sort(key=lambda r: r["name"])
+    missing = found.get("related_categories") or []
+
+    return {
+        "ok": True,
+        "category": found["did_you_mean"] or category,
+        "as_of": as_of,
+        "incomplete": bool(missing),
+        "missing_categories": missing,
+        "products": rows,
+        "count_is_stale": stale,
+        "disputed": disputed,
+        "below_safety_stock": [r["product_id"] for r in rows
+                               if r["below_safety_stock"]],
+        "note": ("Book stock, not shelf stock: nothing has been counted since "
+                 f"{rows[0]['last_count_date'] if rows else as_of}."
+                 + (f" This covers '{found['did_you_mean'] or category}' only; "
+                    f"{', '.join(missing)} holds further products of the same "
+                    "kind and is NOT included here." if missing else "")
+                 + (f" Stock was reported leaving {', '.join(disputed)} since "
+                    "the last count without reaching the books; those figures "
+                    "are disputed until a recount." if disputed else "")),
+    }
+
+
 def find_discrepancies(date_from=None, date_to=None):
     """Everything the books do not know about, across the whole catalogue.
 

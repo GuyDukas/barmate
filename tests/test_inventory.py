@@ -263,3 +263,57 @@ def test_the_note_says_how_far_the_chat_actually_reaches():
     written down and that must not read as nothing happening."""
     note = inventory.find_discrepancies(date_from="2026-04-01")["note"]
     assert "2026-06-01" in note
+
+
+def test_a_category_reports_every_line_in_one_call():
+    """Observed against the deployment: "and the whisky?" needed a figure and
+    an envelope for six bottles, twelve calls against an eight-iteration cap,
+    and the agent got three quarters of the way through and stopped."""
+    r = inventory.get_category_inventory("whiskey")
+    assert r["ok"]
+    assert len(r["products"]) == 6
+    assert all(p["book_stock"] is not None for p in r["products"])
+    assert all(p["expected_variance"] > 0 for p in r["products"])
+
+
+def test_a_misspelled_category_still_resolves():
+    """The catalogue spells it whiskey. A manager asking about whisky is
+    asking about the same six bottles."""
+    r = inventory.get_category_inventory("whisky")
+    assert r["ok"]
+    assert r["category"] == "whiskey"
+    assert len(r["products"]) == 6
+
+
+def test_beer_says_it_is_only_half_the_beer():
+    """Bottles and kegs are two categories at a venue with draught lines, and
+    a stock answer covering one of them has answered half the question."""
+    r = inventory.get_category_inventory("beer")
+    assert r["incomplete"]
+    assert r["missing_categories"] == ["draught_beer"]
+    assert "draught_beer" in r["note"]
+
+
+def test_a_category_flags_the_lines_nobody_can_vouch_for():
+    r = inventory.get_category_inventory("whiskey")
+    assert set(r["disputed"]) == {"P019", "P021"}
+    assert all(p["stock_position_disputed"] for p in r["products"]
+               if p["product_id"] in r["disputed"])
+
+
+def test_a_category_payload_fits_the_observation_limit():
+    """The whole point is to answer in one call. A payload the loop truncates
+    would put the agent back where it started, minus the iterations."""
+    import json
+    from app import db
+    from app.agent.loop import OBSERVATION_CHAR_LIMIT
+    for category in sorted({p["category"] for p in db.products()}):
+        payload = json.dumps(inventory.get_category_inventory(category),
+                             ensure_ascii=False, default=str)
+        assert len(payload) <= OBSERVATION_CHAR_LIMIT, f"{category}: {len(payload)}"
+
+
+def test_an_unknown_category_is_refused_with_the_real_ones():
+    r = inventory.get_category_inventory("absinthe")
+    assert r["ok"] is False
+    assert "whiskey" in r["available_categories"]

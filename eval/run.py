@@ -46,6 +46,7 @@ DATA_TOOLS = {"get_inventory", "reconcile", "variance_envelope",
 # what the scenario was actually asking about.
 SOURCES = {
     "get_inventory": {"inventory"},
+    "get_category_inventory": {"inventory", "human_reports"},
     "reconcile": {"inventory", "human_reports"},
     "variance_envelope": {"inventory"},
     "find_discrepancies": {"inventory", "human_reports"},

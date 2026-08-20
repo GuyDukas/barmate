@@ -31,6 +31,7 @@ HOLIDAY_MULTIPLIER = 1.3         # every category
 PREMIUM_SPIRIT_PRICE = 350
 
 VIP_RESERVATION_TYPES = {"private_event", "birthday"}
+AT_RISK_LIMIT = 8
 
 DEFAULT_WEEKS = 8
 
@@ -368,4 +369,79 @@ def forecast_category(category, horizon_days=3, weeks=DEFAULT_WEEKS):
                  + (f" Stock was reported leaving {', '.join(disputed)} since the "
                     "last count without reaching the books; recount those before "
                     "acting." if disputed else "")),
+    }
+
+
+def forecast_venue(horizon_days=3, weeks=8):
+    """Every category at once, filtered to the lines that need attention.
+
+    "Are we ready for tonight?" is a question about the whole bar, and the
+    only whole-bar view was fourteen separate calls. Asked it, the agent
+    reached for forecast_category five times running, hit the eight-iteration
+    cap at two hundred and sixteen seconds, and had covered a third of the
+    shelf. The same argument forecast_category makes against going a product
+    at a time applies one level up.
+
+    Filtered rather than complete on purpose: sixty-one lines is a payload the
+    loop truncates, and a readiness answer does not want the fifty-four
+    products that are fine. What comes back is the ones short, the ones due an
+    order, and the ones nobody can vouch for.
+    """
+    from app import db
+
+    categories = sorted({p["category"] for p in db.products()})
+    rows, covered = [], []
+    coverage_end = bookings_end = None
+    unconfirmed = False
+
+    for category in categories:
+        r = forecast_category(category, horizon_days=horizon_days, weeks=weeks)
+        if not r.get("ok"):
+            continue
+        covered.append(category)
+        coverage_end = r["broadcast_coverage_ends"]
+        bookings_end = r["bookings_known_through"]
+        unconfirmed = unconfirmed or r["horizon_partially_unconfirmed"]
+        for line in r["products"]:
+            if (line["below_safety_stock"] or line["recommended_order"]
+                    or line["stock_position_disputed"]):
+                rows.append({"category": category, **{k: line[k] for k in (
+                    "product_id", "name", "unit", "book_stock", "safety_stock",
+                    "below_safety_stock", "net_need", "recommended_order",
+                    "supplier_id", "count_is_stale", "stock_position_disputed")}})
+
+    # Short first, then what needs ordering, then what is merely disputed.
+    rows.sort(key=lambda r: (not r["below_safety_stock"],
+                             -r["recommended_order"], r["name"]))
+    reviewed = len(db.products())
+
+    # Twenty-five at-risk lines over a week is eight thousand characters, and
+    # the loop cuts an observation at three and a half thousand. The full id
+    # lists below stay complete because they are cheap; it is the rows that
+    # have to be rationed, worst first.
+    found = len(rows)
+    listed = rows[:AT_RISK_LIMIT]
+
+    return {
+        "ok": True,
+        "horizon_days": horizon_days,
+        "categories_covered": covered,
+        "reviewed": reviewed,
+        "at_risk": listed,
+        "at_risk_found": found,
+        "below_safety_stock": [r["product_id"] for r in rows
+                               if r["below_safety_stock"]],
+        "to_order": [r["product_id"] for r in rows if r["recommended_order"]],
+        "disputed": [r["product_id"] for r in rows
+                     if r["stock_position_disputed"]],
+        "broadcast_coverage_ends": coverage_end,
+        "bookings_known_through": bookings_end,
+        "horizon_partially_unconfirmed": unconfirmed,
+        "multiplier_source": "RAG-004",
+        "note": (f"{found} of {reviewed} lines need attention over "
+                 f"{horizon_days} day(s); the {len(listed)} most pressing are "
+                 "listed and the rest are above safety stock with nothing "
+                 "reported against them. "
+                 "Recommendation only. BarMate cannot place or transmit "
+                 "orders."),
     }

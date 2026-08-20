@@ -17,12 +17,14 @@ TOOLS = {
     "resolve_category": catalog.resolve_category,
     "resolve_supplier": catalog.resolve_supplier,
     "get_inventory": inventory.get_inventory,
+    "get_category_inventory": inventory.get_category_inventory,
     "reconcile": inventory.reconcile,
     "variance_envelope": inventory.variance_envelope,
     "find_discrepancies": inventory.find_discrepancies,
     "get_sales_history": sales.get_sales_history,
     "forecast_reorder": sales.forecast_reorder,
     "forecast_category": sales.forecast_category,
+    "forecast_venue": sales.forecast_venue,
     "get_context": context.get_context,
     "get_shift_reports": human.get_shift_reports,
     "get_chat": human.get_chat,
@@ -52,6 +54,14 @@ SCHEMAS = {
         "physical count and its date, days since that count and whether it is "
         "stale. Book stock believes the delivery invoice, so it can be wrong in "
         "exactly the way a short delivery makes it wrong.",
+    "get_category_inventory":
+        "get_category_inventory(category: str) -> the same position for every "
+        "product in a category at once: book stock, last count, staleness, the "
+        "line's own variance envelope, and whether anything was reported "
+        "leaving it since the count. Use this for any question about a "
+        "category rather than calling get_inventory per bottle -- six lines is "
+        "twelve calls and the loop caps at eight, so a shelf answered one "
+        "product at a time runs out of turns part way through.",
     "reconcile":
         "reconcile(product_id: str, physical_stock: float = None) -> book stock "
         "against a physical figure you supply, classified per RAG-013, with the "
@@ -88,6 +98,13 @@ SCHEMAS = {
         "forecast for every product in a category at once, sorted by need, with "
         "the lines whose stock position is disputed called out. Use this rather "
         "than forecasting a shelf one SKU at a time.",
+    "forecast_venue":
+        "forecast_venue(horizon_days: int = 3, weeks: int = 8) -> every "
+        "category at once, filtered to the lines that are short, due an order, "
+        "or disputed. This is the tool for 'are we ready' and 'what looks "
+        "wrong': the venue is fourteen categories, and asking forecast_category "
+        "for each of them costs an iteration apiece and runs out of turns "
+        "before the shelf is covered.",
     "get_context":
         "get_context(date_from: str, date_to: str) -> per day: real broadcast "
         "listings with source URLs, confirmed bookings and covers, weather and "

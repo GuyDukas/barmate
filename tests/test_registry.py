@@ -74,3 +74,11 @@ def test_no_tool_can_place_an_order_or_change_a_record():
 
 def test_read_only_is_stated_in_the_catalogue():
     assert "cannot" in registry.catalogue_for_prompt().lower()
+
+
+def test_every_tool_is_a_function_and_every_one_has_a_schema():
+    """A schema string once landed in TOOLS instead of SCHEMAS, because the
+    edit anchored on a prefix that appears in both tables. The dispatch table
+    held a tool whose implementation was its own description."""
+    assert all(callable(fn) for fn in registry.TOOLS.values())
+    assert set(registry.TOOLS) == set(registry.SCHEMAS)
