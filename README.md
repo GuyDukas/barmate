@@ -46,36 +46,20 @@ GT005  scope refusal
 100% of quoted figures traceable to a tool result
 ```
 
-**A single run is not the result**, and this section used to say otherwise.
-`gpt-5.4-mini` accepts only `temperature=1`, so the same nine questions asked
-twice are genuinely two different runs. An earlier version of this README
-reported a 9/9 that did not reproduce: the next run of identical code scored
-5/9, and four scenarios failed the same way — the agent naming the tool call it
-was about to make and stopping. That is what the pushback guard and
-`reasoning_effort` exist to fix, and 9/9 above is two consecutive full runs of
-the finished build, not the best of several.
+**Read that as a range, not a number.** `gpt-5.4-mini` accepts only
+`temperature=1`, so sampling cannot be turned down and the same nine questions
+asked twice are genuinely two different runs. The line above is two consecutive
+full runs of the finished build rather than the best of several; across eight
+consecutive runs the range was 8/9 to 9/9. The per-scenario output says more
+than the total, and Known limits covers what the loop does to absorb the noise.
 
-The traceability line is the measure that has held across every run, including
-the bad ones. Every number the agent quotes appears in something a tool
-returned. An answer can name the right product for the wrong reason, but a
-figure the tools never produced is invention however plausible it reads.
-
-It is deliberately a strict substring check, and it is left strict. One run
-scored 26/27 on an answer that was entirely correct: *"the discrepancy scan
-logged 7 items"*, followed by all seven named, every one of them in the tool
-result. The literal `7` is a count of a returned list and appears nowhere in
-the JSON, so the check calls it unfounded. Exempting list lengths would clear
-it, and would also be moving a measure after seeing what it measured. A
-conservative check that occasionally flags a correct answer is worth more than
-a permissive one.
-
-Especially given what it missed. The check looks at figures, and asked whether
-a supplier had delivered everything invoiced, the agent once answered yes and
-cited "the opening shift report" — naming a member of staff and quoting a
-sentence. No report contains that text, no report mentions that supplier, no
-author by that name exists. It scored 100% traceable, because the fabrication
-had no digits in it. The Reflector now checks quotations, named people and
-attributed claims the same way it checks numbers.
+The traceability line is the measure that holds across every run. Every number
+the agent quotes appears in something a tool returned. An answer can name the
+right product for the wrong reason, but a figure the tools never produced is
+invention however plausible it reads. It is a strict substring check and is
+deliberately left strict: it will flag a correct figure that happens to be a
+count of the items a tool returned, and a measure that occasionally does that
+is worth more than a permissive one.
 
 Quantitative measures over the whole dataset, not just the nine questions
 (`python -m eval.metrics`, offline, no model calls):
@@ -94,7 +78,7 @@ The two detection rows are the design working as intended. **Arithmetic finds
 the losses nobody mentioned; the group chat finds the ones somebody logged.**
 Neither route alone gets past 60% recall, and the agent has both.
 
-158 unit tests, all passing.
+160 unit tests, all passing.
 
 ## What makes it an agent
 
@@ -351,7 +335,7 @@ real answer.
 ## Testing
 
 ```bash
-pytest                 # 158 unit tests, offline, no credentials needed
+pytest                 # 160 unit tests, offline, no credentials needed
 python -m eval.run     # nine scenarios end to end, needs credentials
 python -m eval.metrics # quantitative measures, offline
 
@@ -361,9 +345,9 @@ python scripts/check_endpoints.py https://<url>   # the deployment against the b
 
 `check_endpoints.py` is a different audit from the unit tests, and worth having
 separately. The tests check this code against itself; the script checks it
-against the specification — every key name, every type, every required field.
-It is what caught `prompt_examples[].response`, which read as entirely correct
-until you notice the brief calls that field `full_response`.
+against the specification — every key name, every type, every required field,
+on the local app or on the deployment. A renamed key passes the first audit and
+fails the second.
 
 Unit tests assert on what the deterministic tools return, never on model prose.
 An autouse fixture strips every service variable so the suite cannot
@@ -372,10 +356,8 @@ Scenario pass or fail lives in the eval harness, where non-determinism is
 expected and handled.
 
 The eval harness grades against `data/ground_truth/anchor_discrepancies.csv`,
-not the `answer_key` column of `scenarios.csv`. That column was written before
-the weather multipliers were switched on and its numbers have since moved; it
-still says Bombay Sapphire books at 14.22 where the regenerated table says
-6.95.
+which is regenerated with the dataset, rather than the `answer_key` column of
+`scenarios.csv`, which is not.
 
 ## Known limits
 
@@ -392,15 +374,20 @@ still says Bombay Sapphire books at 14.22 where the regenerated table says
   when it has none. A loss after that date with no human report cannot be
   detected from the data at all, and the tools say so rather than returning a
   clean bill of health.
+- **The traceability measure reads figures, not prose.** An invented quotation
+  carries no digits and passes it: asked whether a supplier had delivered
+  everything invoiced, the agent once cited a shift report, an author and a
+  sentence that appear nowhere in the data, and scored 100%. The Reflector now
+  checks quotations, named people and attributed claims the same way it checks
+  numbers.
 - **Scenario outcomes vary run to run**, and the variance is the model's, not
   the harness's. `temperature` cannot be lowered on this model family — only
   `temperature=1` is accepted — so sampling noise is a permanent feature and
   the loop is built to absorb it rather than to pretend it is absent. Every
   rule the agent must obey has a deterministic backstop: the pushback guard for
   answers that read no record, the reflect gate for fabrication, the registry
-  for anything it must not do. Across eight consecutive runs of the finished
-  build the range was 8/9 to 9/9, and the scenarios that move are the ones
-  needing four or more tool calls.
+  for anything it must not do. The scenarios that move are the ones needing
+  four or more tool calls.
 - **`reasoning_effort` is set to `high`, and it costs.** Roughly eight times
   the completion tokens of the default and three times the wall clock: the
   heaviest questions take 100 to 150 seconds against 25 to 30 before, and one
@@ -435,14 +422,3 @@ disappear in production while the offline suite stayed green.
 `docs/specs/2026-08-19-barmate-design.md` covers the architecture, the tool
 layer and the evaluation design. The diagram is served at
 `/api/model_architecture` and rendered by `scripts/render_architecture.py`.
-
-## Conventions
-
-- No emoji in code, comments, documentation or agent output.
-- Comments explain why, not what.
-- Hebrew appears throughout the data and in agent responses. Always specify
-  `encoding="utf-8"`.
-- Prefer the standard library in the request path. `pandas` is not worth its
-  cold-start cost in a serverless function.
-- Do not invent data. If an external source cannot be reached, say so and leave
-  the feature inert.
