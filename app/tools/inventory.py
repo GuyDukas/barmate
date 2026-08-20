@@ -28,6 +28,11 @@ import datetime
 from app import data, db
 
 STALE_AFTER_DAYS = 3
+# A month holds eight counted windows across sixty-one products. Returning
+# every breach is eight thousand characters, and the loop truncates an
+# observation at three and a half thousand -- which would hand the model a
+# JSON fragment cut mid-record and no indication that anything was missing.
+COUNTED_WINDOW_LIMIT = 8
 
 # Counts are reported to two decimals, so a gap below this is arithmetic dust
 # rather than a signal. It only ever binds on lines that barely move.
@@ -193,6 +198,37 @@ def get_inventory(product_id, _mv=None):
 
 # -------------------------------------------------------- variance envelope
 
+def _closed_windows(mv):
+    """Every count-to-count window that has been closed by a physical count.
+
+    Each one is a settled question: the books predicted a figure, somebody
+    counted, and the difference is what went unaccounted for over those days.
+    variance_envelope takes the spread of these and discards the dates, which
+    is all it needs. A question about the last month needs the dates -- eight
+    of these windows sit inside one, and they are the only part of a month
+    that was actually verified.
+
+    Signed, unlike the envelope's copy: positive means the shelf held less
+    than the paperwork predicted, and a line that runs consistently over is a
+    different problem from one that runs consistently short.
+    """
+    as_of = _anchor_date().isoformat()
+    counts = [c for c in mv["counts"] if c["date"] < as_of]
+    windows = []
+    for prev, curr in zip(counts, counts[1:]):
+        expected = (prev["reported_stock"]
+                    + _invoiced(mv, prev["date"], curr["date"])
+                    - _pos_units(mv, prev["date"], curr["date"]))
+        windows.append({
+            "from": prev["date"],
+            "to": curr["date"],
+            "expected": round(expected, 2),
+            "counted": round(curr["reported_stock"], 2),
+            "residual": round(expected - curr["reported_stock"], 2),
+        })
+    return windows
+
+
 def _percentile(values, q):
     if not values:
         return 0.0
@@ -218,14 +254,7 @@ def variance_envelope(product_id, _mv=None):
         return {"ok": False, "product_id": product_id,
                 "error": f"{product_id} is not in the catalogue"}
 
-    as_of = _anchor_date().isoformat()
-    counts = [c for c in mv["counts"] if c["date"] < as_of]
-    residuals = []
-    for prev, curr in zip(counts, counts[1:]):
-        expected = (prev["reported_stock"]
-                    + _invoiced(mv, prev["date"], curr["date"])
-                    - _pos_units(mv, prev["date"], curr["date"]))
-        residuals.append(abs(expected - curr["reported_stock"]))
+    residuals = [abs(w["residual"]) for w in _closed_windows(mv)]
 
     # Why the tolerance is what it is. Without this the caller can report that
     # a gap is within normal variation but not say what makes this line's
@@ -428,14 +457,26 @@ def reconcile(product_id, physical_stock=None):
 
 # --------------------------------------------------------------- the sweep
 
-def find_discrepancies():
+def find_discrepancies(date_from=None, date_to=None):
     """Everything the books do not know about, across the whole catalogue.
 
-    What this can find is unbooked movement somebody wrote down: a bottle
-    dropped, a keg pulled, a table that walked, a delivery that arrived short.
-    What it cannot find is the loss nobody mentioned, because nothing has been
-    counted since it happened. That blind spot is reported rather than left to
-    read as a clean bill of health.
+    Two regimes, and a question about a month spans both.
+
+    Since the last physical count nothing has been verified, so the only
+    losses findable are the ones somebody wrote down: a bottle dropped, a keg
+    pulled, a table that walked, a delivery short. A loss nobody mentioned
+    leaves no trace at all, and that blind spot is reported rather than left
+    to read as a clean bill of health.
+
+    Before the last count the venue was counting every three or four days, and
+    each of those closed windows is settled arithmetic: the books predicted a
+    figure, somebody counted, and the difference is a real discrepancy nobody
+    had to mention for it to show up. Eight of those windows sit inside a
+    month. They are reported against each product's own envelope, because a
+    two-unit residual is noise on Coca-Cola and a crisis on Tanqueray.
+
+    The window defaults to the unverified period, which is what an unqualified
+    "what have we lost" means when nothing has been counted for four days.
     """
     as_of = _anchor_date().isoformat()
     # Ordered and limited rather than scanned: the counts table holds roughly
@@ -446,21 +487,70 @@ def find_discrepancies():
                        limit=1, date=f"lt.{as_of}")
     since = latest[0]["date"] if latest else as_of
 
+    until = date_to or as_of
+    start = date_from or since
+
     by_id = db.products_by_id()
     rows = []
-    for pid, ev in sorted(_evidence(since, as_of).items()):
+    for pid, ev in sorted(_evidence(start, until).items()):
         if pid not in by_id:
             continue
         rows.append({"product_id": pid, "name": by_id[pid]["name"],
                      "chat": ev["chat"], "shift_reports": ev["shift_reports"]})
 
+    # The counted part of the window. Only the windows that broke their own
+    # line's envelope: every product has a residual on every window, and
+    # returning six hundred of them buries the four that mean something.
+    counted = []
+    for pid, product in sorted(by_id.items()):
+        mv = _movement(pid)
+        if mv is None:
+            continue
+        envelope = variance_envelope(pid, _mv=mv)["envelope"]
+        for w in _closed_windows(mv):
+            if w["from"] < start or w["to"] > until:
+                continue
+            if abs(w["residual"]) <= envelope:
+                continue
+            counted.append({"product_id": pid, "name": product["name"],
+                            "envelope": envelope,
+                            # How far past this line's own normal, which is the
+                            # only scale-free way to rank them: Corona 41 units
+                            # over an envelope of 38 is an ordinary week, and
+                            # Gordon's 10 over an envelope of 3 is not.
+                            "times_envelope": round(abs(w["residual"]) / envelope, 1),
+                            "from": w["from"], "to": w["to"],
+                            # The predicted and counted figures are dropped: a
+                            # month of these against a 3,500 character
+                            # observation limit is how a payload arrives cut in
+                            # half. reconcile has them per product on request.
+                            "residual": w["residual"]})
+    counted.sort(key=lambda w: -w["times_envelope"])
+    found = len(counted)
+    counted = counted[:COUNTED_WINDOW_LIMIT]
+
+    # Silence from a source that was not listening is not evidence of quiet.
+    chat_days = sorted({m["timestamp"][:10] for m in db.select("whatsapp_messages")})
+    coverage = (f"The shift group chat runs {chat_days[0]} to {chat_days[-1]}; "
+                "outside those dates there is nothing written down to find."
+                if chat_days else "There is no chat history.")
+
     return {
         "as_of": as_of,
+        "window": [start, until],
         "unverified_since": since,
         "reviewed": len(by_id),
         "logged": rows,
-        "note": (f"These are losses somebody reported between {since} and "
-                 f"{as_of}. Nothing has been counted since {since}, so a loss "
-                 "that was never mentioned cannot be detected from the data at "
-                 "all. Treat this as the reported set, not the full set."),
+        "counted_windows": counted,
+        "counted_windows_found": found,
+        "note": (
+            f"Two different things. 'logged' is what somebody reported between "
+            f"{start} and {until}; nothing has been counted since {since}, so "
+            "in that stretch a loss nobody mentioned cannot be detected at all "
+            "and this is the reported set rather than the full one. "
+            "'counted_windows' is the settled part: closed count-to-count "
+            "windows inside the range whose residual broke that product's own "
+            "envelope, which needed no one to report them; the "
+            f"{min(found, COUNTED_WINDOW_LIMIT)} furthest past their envelope "
+            f"are listed of {found} found. {coverage}"),
     }

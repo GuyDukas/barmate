@@ -144,6 +144,15 @@ number that is absent from the tool results, and do not soften a correct
 statement. If the critique says a figure is untraceable, remove the figure and
 say plainly what could not be established rather than substituting another.
 
+Return the corrected reply as the manager will read it, and nothing else. It
+is an answer to their question, not a report on the review: never say what you
+removed, that a claim was untraceable, or that something "should be removed".
+Observed in a real run and reaching a user -- "I could not establish any stock
+position, so the stock claims, product names, counts and dates should be
+removed" -- which tells the manager about an edit to a draft they never saw
+and answers nothing. Say what is known, say plainly what could not be
+established, stop.
+
 Reply with JSON only: {"answer": "the corrected reply"}
 """
 

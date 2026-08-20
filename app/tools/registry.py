@@ -65,9 +65,15 @@ SCHEMAS = {
         "whether a gap is meaningful; a fixed threshold is noise on a busy line "
         "and a crisis on a quiet one.",
     "find_discrepancies":
-        "find_discrepancies() -> every product with a loss somebody reported "
-        "since the last count, across the catalogue. Losses nobody mentioned "
-        "cannot be found this way and the result says so.",
+        "find_discrepancies(date_from: str = None, date_to: str = None) -> "
+        "across the whole catalogue, two things: 'logged', the losses somebody "
+        "wrote down in the window, and 'counted_windows', the closed "
+        "count-to-count windows whose arithmetic broke that product's own "
+        "envelope with nobody having to report anything. Defaults to the "
+        "unverified stretch since the last count, where only 'logged' can "
+        "exist. Widen date_from for a question about a month or a quarter: "
+        "the venue counted every three or four days before 2026-06-10, so a "
+        "longer window is mostly settled arithmetic rather than hearsay.",
     "get_sales_history":
         "get_sales_history(product_id: str, weekday: str = None, weeks: int = 8) "
         "-> sample count, mean and max units sold, and demand lost to stockouts. "

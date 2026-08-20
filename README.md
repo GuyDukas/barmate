@@ -78,7 +78,7 @@ The two detection rows are the design working as intended. **Arithmetic finds
 the losses nobody mentioned; the group chat finds the ones somebody logged.**
 Neither route alone gets past 60% recall, and the agent has both.
 
-163 unit tests, all passing.
+169 unit tests, all passing.
 
 ## What makes it an agent
 
@@ -135,7 +135,7 @@ question through to an answer instead of a plan.
 | `get_inventory` | Book stock, last count, staleness, whether a protocol widens the line |
 | `reconcile` | Book stock against a physical figure you supply, classified per RAG-013; flags when the count and the books may not cover the same bar |
 | `variance_envelope` | How far this product's books and counts normally disagree |
-| `find_discrepancies` | Every product with a loss somebody reported since the last count |
+| `find_discrepancies` | Over any window: the losses somebody reported, and the closed count-to-count windows whose arithmetic broke the product's own envelope |
 | `get_sales_history` | Weekday baselines, stockout losses |
 | `forecast_reorder` | Demand with RAG-004 multipliers, minus stock and orders in flight |
 | `forecast_category` | The same for a whole category in one call, declaring what it excludes |
@@ -278,7 +278,7 @@ top of this page is the agent, running; the endpoints answer without any setup
 on your part. What follows is for running it yourself.
 
 **Nor is it needed to run the test suite.** A fresh clone with no credentials
-at all runs all 163 tests against the offline fixture in
+at all runs all 169 tests against the offline fixture in
 `data/runtime/bundle.json.gz`, and `python -m eval.metrics` reproduces every
 quantitative measure in this README the same way. Both go through the same tool
 code the deployed agent uses.
@@ -335,7 +335,7 @@ real answer.
 ## Testing
 
 ```bash
-pytest                 # 163 unit tests, offline, no credentials needed
+pytest                 # 169 unit tests, offline, no credentials needed
 python -m eval.run     # nine scenarios end to end, needs credentials
 python -m eval.metrics # quantitative measures, offline
 
@@ -369,6 +369,13 @@ which is regenerated with the dataset, rather than the `answer_key` column of
   demand for a single product at this volume is largely Poisson noise; the
   figure across every product that moved is 52%, and the gap between the two
   is the noise rather than the model.
+- **A question about a month is answered by two different things.** Since the
+  last count nothing has been verified, so only what somebody wrote down can
+  be found — and the shift group chat runs 2026-06-01 to 06-13, so a question
+  about April finds silence from a source that was not listening rather than a
+  quiet April. Before that count the venue counted every three or four days,
+  and those closed windows are settled arithmetic that needed nobody to report
+  them. `find_discrepancies` returns both and says which is which.
 - **Nothing has been counted since 2026-06-10.** `reconcile` therefore takes
   the physical figure from the caller instead of manufacturing one, and says so
   when it has none. A loss after that date with no human report cannot be

@@ -207,3 +207,59 @@ def test_a_single_bar_line_needs_no_scope_warning():
 def test_no_counted_figure_means_no_scope_question():
     """Nothing was counted, so there is no count whose scope could be wrong."""
     assert "scope_note" not in inventory.reconcile("P007")
+
+
+def test_find_discrepancies_defaults_to_the_unverified_stretch():
+    """The default is what an unqualified "what have we lost" means when
+    nothing has been counted for four days: only what somebody wrote down,
+    and no settled arithmetic, because no window has closed."""
+    d = inventory.find_discrepancies()
+    assert d["window"] == ["2026-06-10", "2026-06-14"]
+    assert d["logged"]
+    assert d["counted_windows"] == []
+
+
+def test_a_month_reaches_the_windows_that_were_actually_counted():
+    """Reported: the agent would not look back further than the last count.
+    A month holds eight closed counts, and each one is settled arithmetic
+    that needed nobody to report it."""
+    m = inventory.find_discrepancies(date_from="2026-05-14")
+    assert m["window"] == ["2026-05-14", "2026-06-14"]
+    assert m["counted_windows_found"] > 20
+    assert all(w["from"] >= "2026-05-14" for w in m["counted_windows"])
+
+
+def test_only_windows_that_broke_their_own_line_are_returned():
+    """Every product has a residual on every window. A two-unit miss is noise
+    on Coca-Cola and a crisis on Tanqueray, so the envelope decides."""
+    m = inventory.find_discrepancies(date_from="2026-05-14")
+    assert all(abs(w["residual"]) > w["envelope"] for w in m["counted_windows"])
+    assert all(w["times_envelope"] > 1 for w in m["counted_windows"])
+
+
+def test_the_worst_offenders_come_first_and_the_rest_are_counted():
+    m = inventory.find_discrepancies(date_from="2026-05-14")
+    ratios = [w["times_envelope"] for w in m["counted_windows"]]
+    assert ratios == sorted(ratios, reverse=True)
+    assert len(m["counted_windows"]) <= inventory.COUNTED_WINDOW_LIMIT
+    assert m["counted_windows_found"] >= len(m["counted_windows"])
+
+
+def test_the_payload_survives_the_observation_limit():
+    """A month of breaches is eight thousand characters unabridged, and the
+    loop cuts an observation at three and a half thousand -- which would hand
+    the model a record sliced in half with nothing saying so."""
+    import json
+    from app.agent.loop import OBSERVATION_CHAR_LIMIT
+    for kwargs in ({}, {"date_from": "2026-05-14"}, {"date_from": "2025-09-01"}):
+        payload = json.dumps(inventory.find_discrepancies(**kwargs),
+                             ensure_ascii=False, default=str)
+        assert len(payload) <= OBSERVATION_CHAR_LIMIT, f"{kwargs}: {len(payload)}"
+
+
+def test_the_note_says_how_far_the_chat_actually_reaches():
+    """Silence from a source that was not listening is not evidence of quiet.
+    The chat starts on 2026-06-01, so a question about April finds nothing
+    written down and that must not read as nothing happening."""
+    note = inventory.find_discrepancies(date_from="2026-04-01")["note"]
+    assert "2026-06-01" in note
