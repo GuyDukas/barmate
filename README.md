@@ -9,13 +9,10 @@ Course project for Modern AI Agents, Technion, Spring 2026.
 **Live:** https://barmate-puce.vercel.app
 **Repository:** https://github.com/GuyDukas/barmate
 
-| Student | ID |
-|---|---|
-| Guy Dukas | 326692662 |
-| Reut Ness | 318738127 |
-| Yuval Belelovsky | 326156536 |
+Guy Dukas, Reut Ness, Yuval Belelovsky. Group batch and order number `2_8`.
 
-Group batch and order number: `2_8`.
+Student details as the brief specifies them are served by
+[`/api/team_info`](https://barmate-puce.vercel.app/api/team_info).
 
 ## The problem
 
@@ -292,8 +289,26 @@ weather multipliers change every downstream number when they switch on.
 
 ## Setup
 
+**Nothing here is needed to read the agent's output.** The deployed URL at the
+top of this page is the agent, running; the endpoints answer without any setup
+on your part. What follows is for running it yourself.
+
+**Nor is it needed to run the test suite.** A fresh clone with no credentials
+at all runs all 160 tests against the offline fixture in
+`data/runtime/bundle.json.gz`, and `python -m eval.metrics` reproduces every
+quantitative measure in this README the same way. Both go through the same tool
+code the deployed agent uses.
+
+What a clone cannot do without credentials is call the model or read the live
+database, which is the part that needs an account nobody can share: the LLMod
+key is issued per group against its own budget, and Supabase and Pinecone hold
+data seeded from this repository into projects of your own.
+
 Five environment variables, none of them committed. Copy `.env.example` to
-`.env` and fill it in; the same five go into the Vercel project.
+`.env` and fill it in; the same five go into the Vercel project. `.env` is
+gitignored and `.env.example` carries the five names with every value left
+empty, which is the whole of the arrangement: the names are documentation, the
+values never enter the repository.
 
 ```
 LLMOD_API_KEY

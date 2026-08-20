@@ -24,14 +24,17 @@ if str(ROOT) not in sys.path:
 app = Flask(__name__, static_folder=str(STATIC))
 app.json.ensure_ascii = False  # Hebrew appears throughout the data and answers.
 
+# Name and email, which is what the brief asks for and all it asks for. The
+# student ID numbers that used to sit here are national identity numbers, two
+# of them belonging to people other than the author of this file, and nothing
+# in the specification or the grading needs them in a public endpoint.
 TEAM = {
     "group_batch_order_number": "2_8",
     "team_name": "BarMate",
     "students": [
-        {"name": "Guy Dukas", "email": "guy.dukas@gmail.com", "id": "326692662"},
-        {"name": "Reut Ness", "email": "Reutness2799@gmail.com", "id": "318738127"},
-        {"name": "Yuval Belelovsky", "email": "Ybelelovsky@campus.technion.ac.il",
-         "id": "326156536"},
+        {"name": "Guy Dukas", "email": "guy.dukas@gmail.com"},
+        {"name": "Reut Ness", "email": "Reutness2799@gmail.com"},
+        {"name": "Yuval Belelovsky", "email": "Ybelelovsky@campus.technion.ac.il"},
     ],
 }
 
