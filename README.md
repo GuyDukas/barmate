@@ -227,8 +227,12 @@ Under each answer is the trace, collapsed: one row per model call, tagged with
 the module that made it and the tool it chose, opening to the full system
 prompt, user prompt and reply. Inspecting the execution is the point of the
 page, so the tool names are readable without opening anything and the four
-modules are colour-coded — `Reasoner` blue, `KnowledgeRetriever` violet,
-`Reflector` amber, `Reviser` green.
+modules are colour-coded — `Reasoner` pink, `KnowledgeRetriever` violet,
+`Reflector` amber, `Reviser` teal.
+
+The page wears the project's own colours rather than a framework's: the ground,
+the accent and the type are read out of the team's presentation deck, and the
+mark beside the title is that deck's logo cropped to the monogram.
 
 Follow-ups work, and they matter here more than they would elsewhere: this
 agent is built to ask which of two readings of a figure was meant, and an
@@ -407,6 +411,19 @@ which is regenerated with the dataset, rather than the `answer_key` column of
 
 ## Known limits
 
+- **What a bartender tells BarMate is used and then lost.** Tell it the Bombay
+  Sapphire is finished and it will reconcile that figure against the books,
+  classify the gap and recommend a recount — inside that one answer. It cannot
+  write the claim down. Nothing in the registry writes, so a shift's worth of
+  what staff noticed never reaches the shift report, the next conversation
+  starts from the same stale count, and a manager who told BarMate something
+  yesterday has told it nothing today. The agent says so once and names where
+  the record belongs — the closing report, or the group chat the tools read —
+  rather than absorbing the correction silently and appearing to have learned
+  it. That keeps the human loop intact but leaves it human: the venue's memory
+  is still whatever somebody typed into WhatsApp. Closing this properly means a
+  write path and the audit trail that has to come with it, which is a different
+  project from an agent that cannot touch the ledger it reads.
 - **A gradual overpour that nobody logs is invisible.** One planted incident,
   an 18% heavy pour across a fortnight, is reached by neither route: it leaves
   no step for the arithmetic to find and no message for the chat search to

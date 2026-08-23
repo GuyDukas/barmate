@@ -5,79 +5,105 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BarMate</title>
 <style>
+  /* The palette is the team's presentation deck, read out of its slides:
+     #0D0D15 ground, #FF2E88 accent, #EFEFF5 type. The logo mark is the same
+     artwork, cropped to the monogram and cut out so it sits on the page
+     background rather than on a black square of its own. */
   :root {
-    --bg: #fbfbfc; --panel: #ffffff; --ink: #191b21; --muted: #6b7280;
-    --line: #e3e5ea; --accent: #2f6fd0; --accent-ink: #ffffff;
-    --err: #b4232b; --err-bg: #fdf2f2; --code: #f5f6f8; --quote: #f2f4f8;
-    --m-reason: #e8f0fe; --m-reason-edge: #4276d2;
-    --m-know: #f0eafb; --m-know-edge: #7b56c4;
-    --m-reflect: #fdf1e3; --m-reflect-edge: #c67630;
-    --m-revise: #e9f6ec; --m-revise-edge: #348c52;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #14161a; --panel: #1b1e24; --ink: #e8eaee; --muted: #9aa2b1;
-      --line: #2b2f37; --accent: #5b93e6; --accent-ink: #0e1116;
-      --err: #ff8a8a; --err-bg: #2a1a1c; --code: #14171c; --quote: #22262e;
-      --m-reason: #1a2434; --m-reason-edge: #4d7cc4;
-      --m-know: #251f36; --m-know-edge: #8b6bd0;
-      --m-reflect: #2e2318; --m-reflect-edge: #c98b45;
-      --m-revise: #1b2a20; --m-revise-edge: #3f9a60;
-    }
+    --bg: #0d0d15; --panel: #171722; --raise: #1e1e2c; --line: #3a3a50;
+    --ink: #efeff5; --muted: #8b8ba0; --dim: #728092;
+    --pink: #ff2e88; --pink-soft: rgba(255, 46, 136, .13);
+    --on-pink: #12030a;
+    --err: #ff6b8a; --err-bg: #2a0f1a;
+    --m-reason: rgba(255, 46, 136, .14); --m-reason-edge: #ff2e88;
+    --m-know: rgba(177, 92, 255, .14); --m-know-edge: #b15cff;
+    --m-reflect: rgba(255, 176, 32, .13); --m-reflect-edge: #ffb020;
+    --m-revise: rgba(31, 157, 138, .15); --m-revise-edge: #1f9d8a;
   }
   * { box-sizing: border-box; }
   body {
     margin: 0; background: var(--bg); color: var(--ink);
     font: 15px/1.55 -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
-  .wrap { max-width: 960px; margin: 0 auto; padding: 32px 20px 80px; }
-  header { margin-bottom: 24px; }
-  h1 { font-size: 26px; margin: 0 0 4px; letter-spacing: -0.01em; }
-  .tag { color: var(--muted); font-size: 14px; }
+  /* One pink bloom behind the masthead. Fixed, so scrolling the trace does not
+     drag a gradient down the page with it. */
+  body::before {
+    content: ""; position: fixed; inset: -20vh 0 auto 0; height: 60vh;
+    background: radial-gradient(60% 100% at 50% 0,
+                rgba(255, 46, 136, .16), transparent 70%);
+    pointer-events: none; z-index: 0;
+  }
+  .wrap { position: relative; z-index: 1;
+          max-width: 960px; margin: 0 auto; padding: 40px 20px 80px; }
+
+  header { margin-bottom: 26px; }
+  .brand { display: flex; align-items: center; gap: 14px; }
+  .brand img { width: 46px; height: auto; display: block; }
+  h1 {
+    font-size: 27px; font-weight: 300; margin: 0; letter-spacing: .17em;
+    text-transform: uppercase;
+  }
+  h1 b { font-weight: 300; color: var(--pink); }
+  .tag { color: var(--muted); font-size: 14px; margin-top: 12px; max-width: 60ch; }
+  .tag b { color: var(--pink); font-weight: 400; }
   .anchor {
-    display: inline-block; margin-top: 10px; padding: 4px 10px;
-    background: var(--panel); border: 1px solid var(--line); border-radius: 999px;
+    display: inline-flex; align-items: center; gap: 8px; margin-top: 14px;
+    padding: 5px 13px 5px 11px; background: var(--panel);
+    border: 1px solid var(--line); border-radius: 999px;
     font-size: 12.5px; color: var(--muted);
   }
+  .anchor::before {
+    content: ""; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--pink); box-shadow: 0 0 7px var(--pink);
+  }
+
   .card {
     background: var(--panel); border: 1px solid var(--line);
-    border-radius: 12px; padding: 18px; margin-bottom: 18px;
+    border-radius: 14px; padding: 18px; margin-bottom: 18px;
   }
   textarea {
     width: 100%; min-height: 88px; resize: vertical; padding: 12px 14px;
-    border: 1px solid var(--line); border-radius: 9px; background: var(--bg);
+    border: 1px solid var(--line); border-radius: 10px; background: var(--bg);
     color: var(--ink); font: inherit;
   }
-  textarea:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+  textarea::placeholder { color: var(--dim); }
+  textarea:focus { outline: none; border-color: var(--pink);
+                   box-shadow: 0 0 0 3px var(--pink-soft); }
   .row { display: flex; gap: 12px; align-items: center; margin-top: 12px; flex-wrap: wrap; }
   button {
-    background: var(--accent); color: var(--accent-ink); border: 0;
-    padding: 10px 18px; border-radius: 9px; font: inherit; font-weight: 600;
-    cursor: pointer;
+    background: var(--pink); color: var(--on-pink); border: 0;
+    padding: 10px 20px; border-radius: 10px; font: inherit; font-weight: 700;
+    letter-spacing: .02em; cursor: pointer; transition: box-shadow .15s;
   }
-  button:disabled { opacity: .55; cursor: default; }
+  button:hover:not(:disabled) { box-shadow: 0 0 18px rgba(255, 46, 136, .45); }
+  button:disabled { opacity: .4; cursor: default; }
   .ghost {
     background: transparent; color: var(--muted); border: 1px solid var(--line);
     font-weight: 400;
   }
-  .ghost:hover:not(:disabled) { color: var(--ink); border-color: var(--accent); }
+  .ghost:hover:not(:disabled) { color: var(--ink); border-color: var(--pink);
+                                box-shadow: none; }
   .examples { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
   .examples button {
     background: transparent; color: var(--muted); border: 1px solid var(--line);
-    font-size: 13px; font-weight: 400; padding: 6px 11px; border-radius: 999px;
+    font-size: 13px; font-weight: 400; padding: 6px 12px; border-radius: 999px;
     text-align: left;
   }
-  .examples button:hover { color: var(--ink); border-color: var(--accent); }
+  .examples button:hover { color: var(--ink); border-color: var(--pink);
+                           background: var(--pink-soft); box-shadow: none; }
+
   h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .07em;
        color: var(--muted); margin: 0 0 10px; font-weight: 600; }
   .ask {
-    background: var(--quote); border-left: 3px solid var(--accent);
-    border-radius: 0 8px 8px 0; padding: 10px 14px; margin-bottom: 14px;
+    background: var(--raise); border-left: 3px solid var(--pink);
+    border-radius: 0 10px 10px 0; padding: 10px 14px; margin-bottom: 14px;
     white-space: pre-wrap;
   }
   .answer { white-space: pre-wrap; }
   .err { background: var(--err-bg); border-color: var(--err); color: var(--err); }
-  .meta { color: var(--muted); font-size: 12.5px; margin-top: 14px; }
+  .meta { color: var(--dim); font-size: 12.5px; margin-top: 14px; }
+
   details.trace > summary, details.step > summary { cursor: pointer; }
   details.trace {
     margin-top: 14px; border-top: 1px solid var(--line); padding-top: 12px;
@@ -86,8 +112,9 @@
     font-size: 13px; text-transform: uppercase; letter-spacing: .07em;
     color: var(--muted); font-weight: 600; margin-bottom: 10px;
   }
+  details.trace > summary:hover { color: var(--pink); }
   details.step {
-    border: 1px solid var(--line); border-radius: 9px; margin-bottom: 8px;
+    border: 1px solid var(--line); border-radius: 10px; margin-bottom: 8px;
     background: var(--bg); overflow: hidden;
   }
   details.step > summary {
@@ -96,40 +123,45 @@
   }
   .badge {
     font-size: 11.5px; font-weight: 600; padding: 2px 9px; border-radius: 999px;
-    border: 1px solid var(--line); background: var(--quote); color: var(--ink);
+    border: 1px solid var(--line); background: var(--raise); color: var(--ink);
   }
   .badge.Reasoner { background: var(--m-reason); border-color: var(--m-reason-edge); }
   .badge.KnowledgeRetriever { background: var(--m-know); border-color: var(--m-know-edge); }
   .badge.Reflector { background: var(--m-reflect); border-color: var(--m-reflect-edge); }
   .badge.Reviser { background: var(--m-revise); border-color: var(--m-revise-edge); }
-  .n { color: var(--muted); font-weight: 400; font-size: 12.5px; }
+  .n { color: var(--dim); font-weight: 400; font-size: 12.5px; }
   .tool { color: var(--muted); font-weight: 400; font-size: 12.5px;
           font-family: ui-monospace, Consolas, monospace; }
   .step-body { padding: 0 14px 14px; }
   .lbl { font-size: 11.5px; text-transform: uppercase; letter-spacing: .06em;
          color: var(--muted); margin: 10px 0 4px; font-weight: 600; }
   pre {
-    background: var(--code); border: 1px solid var(--line); border-radius: 7px;
+    background: #0a0a11; border: 1px solid var(--line); border-radius: 8px;
     padding: 11px 13px; overflow-x: auto; margin: 0;
     font: 12.5px/1.5 ui-monospace, "Cascadia Code", Consolas, monospace;
-    white-space: pre-wrap; word-break: break-word;
+    white-space: pre-wrap; word-break: break-word; color: #d6d6e2;
   }
   .spin {
     width: 15px; height: 15px; border: 2px solid var(--line);
-    border-top-color: var(--accent); border-radius: 50%;
+    border-top-color: var(--pink); border-radius: 50%;
     animation: r .7s linear infinite; display: inline-block; vertical-align: -3px;
   }
   @keyframes r { to { transform: rotate(360deg); } }
-  footer { color: var(--muted); font-size: 13px; margin-top: 28px; }
+  footer { color: var(--dim); font-size: 13px; margin-top: 28px; }
   footer a { color: var(--muted); }
+  footer a:hover { color: var(--pink); }
   [hidden] { display: none !important; }
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <h1>BarMate</h1>
-    <div class="tag">An autonomous bar operations agent. Ask about stock, losses, staffing or what to order.</div>
+    <div class="brand">
+      <img src="/static/logo.png" alt="" width="46">
+      <h1>Bar<b>Mate</b></h1>
+    </div>
+    <div class="tag">Your bar. <b>Under control.</b> An autonomous bar operations
+      agent &mdash; ask about stock, losses, staffing or what to order.</div>
     <div class="anchor">Frozen at Sunday 2026-06-14, 18:00 &middot; one hour before doors</div>
   </header>
 
@@ -169,7 +201,7 @@ const EXAMPLES = [
   "How much Bombay Sapphire do we have and should I trust that number?",
   "How many chasers can a shift manager comp before it needs approval?",
   "What kegs should I order for the week ahead?",
-  "Why is the house white down more than the till says?",
+  "We're short on house white wine — is someone stealing it?",
   "מה קרה למלאי השבוע?",
   "Anything unusual in the numbers over the last month?",
   "What needs my attention before tonight's shift?"
