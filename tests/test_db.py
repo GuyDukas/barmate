@@ -1,5 +1,3 @@
-import pytest
-
 from app import db
 
 
@@ -29,15 +27,6 @@ def test_operator_filter(monkeypatch):
     recent = db.select("sales", date="gte.2026-06-13")
     assert recent
     assert all(r["date"] >= "2026-06-13" for r in recent)
-
-
-def test_request_path_refuses_the_offline_fixture(monkeypatch):
-    """Answering a stock question from a developer's local copy would look
-    exactly like a real answer, which is worse than failing."""
-    monkeypatch.delenv("SUPABASE_URL", raising=False)
-    monkeypatch.delenv("SUPABASE_SERVICE_KEY", raising=False)
-    with pytest.raises(RuntimeError, match="refusing to answer"):
-        db.require_supabase()
 
 
 class _Response:

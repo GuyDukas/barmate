@@ -5,10 +5,9 @@ Python SDK. The SDK pulls in a dependency tree that costs cold-start time in a
 serverless function to do what is, for every call here, one HTTP GET.
 
 When SUPABASE_URL is unset the module serves the same rows from the generated
-offline bundle. That is what lets the unit suite run with no network and no
-credentials while the deployed agent reads from Postgres. It is a test fixture,
-not a production fallback: `require_supabase()` exists so the request path can
-refuse to answer from stale local data.
+offline bundle, which is written from the data the database is seeded with. A
+clone with no credentials therefore answers from the same figures as the
+deployment rather than failing, and the unit suite runs with no network at all.
 """
 import os
 import urllib.parse
@@ -57,20 +56,6 @@ _GROUPED = {
 
 def configured():
     return bool(os.environ.get("SUPABASE_URL") and os.environ.get("SUPABASE_SERVICE_KEY"))
-
-
-def require_supabase():
-    """Raise unless the database is reachable by configuration.
-
-    The agent answering a manager's stock question from a developer's local
-    fixture would be worse than failing, because the answer would look real.
-    """
-    if not configured():
-        raise RuntimeError(
-            "SUPABASE_URL and SUPABASE_SERVICE_KEY are not set. "
-            "The agent reads from Supabase; refusing to answer from the "
-            "offline test fixture."
-        )
 
 
 def _headers():

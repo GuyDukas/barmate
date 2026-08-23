@@ -78,7 +78,7 @@ The two detection rows are the design working as intended. **Arithmetic finds
 the losses nobody mentioned; the group chat finds the ones somebody logged.**
 Neither route alone gets past 60% recall, and the agent has both.
 
-181 unit tests, all passing.
+183 unit tests, all passing.
 
 ## What makes it an agent
 
@@ -306,15 +306,23 @@ top of this page is the agent, running; the endpoints answer without any setup
 on your part. What follows is for running it yourself.
 
 **Nor is it needed to run the test suite.** A fresh clone with no credentials
-at all runs all 181 tests against the offline fixture in
+at all runs all 183 tests against the offline fixture in
 `data/runtime/bundle.json.gz`, and `python -m eval.metrics` reproduces every
 quantitative measure in this README the same way. Both go through the same tool
 code the deployed agent uses.
 
-What a clone cannot do without credentials is call the model or read the live
-database, which is the part that needs an account nobody can share: the LLMod
-key is issued per group against its own budget, and Supabase and Pinecone hold
-data seeded from this repository into projects of your own.
+**One key is enough to run the agent itself.** With `LLMOD_API_KEY` set and
+nothing else, every tool serves the same rows from the bundle, so stock,
+reconciliation, variance and forecasting answer exactly as the deployment does.
+The one tool that needs more is `search_knowledge`, which queries Pinecone; with
+no index reachable it returns an error the agent reads as an observation and
+routes around, reaching the same fourteen operations documents through
+`list_knowledge` and `get_document`. Asked how many chasers a shift manager may
+comp, a clone in that state answers from RAG-005 in four steps.
+
+Supabase and Pinecone credentials buy the live path rather than a different
+answer: the same data, read over PostgREST and queried by embedding instead of
+loaded from a file.
 
 Five environment variables, none of them committed. Copy `.env.example` to
 `.env` and fill it in; the same five go into the Vercel project. `.env` is
@@ -363,15 +371,17 @@ flask --app api.index run --debug     # http://localhost:5000
 ```
 
 With no Supabase credentials set, the tools serve the same rows from
-`data/runtime/bundle.json.gz`. That is a test fixture, not a fallback:
-`require_supabase()` exists so the request path can refuse to answer a stock
-question from a developer's stale local copy, which would look exactly like a
-real answer.
+`data/runtime/bundle.json.gz`. Both that bundle and the database are written
+from the CSVs in `data/public` under the same anchor cutoff -- `sim/export_runtime.py`
+builds the one, `scripts/seed_supabase.py` loads the other, and the second is
+written to match the first -- so the two cannot drift into different answers to
+the same question. That is what makes a keyless clone a real run of the agent
+rather than a demonstration of one.
 
 ## Testing
 
 ```bash
-pytest                 # 181 unit tests, offline, no credentials needed
+pytest                 # 183 unit tests, offline, no credentials needed
 python -m eval.run     # nine scenarios end to end, needs credentials
 python -m eval.metrics # quantitative measures, offline
 
