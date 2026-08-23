@@ -24,6 +24,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
+from app.env import load_env  # noqa: E402  -- needs ROOT on the path first
+
 GT = ROOT / "data" / "ground_truth"
 NUMBER = re.compile(r"\d+(?:\.\d+)?")
 
@@ -62,18 +64,6 @@ SOURCES = {
     "get_document": {"manual"},
     "list_knowledge": {"manual"},
 }
-
-
-def load_env():
-    path = ROOT / ".env"
-    if not path.exists():
-        return
-    import os
-    for line in path.read_text(encoding="utf-8").splitlines():
-        line = line.strip()
-        if line and not line.startswith("#") and "=" in line:
-            key, _, value = line.partition("=")
-            os.environ.setdefault(key.strip(), value.strip().strip('"').strip("'"))
 
 
 def book_stock():

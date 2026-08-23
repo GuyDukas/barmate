@@ -21,6 +21,15 @@ STATIC = ROOT / "static"
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+from app.env import load_env  # noqa: E402  -- needs ROOT on the path first
+
+# A clone keeps its credentials in .env, and nothing else would read them: the
+# tools take every key from the environment, which on Vercel is filled by the
+# platform and on a laptop is filled by this line. Without it a fresh clone
+# runs the endpoints and the offline fixture but cannot call the model, which
+# is not the same program as the deployed one.
+load_env()
+
 app = Flask(__name__, static_folder=str(STATIC))
 app.json.ensure_ascii = False  # Hebrew appears throughout the data and answers.
 

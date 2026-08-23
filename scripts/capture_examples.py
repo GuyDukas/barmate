@@ -15,12 +15,13 @@ dozen times and turn a description of the agent into a wall of repeated text.
 /api/execute returns it in full on every real call.
 """
 import json
-import os
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
+
+from app.env import load_env  # noqa: E402  -- needs ROOT on the path first
 
 TARGET = ROOT / "static" / "agent_info.json"
 PROMPT_LIMIT = 600
@@ -34,17 +35,6 @@ EXAMPLES = [
     "How much Macallan do we have left?",
     "How many chasers can a shift manager comp before it needs approval?",
 ]
-
-
-def load_env():
-    path = ROOT / ".env"
-    if not path.exists():
-        return
-    for line in path.read_text(encoding="utf-8").splitlines():
-        line = line.strip()
-        if line and not line.startswith("#") and "=" in line:
-            key, _, value = line.partition("=")
-            os.environ.setdefault(key.strip(), value.strip().strip('"').strip("'"))
 
 
 def shorten(text):

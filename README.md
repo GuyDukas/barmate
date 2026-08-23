@@ -322,6 +322,14 @@ gitignored and `.env.example` carries the five names with every value left
 empty, which is the whole of the arrangement: the names are documentation, the
 values never enter the repository.
 
+A clone with that file in place is the deployed program. Every entry point --
+the Flask app, the eval harness, the seeding and diagnostic scripts -- reads
+`.env` through `app/env.py` before it reads the environment, so nothing has to
+be exported by hand and no shell setup stands between a clone and a running
+agent. Values already exported win over the file, which is why the same code
+runs unchanged on Vercel, where the platform supplies them and there is no
+`.env` to find.
+
 ```
 LLMOD_API_KEY
 SUPABASE_URL

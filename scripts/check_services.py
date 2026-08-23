@@ -16,21 +16,13 @@ from pathlib import Path
 import requests
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
+
+from app.env import load_env  # noqa: E402  -- needs ROOT on the path first
+
 TIMEOUT = 25
 
 OK, BAD, WARN = "  ok  ", " FAIL ", " warn "
-
-
-def load_env():
-    path = ROOT / ".env"
-    if not path.exists():
-        return
-    for line in path.read_text(encoding="utf-8").splitlines():
-        line = line.strip()
-        if not line or line.startswith("#") or "=" not in line:
-            continue
-        key, _, value = line.partition("=")
-        os.environ.setdefault(key.strip(), value.strip().strip('"').strip("'"))
 
 
 def report(status, name, detail):
@@ -107,7 +99,6 @@ def check_llmod():
     if not os.environ.get("LLMOD_API_KEY"):
         return report(BAD, "LLMod.ai", "LLMOD_API_KEY not set")
 
-    sys.path.insert(0, str(ROOT))
     from app import llm
 
     try:
